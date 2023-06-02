@@ -19,7 +19,7 @@ class _LoginViewState extends State<LoginView> {
       //   inAppReview.requestReview();
       //   inAppReview.openStoreListing(appStoreId: '555115173');
       // }
-      Navigator.push(context, MaterialPageRoute(builder: (_) => const CalendarHome()));
+      Navigator.push(context, MaterialPageRoute(builder: (_) => const OnboardingView()));
     });
   }
 
