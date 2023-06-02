@@ -1,3 +1,5 @@
+import 'package:bardly_mobile_app/views/login/login_view.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -9,12 +11,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return const CupertinoApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Bardly',
+      theme: CupertinoThemeData(
+        primaryColor: CupertinoColors.systemBlue,
+        // brightness: Brightness.dark,
       ),
-      home: Container(),
+      home: LoginView(),
     );
   }
 }
