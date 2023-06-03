@@ -1,10 +1,12 @@
 import 'dart:convert';
 import 'dart:math';
 
+import 'package:bardly_mobile_app/views/login/login_view.dart';
 import 'package:bottom_bar_matu/bottom_bar/bottom_bar_bubble.dart';
 import 'package:bottom_bar_matu/bottom_bar_item.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:http/http.dart';
 import 'package:mobile_chat_ui/custom_widgets/chat_input.dart';
 import 'package:mobile_chat_ui/mobile_chat_ui.dart';
@@ -20,9 +22,17 @@ class HomeView extends StatefulWidget {
   State<HomeView> createState() => _HomeViewState();
 }
 
+int _indexForNavigate = 0;
 int _index = 0;
 
 class _HomeViewState extends State<HomeView> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    loadData();
+  }
+
   final PageController controller = PageController();
   List<User> users = [];
   List<Message> messages = [];
@@ -130,9 +140,52 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: const Color(0xff1e2d40),
+        automaticallyImplyLeading: false,
+        title: const GradientText(
+          'Bardly',
+          style: TextStyle(fontSize: 30, fontFamily: 'Anton'),
+          gradient: LinearGradient(colors: [
+            Color(0xff00ffc3),
+            Color(0xff04f4bc),
+          ]),
+        ),
+        centerTitle: false,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(13.0),
+            child: Container(
+              decoration: BoxDecoration(color: const Color(0xff04f4bc).withOpacity(0.5), borderRadius: BorderRadius.circular(20)),
+              child: const Center(
+                child: Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text(
+                    'Get Premium',
+                    style: TextStyle(
+                      fontSize: 12,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(
+            width: 20,
+          ),
+          const Padding(
+              padding: EdgeInsets.only(right: 12.0),
+              child: CircleAvatar(
+                radius: 22.0,
+                backgroundImage: NetworkImage('https://www.nicepng.com/png/full/182-1829287_cammy-lin-ux-designer-circle-picture-profile-girl.png'),
+                backgroundColor: Colors.transparent,
+              ))
+        ],
+      ),
       backgroundColor: const Color(0xff1e2d40),
       bottomNavigationBar: BottomBarBubble(
-        selectedIndex: _index,
+        backgroundColor: const Color(0xff1e2d40),
+        selectedIndex: _indexForNavigate,
         items: [
           BottomBarItem(
             iconData: CupertinoIcons.chat_bubble_2_fill,
@@ -151,7 +204,7 @@ class _HomeViewState extends State<HomeView> {
           // implement your select function here
           controller.jumpToPage(index);
           setState(() {
-            _index = index;
+            _indexForNavigate = index;
           });
         },
       ),
@@ -170,11 +223,160 @@ class _HomeViewState extends State<HomeView> {
               input: const ChatInput(),
             ),
           ),
-          const Center(
-            child: Text('Second Page'),
+          Center(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Padding(
+                  padding: EdgeInsets.only(left: 12.0, top: 12, bottom: 12),
+                  child: Text(
+                    'Text Based Skills',
+                    style: TextStyle(color: Colors.white, fontSize: 24),
+                  ),
+                ),
+                SizedBox(
+                  height: 200,
+                  child: PageView.builder(
+                    itemCount: 4,
+                    controller: PageController(viewportFraction: 0.7),
+                    onPageChanged: (int index) => setState(() => _index = index),
+                    itemBuilder: (_, i) {
+                      return Transform.scale(
+                        scale: i == _index ? 1 : 0.9,
+                        child: Card(
+                          color: const Color(0xff1e2d40).withOpacity(0.8),
+                          elevation: 3,
+                          shape: RoundedRectangleBorder(
+                              side: BorderSide(
+                                  // border color
+                                  color: const Color(0xff00ffc3).withOpacity(0.3),
+                                  // border thickness
+                                  width: 2),
+                              borderRadius: BorderRadius.circular(20)),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 8.0, top: 8),
+                                child: SizedBox(height: 50, width: 50, child: Image.asset('assets/book.png')),
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.all(8.0),
+                                child: Text(
+                                  "Generate AI Story",
+                                  style: TextStyle(fontSize: 24, color: Colors.white),
+                                ),
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.all(8.0),
+                                child: Text(
+                                  'Create a story with the help of AI.',
+                                  style: TextStyle(color: Colors.grey),
+                                ),
+                              ),
+                              const Spacer(),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 12.0, bottom: 12),
+                                    child: SvgPicture.asset(
+                                      'assets/ico.svg',
+                                      color: const Color(0xff04f4bc),
+                                      semanticsLabel: 'Label',
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+                const Padding(
+                  padding: EdgeInsets.only(left: 12.0, top: 12, bottom: 12),
+                  child: Text(
+                    'Translate Skills',
+                    style: TextStyle(color: Colors.white, fontSize: 24),
+                  ),
+                ),
+                SizedBox(
+                  height: 200,
+                  child: PageView.builder(
+                    itemCount: 4,
+                    controller: PageController(viewportFraction: 0.7),
+                    onPageChanged: (int index) => setState(() => _index = index),
+                    itemBuilder: (_, i) {
+                      return Transform.scale(
+                        scale: i == _index ? 1 : 0.9,
+                        child: Card(
+                          color: const Color(0xff1e2d40).withOpacity(0.8),
+                          elevation: 3,
+                          shape: RoundedRectangleBorder(
+                              side: BorderSide(
+                                  // border color
+                                  color: const Color(0xff00ffc3).withOpacity(0.3),
+                                  // border thickness
+                                  width: 2),
+                              borderRadius: BorderRadius.circular(20)),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 8.0, top: 8),
+                                child: SizedBox(height: 50, width: 50, child: Image.asset('assets/translate.png')),
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.all(8.0),
+                                child: Text(
+                                  "Translate to English",
+                                  style: TextStyle(fontSize: 24, color: Colors.white),
+                                ),
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.all(8.0),
+                                child: Text(
+                                  'Translate any language to English.',
+                                  style: TextStyle(color: Colors.grey),
+                                ),
+                              ),
+                              const Spacer(),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 12.0, bottom: 12),
+                                    child: SvgPicture.asset(
+                                      'assets/ico.svg',
+                                      color: const Color(0xff04f4bc),
+                                      semanticsLabel: 'Label',
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ],
+            ),
           ),
           const Center(
-            child: Text('Third Page'),
+            child: Text(
+              'Third Page',
+              style: TextStyle(color: Colors.white),
+            ),
           ),
         ],
       ),
