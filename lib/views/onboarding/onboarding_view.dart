@@ -1,4 +1,4 @@
-import 'package:bardly_mobile_app/home/home_view.dart';
+import 'package:bardly_mobile_app/views/home/home_view.dart';
 import 'package:cupertino_onboarding/cupertino_onboarding.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
