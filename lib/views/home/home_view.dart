@@ -1,8 +1,6 @@
-import 'dart:convert';
 import 'dart:math';
 
-import 'package:bardly_mobile_app/models/chat_message_model.dart';
-import 'package:bardly_mobile_app/models/recent_chat_model.dart';
+import 'package:bardly_mobile_app/core/database/database_helper.dart';
 import 'package:bardly_mobile_app/views/chat/chat_page.dart';
 import 'package:bardly_mobile_app/views/explore/explore_page.dart';
 import 'package:bardly_mobile_app/views/login/login_view.dart';
@@ -11,15 +9,8 @@ import 'package:bottom_bar_matu/bottom_bar/bottom_bar_bubble.dart';
 import 'package:bottom_bar_matu/bottom_bar_item.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:http/http.dart';
-import 'package:intl/intl.dart';
-import 'package:mobile_chat_ui/custom_widgets/chat_input.dart';
-import 'package:mobile_chat_ui/mobile_chat_ui.dart';
-import 'package:mobile_chat_ui/models/chat_theme.dart';
 import 'package:mobile_chat_ui/models/messages/message.dart';
-import 'package:mobile_chat_ui/models/messages/types.dart';
 import 'package:mobile_chat_ui/models/user.dart';
 
 class HomeView extends StatefulWidget {
@@ -73,9 +64,7 @@ class _HomeViewState extends State<HomeView> {
           Padding(
             padding: const EdgeInsets.all(13.0),
             child: Container(
-              decoration: BoxDecoration(
-                  color: const Color(0xff04f4bc).withOpacity(0.5),
-                  borderRadius: BorderRadius.circular(20)),
+              decoration: BoxDecoration(color: const Color(0xff04f4bc).withOpacity(0.5), borderRadius: BorderRadius.circular(20)),
               child: const Center(
                 child: Padding(
                   padding: EdgeInsets.all(8.0),
@@ -96,8 +85,7 @@ class _HomeViewState extends State<HomeView> {
               padding: EdgeInsets.only(right: 12.0),
               child: CircleAvatar(
                 radius: 22.0,
-                backgroundImage: NetworkImage(
-                    'https://www.nicepng.com/png/full/182-1829287_cammy-lin-ux-designer-circle-picture-profile-girl.png'),
+                backgroundImage: NetworkImage('https://www.nicepng.com/png/full/182-1829287_cammy-lin-ux-designer-circle-picture-profile-girl.png'),
                 backgroundColor: Colors.transparent,
               ))
         ],
@@ -170,84 +158,70 @@ class _HomeViewState extends State<HomeView> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Icon(Icons.question_answer,
-                                    color: Colors.white),
+                                Icon(Icons.question_answer, color: Colors.white),
                                 Text(
                                   "Topics",
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 24),
+                                  style: TextStyle(color: Colors.white, fontSize: 24),
                                 ),
                               ],
                             ),
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.all(8.0),
                           child: InkWell(
                             onTap: () {
                               messageTextController.text = topic1.value;
                             },
                             child: Container(
                               //color: Color(0xff1e2d40).withOpacity(0.1),
-                              decoration: BoxDecoration(
-                                  border: Border.all(),
-                                  borderRadius: BorderRadius.circular(30),
-                                  color: Colors.transparent),
+                              decoration: BoxDecoration(border: Border.all(), borderRadius: BorderRadius.circular(30), color: Colors.transparent),
                               width: MediaQuery.of(context).size.width,
                               height: 50,
                               child: Center(
                                 child: Text(
                                   topic1.value,
-                                  style: TextStyle(
-                                      fontSize: 16, color: Colors.white),
+                                  style: const TextStyle(fontSize: 16, color: Colors.white),
                                 ),
                               ),
                             ),
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.all(8.0),
                           child: InkWell(
                             onTap: () {
                               messageTextController.text = topic2.value;
                             },
                             child: Container(
-                              decoration: BoxDecoration(
-                                  border: Border.all(),
-                                  borderRadius: BorderRadius.circular(30),
-                                  color: Colors.transparent),
+                              decoration: BoxDecoration(border: Border.all(), borderRadius: BorderRadius.circular(30), color: Colors.transparent),
                               //color: Color(0xff1e2d40).withOpacity(0.1),
                               width: MediaQuery.of(context).size.width,
                               height: 50,
                               child: Center(
                                 child: Text(
                                   topic2.value,
-                                  style: TextStyle(
-                                      fontSize: 16, color: Colors.white),
+                                  style: const TextStyle(fontSize: 16, color: Colors.white),
                                 ),
                               ),
                             ),
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.all(8.0),
                           child: InkWell(
                             onTap: () {
                               messageTextController.text = topic3.value;
                             },
                             child: Container(
-                              decoration: BoxDecoration(
-                                  border: Border.all(),
-                                  borderRadius: BorderRadius.circular(30),
-                                  color: Colors.transparent),
+                              decoration: BoxDecoration(border: Border.all(), borderRadius: BorderRadius.circular(30), color: Colors.transparent),
                               //color: Color(0xff1e2d40).withOpacity(0.1),
                               width: MediaQuery.of(context).size.width,
                               height: 50,
                               child: Center(
                                 child: Text(
                                   topic3.value,
-                                  style: TextStyle(
-                                      fontSize: 16, color: Colors.white),
+                                  style: const TextStyle(fontSize: 16, color: Colors.white),
                                 ),
                               ),
                             ),
@@ -256,14 +230,14 @@ class _HomeViewState extends State<HomeView> {
                       ],
                     ),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Container(
-                        padding: EdgeInsets.only(left: 10, bottom: 10, top: 10),
+                        padding: const EdgeInsets.only(left: 10, bottom: 10, top: 10),
                         height: 60,
                         width: double.infinity,
                         child: Row(
@@ -290,13 +264,9 @@ class _HomeViewState extends State<HomeView> {
                             Expanded(
                               child: TextField(
                                 controller: messageTextController,
-                                style: TextStyle(color: Colors.white),
-                                decoration: InputDecoration(
-                                    hintText: messageTextController.text == ""
-                                        ? "Write message..."
-                                        : null,
-                                    hintStyle: TextStyle(color: Colors.white),
-                                    border: InputBorder.none),
+                                style: const TextStyle(color: Colors.white),
+                                decoration:
+                                    InputDecoration(hintText: messageTextController.text == "" ? "Write message..." : null, hintStyle: const TextStyle(color: Colors.white), border: InputBorder.none),
                               ),
                             ),
                             const SizedBox(
@@ -304,18 +274,23 @@ class _HomeViewState extends State<HomeView> {
                             ),
                             FloatingActionButton(
                               onPressed: () {
+                                DBProvider dbProvider = DBProvider();
+                                dbProvider.insertRoomTable(messageTextController.text);
+
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (_) => const ChatPage()));
+                                        builder: (_) => ChatPage(
+                                              messageParams: messageTextController.text,
+                                            )));
                               },
-                              child: Icon(
+                              backgroundColor: Colors.blue,
+                              elevation: 0,
+                              child: const Icon(
                                 Icons.send,
                                 color: Colors.white,
                                 size: 18,
                               ),
-                              backgroundColor: Colors.blue,
-                              elevation: 0,
                             ),
                           ],
                         ),
@@ -326,8 +301,8 @@ class _HomeViewState extends State<HomeView> {
               ),
             ),
           ),
-          ExplorePage(),
-          RecentPage(),
+          const ExplorePage(),
+          const RecentPage(),
         ],
       ),
     );
