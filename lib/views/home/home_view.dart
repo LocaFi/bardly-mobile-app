@@ -14,7 +14,8 @@ import 'package:mobile_chat_ui/models/messages/message.dart';
 import 'package:mobile_chat_ui/models/user.dart';
 
 class HomeView extends StatefulWidget {
-  const HomeView({Key? key}) : super(key: key);
+  const HomeView({Key? key, this.navigate}) : super(key: key);
+  final bool? navigate;
 
   @override
   State<HomeView> createState() => _HomeViewState();
@@ -28,6 +29,11 @@ class _HomeViewState extends State<HomeView> {
     // TODO: implement initState
     super.initState();
     messageTextController.text = "";
+    if (widget.navigate == true) {
+      setState(() {
+        _indexForNavigate = 0;
+      });
+    }
   }
 
   final PageController controller = PageController();

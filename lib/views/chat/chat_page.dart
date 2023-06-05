@@ -27,10 +27,21 @@ class _ChatPageState extends State<ChatPage> {
     if (widget.messageParams != null) {
       Message message = TextMessage(author: User(id: "0de4krd0sas-49iecxo203rji", name: 'User'), text: widget.messageParams ?? '', time: "now", stage: 1);
       messages.add(message);
+      Future.microtask(() => setFirstMessageToDb(widget.messageParams ?? ''));
       // WidgetsBinding.instance.addPostFrameCallback((_) {
       //   controller.jumpTo(controller.position.maxScrollExtent);
       // });
     }
+  }
+
+  void setFirstMessageToDb(String param) async {
+    DBProvider dbProvider = DBProvider();
+    var getLastId = await dbProvider.getLastHeaderId();
+    dbProvider.insertChat(
+      'u',
+      param,
+      getLastId[0]['id'],
+    );
   }
 
   List<User> users = [];

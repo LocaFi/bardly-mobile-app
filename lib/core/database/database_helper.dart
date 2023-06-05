@@ -14,8 +14,7 @@ class DBProvider {
   static Database? _db;
   Future<Database> get database async => _db ??= await initDB();
 
-  static const bardlyMessage =
-      """
+  static const bardlyMessage = """
 create table bardly_message(
 id integer NOT NULL PRIMARY KEY autoincrement,
 sender varchar(1) NOT NULL,
@@ -36,7 +35,7 @@ created_at TEXT DEFAULT CURRENT_TIMESTAMP
 
   Future<Database> initDB() async {
     String path = join(await getDatabasesPath(), "creatorium_bardly.db");
-    await deleteDatabase(path);
+    //await deleteDatabase(path);
     print(path);
     return await openDatabase(path, version: 2, onCreate: (Database db, int version) async {
       await db.execute(bardlyRoom);
