@@ -57,33 +57,78 @@ class _HomeViewState extends State<HomeView> {
       appBar: AppBar(
         backgroundColor: const Color(0xff1e2d40),
         automaticallyImplyLeading: false,
-        title: const GradientText(
-          'Bardly',
-          style: TextStyle(fontSize: 30, fontFamily: 'Anton'),
-          gradient: LinearGradient(colors: [
-            Color(0xff00ffc3),
-            Color(0xff04f4bc),
-          ]),
+        toolbarHeight: 100,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(30),
+          ),
+        ),
+        title:
+
+            // const GradientText(
+            //   'Bardly',
+            //   style: TextStyle(fontSize: 30, fontFamily: 'Anton'),
+            //   gradient: LinearGradient(colors: [
+            //     Color(0xff00ffc3),
+            //     Color(0xff04f4bc),
+            //   ]),
+            // ),
+
+            Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+             SizedBox(
+              height: 45,
+              child: GradientText(
+                'Bardly',
+                style: TextStyle(
+                    fontFamily: 'Anton', fontSize: 30.0, color: Colors.white.withOpacity(0.7)),
+                gradient: LinearGradient(colors: [
+                  Color(0xff00ffc3),
+                  Color(0xff04f4bc),
+                ]),
+              ),
+            ),
+
+
+            Container(
+              child:              RichText(
+          text: TextSpan(
+            text: 'With',
+            
+            style: TextStyle(color: Colors.blueGrey,fontSize: 15), /*defining default style is optional */
+            children: <TextSpan>[
+              TextSpan(
+                  text: '  AI', style: TextStyle(fontWeight: FontWeight.normal, color: Colors.white.withOpacity(0.7))),
+             
+            ],
+          ),
+        ),
+            ),
+          ],
         ),
         centerTitle: false,
         actions: [
-          Padding(
-            padding: const EdgeInsets.all(13.0),
-            child: Container(
-              decoration: BoxDecoration(color: const Color(0xff04f4bc).withOpacity(0.5), borderRadius: BorderRadius.circular(20)),
-              child: const Center(
-                child: Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Text(
-                    'Get Premium',
-                    style: TextStyle(
-                      fontSize: 12,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),
+          // Padding(
+          //   padding: const EdgeInsets.all(13.0),
+          //   child: Container(
+          //     decoration: BoxDecoration(
+          //         color: const Color(0xff04f4bc).withOpacity(0.5),
+          //         borderRadius: BorderRadius.circular(20)),
+          //     child: const Center(
+          //       child: Padding(
+          //         padding: EdgeInsets.all(8.0),
+          //         child: Text(
+          //           'Get Premium',
+          //           style: TextStyle(
+          //             fontSize: 12,
+          //           ),
+          //         ),
+          //       ),
+          //     ),
+          //   ),
+          // ),
           const SizedBox(
             width: 20,
           ),
@@ -91,14 +136,16 @@ class _HomeViewState extends State<HomeView> {
               padding: EdgeInsets.only(right: 12.0),
               child: CircleAvatar(
                 radius: 22.0,
-                backgroundImage: NetworkImage('https://www.nicepng.com/png/full/182-1829287_cammy-lin-ux-designer-circle-picture-profile-girl.png'),
+                backgroundImage: NetworkImage(
+                    'https://www.nicepng.com/png/full/182-1829287_cammy-lin-ux-designer-circle-picture-profile-girl.png'),
                 backgroundColor: Colors.transparent,
               ))
         ],
       ),
-      backgroundColor: const Color(0xff1e2d40),
+      backgroundColor: const Color(0xff1e2d40).withOpacity(0.7),
       bottomNavigationBar: BottomBarBubble(
         backgroundColor: const Color(0xff1e2d40),
+        color: Color(0xff00ffc3),
         selectedIndex: _indexForNavigate,
         items: [
           BottomBarItem(
@@ -131,12 +178,12 @@ class _HomeViewState extends State<HomeView> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Padding(
-                    padding: EdgeInsets.only(left: 12.0, top: 12, bottom: 12),
+                   Padding(
+                    padding: EdgeInsets.only(left: 12.0, top: 40, bottom: 12),
                     child: Center(
                       child: Text(
-                        'Chat Topics',
-                        style: TextStyle(color: Colors.white, fontSize: 24),
+                        'New Chat Topics',
+                        style: TextStyle(color: Colors.white.withOpacity(0.7), fontSize: 24),
                       ),
                     ),
                   ),
@@ -157,22 +204,26 @@ class _HomeViewState extends State<HomeView> {
                         const SizedBox(
                           height: 20,
                         ),
-                        const Padding(
+                         Padding(
                           padding: EdgeInsets.all(8),
                           child: Center(
-                            child: Row(
+                            child: Column(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Icon(Icons.question_answer, color: Colors.white),
+                                Icon(Icons.question_answer,
+                                    color: Colors.white.withOpacity(0.7),size: 30,),
+                                    SizedBox(height: 10,),
                                 Text(
                                   "Topics",
-                                  style: TextStyle(color: Colors.white, fontSize: 24),
+                                  style: TextStyle(
+                                      color: Colors.white.withOpacity(0.7), fontSize: 24),
                                 ),
                               ],
                             ),
                           ),
                         ),
+                        
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: InkWell(
@@ -181,13 +232,18 @@ class _HomeViewState extends State<HomeView> {
                             },
                             child: Container(
                               //color: Color(0xff1e2d40).withOpacity(0.1),
-                              decoration: BoxDecoration(border: Border.all(), borderRadius: BorderRadius.circular(30), color: Colors.transparent),
+                              decoration: BoxDecoration(
+                                  border: Border.all(color: Color.fromARGB(255, 54, 83, 120)),
+                                
+                                  borderRadius: BorderRadius.circular(30),
+                                  color: Color.fromARGB(255, 54, 83, 120)),
                               width: MediaQuery.of(context).size.width,
                               height: 50,
                               child: Center(
                                 child: Text(
                                   topic1.value,
-                                  style: const TextStyle(fontSize: 16, color: Colors.white),
+                                  style:  TextStyle(
+                                      fontSize: 16, color: Colors.white.withOpacity(0.7)),
                                 ),
                               ),
                             ),
@@ -200,14 +256,18 @@ class _HomeViewState extends State<HomeView> {
                               messageTextController.text = topic2.value;
                             },
                             child: Container(
-                              decoration: BoxDecoration(border: Border.all(), borderRadius: BorderRadius.circular(30), color: Colors.transparent),
+                              decoration: BoxDecoration(
+                                  border: Border.all(color: Color.fromARGB(255, 54, 83, 120)),
+                                  borderRadius: BorderRadius.circular(30),
+                                  color: Color.fromARGB(255, 54, 83, 120)),
                               //color: Color(0xff1e2d40).withOpacity(0.1),
                               width: MediaQuery.of(context).size.width,
                               height: 50,
                               child: Center(
                                 child: Text(
                                   topic2.value,
-                                  style: const TextStyle(fontSize: 16, color: Colors.white),
+                                  style:  TextStyle(
+                                      fontSize: 16, color: Colors.white.withOpacity(0.7)),
                                 ),
                               ),
                             ),
@@ -220,18 +280,25 @@ class _HomeViewState extends State<HomeView> {
                               messageTextController.text = topic3.value;
                             },
                             child: Container(
-                              decoration: BoxDecoration(border: Border.all(), borderRadius: BorderRadius.circular(30), color: Colors.transparent),
+                              decoration: BoxDecoration(
+                                  border: Border.all(color: Color.fromARGB(255, 54, 83, 120)),
+                                  borderRadius: BorderRadius.circular(30),
+                                  color: Color.fromARGB(255, 54, 83, 120)),
                               //color: Color(0xff1e2d40).withOpacity(0.1),
                               width: MediaQuery.of(context).size.width,
                               height: 50,
                               child: Center(
                                 child: Text(
                                   topic3.value,
-                                  style: const TextStyle(fontSize: 16, color: Colors.white),
+                                  style:  TextStyle(
+                                      fontSize: 16, color: Colors.white.withOpacity(0.7)),
                                 ),
                               ),
                             ),
                           ),
+                        ),
+                        const SizedBox(
+                          height: 20,
                         ),
                       ],
                     ),
@@ -243,36 +310,48 @@ class _HomeViewState extends State<HomeView> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Container(
-                        padding: const EdgeInsets.only(left: 10, bottom: 10, top: 10),
+                        margin: EdgeInsets.only(bottom: 10),
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.white.withOpacity(0.7),width: 0.1),
+                          color:  Color(0xff1e2d40),
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        padding: const EdgeInsets.only(
+                            left: 10, bottom: 10, top: 10),
                         height: 60,
                         width: double.infinity,
                         child: Row(
                           children: <Widget>[
-                            GestureDetector(
-                              onTap: () {},
-                              child: Container(
-                                height: 30,
-                                width: 30,
-                                decoration: BoxDecoration(
-                                  color: Colors.lightBlue,
-                                  borderRadius: BorderRadius.circular(30),
-                                ),
-                                child: const Icon(
-                                  Icons.add,
-                                  color: Colors.white,
-                                  size: 20,
-                                ),
-                              ),
-                            ),
+                            // GestureDetector(
+                            //   onTap: () {},
+                            //   child: Container(
+                            //     height: 30,
+                            //     width: 30,
+                            //     decoration: BoxDecoration(
+                            //       color: const Color(0xff1e2d40),
+                            //       borderRadius: BorderRadius.circular(30),
+                            //     ),
+                            //     child:  Icon(
+                            //       Icons.add,
+                            //       color: Colors.white.withOpacity(0.7),
+                            //       size: 20,
+                            //     ),
+                            //   ),
+                            // ),
                             const SizedBox(
                               width: 15,
                             ),
                             Expanded(
                               child: TextField(
                                 controller: messageTextController,
-                                style: const TextStyle(color: Colors.white),
-                                decoration:
-                                    InputDecoration(hintText: messageTextController.text == "" ? "Write message..." : null, hintStyle: const TextStyle(color: Colors.white), border: InputBorder.none),
+                                style:  TextStyle(color: Colors.white.withOpacity(0.7)),
+                                decoration: InputDecoration(
+                                    hintText: messageTextController.text == ""
+                                        ? "Write message..."
+                                        : null,
+                                    hintStyle:
+                                         TextStyle(color: Colors.white.withOpacity(0.7)),
+                                    border: InputBorder.none),
                               ),
                             ),
                             const SizedBox(
@@ -281,20 +360,22 @@ class _HomeViewState extends State<HomeView> {
                             FloatingActionButton(
                               onPressed: () {
                                 DBProvider dbProvider = DBProvider();
-                                dbProvider.insertRoomTable(messageTextController.text);
+                                dbProvider.insertRoomTable(
+                                    messageTextController.text);
 
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
                                         builder: (_) => ChatPage(
-                                              messageParams: messageTextController.text,
+                                              messageParams:
+                                                  messageTextController.text,
                                             )));
                               },
-                              backgroundColor: Colors.blue,
+                              backgroundColor: const Color(0xff1e2d40),
                               elevation: 0,
-                              child: const Icon(
+                              child:  Icon(
                                 Icons.send,
-                                color: Colors.white,
+                                color: Colors.white.withOpacity(0.7),
                                 size: 18,
                               ),
                             ),

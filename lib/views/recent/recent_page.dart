@@ -49,9 +49,9 @@ class _RecentPageState extends State<RecentPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text(
+                 Text(
                   'Conversation not found.',
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(color: Colors.white.withOpacity(0.7)),
                 ),
                 const SizedBox(
                   height: 30,
@@ -101,7 +101,7 @@ class _RecentPageState extends State<RecentPage> {
                         width: MediaQuery.of(context).size.width,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
-                          color: Colors.black.withOpacity(0.1),
+                          color: Color.fromARGB(255, 54, 83, 120).withOpacity(0.5),
                         ),
                         padding: const EdgeInsets.only(
                           left: 12,
@@ -111,6 +111,8 @@ class _RecentPageState extends State<RecentPage> {
                         ),
                         child: Row(
                           children: [
+                            Expanded(child: Column(children: [Icon(Icons.message_outlined,color: Color(0xff00ffc3),size: 30,)],)),
+                            SizedBox(width: 20,),
                             Expanded(
                               flex: 6,
                               child: Column(
@@ -127,7 +129,7 @@ class _RecentPageState extends State<RecentPage> {
                                     width: double.infinity,
                                     child: Text(
                                       deneme.isNotEmpty ? deneme[index]["header"].toString() : "",
-                                      style: const TextStyle(fontSize: 16, color: Colors.white),
+                                      style:  TextStyle(fontSize: 16, color: Colors.white.withOpacity(0.7)),
                                     ),
                                   ),
                                 ],

@@ -19,11 +19,11 @@ class _ExplorePageState extends State<ExplorePage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Padding(
+                 Padding(
                   padding: EdgeInsets.only(left: 12.0, top: 12, bottom: 12),
                   child: Text(
                     'Text Based Skills',
-                    style: TextStyle(color: Colors.white, fontSize: 24),
+                    style: TextStyle(color: Colors.white.withOpacity(0.7), fontSize: 24),
                   ),
                 ),
                 SizedBox(
@@ -55,18 +55,18 @@ class _ExplorePageState extends State<ExplorePage> {
                               ),
                               Padding(
                                 padding:
-                                    const EdgeInsets.only(left: 8.0, top: 8),
+                                    const EdgeInsets.only(left: 18.0, top: 8),
                                 child: SizedBox(
                                     height: 50,
                                     width: 50,
                                     child: Image.asset('assets/book.png')),
                               ),
-                              const Padding(
+                               Padding(
                                 padding: EdgeInsets.all(8.0),
                                 child: Text(
                                   "Generate AI Story",
                                   style: TextStyle(
-                                      fontSize: 24, color: Colors.white),
+                                      fontSize: 24, color: Colors.white.withOpacity(0.7)),
                                 ),
                               ),
                               const Padding(
@@ -98,11 +98,11 @@ class _ExplorePageState extends State<ExplorePage> {
                     },
                   ),
                 ),
-                const Padding(
+                 Padding(
                   padding: EdgeInsets.only(left: 12.0, top: 12, bottom: 12),
                   child: Text(
                     'Translate Skills',
-                    style: TextStyle(color: Colors.white, fontSize: 24),
+                    style: TextStyle(color: Colors.white.withOpacity(0.7), fontSize: 24),
                   ),
                 ),
                 SizedBox(
@@ -127,7 +127,7 @@ class _ExplorePageState extends State<ExplorePage> {
                                   width: 2),
                               borderRadius: BorderRadius.circular(20)),
                           child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               const SizedBox(
                                 height: 20,
@@ -140,12 +140,12 @@ class _ExplorePageState extends State<ExplorePage> {
                                     width: 50,
                                     child: Image.asset('assets/translate.png')),
                               ),
-                              const Padding(
+                               Padding(
                                 padding: EdgeInsets.all(8.0),
                                 child: Text(
                                   "Translate to English",
                                   style: TextStyle(
-                                      fontSize: 24, color: Colors.white),
+                                      fontSize: 24, color: Colors.white.withOpacity(0.7)),
                                 ),
                               ),
                               const Padding(
