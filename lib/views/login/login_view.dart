@@ -1,3 +1,5 @@
+import 'package:bardly_mobile_app/utils/uilts.dart';
+import 'package:bardly_mobile_app/views/home/home_view.dart';
 import 'package:bardly_mobile_app/views/onboarding/onboarding_view.dart';
 import 'package:flutter/material.dart';
 
@@ -19,8 +21,16 @@ class _LoginViewState extends State<LoginView> {
       //   inAppReview.requestReview();
       //   inAppReview.openStoreListing(appStoreId: '555115173');
       // }
-      Navigator.push(context, MaterialPageRoute(builder: (_) => const OnboardingView()));
+      getLandingInfo();
     });
+  }
+
+  Future<void> getLandingInfo() async {
+    if (await StorageUtil.getLandingCompleted()) {
+      Navigator.push(context, MaterialPageRoute(builder: (_) => const HomeView()));
+    } else {
+      Navigator.push(context, MaterialPageRoute(builder: (_) => const OnboardingView()));
+    }
   }
 
   @override

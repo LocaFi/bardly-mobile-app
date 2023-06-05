@@ -1,3 +1,4 @@
+import 'package:bardly_mobile_app/utils/uilts.dart';
 import 'package:bardly_mobile_app/views/home/home_view.dart';
 import 'package:cupertino_onboarding/cupertino_onboarding.dart';
 import 'package:flutter/cupertino.dart';
@@ -23,6 +24,7 @@ class OnboardingOverview extends StatelessWidget {
       bottomButtonColor: const Color.fromARGB(255, 8, 217, 168),
       backgroundColor: const Color(0xff1e2d40),
       onPressedOnLastPage: () {
+        StorageUtil.setLandingCompleted(true);
         Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const HomeView()), (route) => false);
       },
       pages: [
