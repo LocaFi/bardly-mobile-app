@@ -1,6 +1,7 @@
 import 'package:bardly_mobile_app/core/database/database_helper.dart';
 import 'package:bardly_mobile_app/views/login/login_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mobile_chat_ui/mobile_chat_ui.dart';
 import 'package:mobile_chat_ui/models/chat_theme.dart';
 import 'package:mobile_chat_ui/models/messages/message.dart';
@@ -75,21 +76,61 @@ class _RecentChatsState extends State<RecentChats> {
           )),
       appBar: AppBar(
         backgroundColor: const Color(0xff1e2d40),
-
-        // leading: IconButton(
-        //     onPressed: () {
-        //       // Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const HomeView()), (route) => false);
-        //     },
-        //     icon: const Icon(Icons.arrow_back_ios)),
-        title: const GradientText(
-          'Bardly',
-          style: TextStyle(fontSize: 30, fontFamily: 'Anton'),
-          gradient: LinearGradient(colors: [
-            Color(0xff00ffc3),
-            Color(0xff04f4bc),
-          ]),
+        toolbarHeight: 100,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(30),
+          ),
         ),
-        centerTitle: true,
+        title:
+
+            // const GradientText(
+            //   'Bardly',
+            //   style: TextStyle(fontSize: 30, fontFamily: 'Anton'),
+            //   gradient: LinearGradient(colors: [
+            //     Color(0xff00ffc3),
+            //     Color(0xff04f4bc),
+            //   ]),
+            // ),
+
+            Row(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            SvgPicture.asset(
+              'assets/logo.svg',
+              semanticsLabel: 'Label',
+              height: 50,
+              width: 50,
+            ),
+            const SizedBox(
+              width: 5,
+            ),
+            SizedBox(
+              height: 45,
+              child: GradientText(
+                'Bardly',
+                style: TextStyle(fontFamily: 'Anton', fontSize: 30.0, color: Colors.white.withOpacity(0.7)),
+                gradient: const LinearGradient(colors: [
+                  Color(0xff00ffc3),
+                  Color(0xff04f4bc),
+                ]),
+              ),
+            ),
+            Container(
+              child: RichText(
+                text: TextSpan(
+                  text: 'With',
+                  style: const TextStyle(color: Colors.blueGrey, fontSize: 12),
+                  /*defining default style is optional */
+                  children: <TextSpan>[
+                    TextSpan(text: ' AI', style: TextStyle(fontWeight: FontWeight.normal, color: Colors.white.withOpacity(0.7))),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+        centerTitle: false,
       ),
       backgroundColor: const Color(0xff1e2d40),
       body: Center(

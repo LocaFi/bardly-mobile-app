@@ -25,7 +25,12 @@ class _ChatPageState extends State<ChatPage> {
     // TODO: implement initState
     super.initState();
     if (widget.messageParams != null) {
-      Message message = TextMessage(author: User(id: "0de4krd0sas-49iecxo203rji", name: 'User'), text: widget.messageParams ?? '', time: "now", stage: 1);
+      Message message = TextMessage(
+        author: User(id: "0de4krd0sas-49iecxo203rji", name: 'User'),
+        text: widget.messageParams ?? '',
+        time: "now",
+        stage: 3,
+      );
       messages.add(message);
       Future.microtask(() => setFirstMessageToDb(widget.messageParams ?? ''));
       // WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -49,8 +54,8 @@ class _ChatPageState extends State<ChatPage> {
   TextEditingController messageTextController = TextEditingController();
 
   User loggedInUser = User(
-    id: "Putras",
-    name: "Putra Silas",
+    id: "0de4krd0sas-49iecxo203rji",
+    name: "User",
     avatarUrl: "https://randomuser.me/api/portraits/women/92.jpg",
     color: const Color(0xff1e2d40),
   );
@@ -126,7 +131,7 @@ class _ChatPageState extends State<ChatPage> {
                     ),
                     FloatingActionButton(
                       onPressed: () async {
-                        Message message = TextMessage(author: User(id: "0de4krd0sas-49iecxo203rji", name: 'Demo'), text: messageTextController.text, time: "now", stage: 1);
+                        Message message = TextMessage(author: User(id: "0de4krd0sas-49iecxo203rji", name: 'User'), text: messageTextController.text, time: "now", stage: 1);
                         DBProvider dbProvider = DBProvider();
                         var getLastId = await dbProvider.getLastHeaderId();
                         dbProvider.insertChat(

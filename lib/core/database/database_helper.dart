@@ -74,6 +74,10 @@ created_at TEXT DEFAULT CURRENT_TIMESTAMP
     return result;
   }
 
+  deleteUserData(int id, String header) {
+    print('DEL');
+  }
+
   insertChat(String sender, String message, int roomId) async {
     final db = await database;
     await db.insert('bardly_message', {

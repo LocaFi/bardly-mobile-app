@@ -24,7 +24,8 @@ class _RecentPageState extends State<RecentPage> {
   ];
 
   final _dateFormat = DateFormat('dd/MM/yyyy hh:mm');
-  List<Map> deneme = [];
+  List<Map> getUserDataFromDB = [];
+  List<int> selectedItems = [-1];
   @override
   void initState() {
     // TODO: implement initState
@@ -36,7 +37,7 @@ class _RecentPageState extends State<RecentPage> {
     DBProvider dbProvider = DBProvider();
     var a = await dbProvider.getRoomHeader();
 
-    deneme = a;
+    getUserDataFromDB = a;
 
     print(a);
     setState(() {});
@@ -44,115 +45,182 @@ class _RecentPageState extends State<RecentPage> {
 
   @override
   Widget build(BuildContext context) {
-    return deneme.isEmpty
-        ? Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                 Text(
-                  'Conversation not found.',
-                  style: TextStyle(color: Colors.white.withOpacity(0.7)),
+    return getUserDataFromDB.isEmpty
+        ? Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: SizedBox(
+                    height: 300,
+                    child: Image.asset(
+                      'assets/empty.png',
+                    )),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 20.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Conversation not found.',
+                      style: TextStyle(color: Colors.white.withOpacity(0.7)),
+                    ),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (_) => const HomeView(
+                                      navigate: true,
+                                    )));
+                      },
+                      child: const Text(
+                        'Start a conversation.',
+                        style: TextStyle(color: Color(0xff00ffc3)),
+                      ),
+                    ),
+                  ],
                 ),
-                const SizedBox(
-                  height: 30,
-                ),
-                InkWell(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (_) => const HomeView(
-                                  navigate: true,
-                                )));
-                  },
-                  child: const Text(
-                    'Start a conversation.',
-                    style: TextStyle(color: Color(0xff00ffc3)),
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           )
         : SingleChildScrollView(
-            child: ListView.builder(
-              itemCount: deneme.length,
-              shrinkWrap: true,
-              padding: const EdgeInsets.only(top: 10, bottom: 10),
-              physics: const NeverScrollableScrollPhysics(),
-              itemBuilder: (context, index) {
-                return InkWell(
-                  onTap: () {
-                    DBProvider dbProvider = DBProvider();
-                    dbProvider.getRecentChat(deneme[index]["id"]);
-                    print(deneme[index]["id"]);
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (_) => RecentChats(
-                                  header: deneme[index]["header"],
-                                  roomId: deneme[index]["id"].toInt(),
-                                )));
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.only(left: 14, right: 14, top: 10, bottom: 10),
-                    child: Align(
-                      alignment: Alignment.topLeft,
-                      child: Container(
-                        width: MediaQuery.of(context).size.width,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Color.fromARGB(255, 54, 83, 120).withOpacity(0.5),
-                        ),
-                        padding: const EdgeInsets.only(
-                          left: 12,
-                          right: 12,
-                          bottom: 12,
-                          top: 12,
-                        ),
-                        child: Row(
-                          children: [
-                            Expanded(child: Column(children: [Icon(Icons.message_outlined,color: Color(0xff00ffc3),size: 30,)],)),
-                            SizedBox(width: 20,),
-                            Expanded(
-                              flex: 6,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
+            child: Column(
+              children: [
+                selectedItems.length > 1
+                    ? Column(
+                        children: [
+                          const SizedBox(
+                            height: 15,
+                          ),
+                          Image.asset(
+                            'assets/delete.png',
+                            height: 35,
+                            width: 35,
+                          ),
+                        ],
+                      )
+                    : Container(),
+                SizedBox(
+                  child: ListView.builder(
+                    itemCount: getUserDataFromDB.length,
+                    shrinkWrap: true,
+                    padding: const EdgeInsets.only(top: 10, bottom: 10),
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      return InkWell(
+                        onLongPress: () {
+                          if (selectedItems.contains(index)) {
+                            setState(() {
+                              selectedItems.removeAt(index);
+                            });
+                          } else {
+                            setState(() {
+                              selectedItems.add(index);
+                            });
+                          }
+                        },
+                        onTap: () {
+                          if (selectedItems.length == 1) {
+                            DBProvider dbProvider = DBProvider();
+                            dbProvider.getRecentChat(getUserDataFromDB[index]["id"]);
+                            print(getUserDataFromDB[index]["id"]);
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (_) => RecentChats(
+                                          header: getUserDataFromDB[index]["header"],
+                                          roomId: getUserDataFromDB[index]["id"].toInt(),
+                                        )));
+                          } else if (selectedItems.contains(index)) {
+                            setState(() {
+                              selectedItems.remove(index);
+                            });
+                            return;
+                          } else if (!selectedItems.contains(index)) {
+                            setState(() {
+                              selectedItems.add(index);
+                            });
+                            return;
+                          }
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.only(left: 14, right: 14, top: 10, bottom: 10),
+                          child: Align(
+                            alignment: Alignment.topLeft,
+                            child: Container(
+                              width: MediaQuery.of(context).size.width,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                color: selectedItems.contains(index) == true ? const Color.fromARGB(255, 54, 83, 120) : const Color.fromARGB(255, 54, 83, 120).withOpacity(0.5),
+                              ),
+                              padding: const EdgeInsets.only(
+                                left: 12,
+                                right: 12,
+                                bottom: 12,
+                                top: 12,
+                              ),
+                              child: Row(
                                 children: [
-                                  Text(
-                                    _dateFormat.format(messagesList[index].dateTime),
-                                    style: const TextStyle(fontSize: 15, color: Colors.grey),
-                                  ),
+                                  const Expanded(
+                                      child: Column(
+                                    children: [
+                                      Icon(
+                                        Icons.message_outlined,
+                                        color: Color(0xff00ffc3),
+                                        size: 30,
+                                      )
+                                    ],
+                                  )),
                                   const SizedBox(
-                                    height: 15,
+                                    width: 20,
                                   ),
-                                  SizedBox(
-                                    width: double.infinity,
-                                    child: Text(
-                                      deneme.isNotEmpty ? deneme[index]["header"].toString() : "",
-                                      style:  TextStyle(fontSize: 16, color: Colors.white.withOpacity(0.7)),
+                                  Expanded(
+                                    flex: 6,
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          _dateFormat.format(messagesList[index].dateTime),
+                                          style: const TextStyle(fontSize: 15, color: Colors.grey),
+                                        ),
+                                        const SizedBox(
+                                          height: 15,
+                                        ),
+                                        SizedBox(
+                                          width: double.infinity,
+                                          child: Text(
+                                            getUserDataFromDB.isNotEmpty ? getUserDataFromDB[index]["header"].toString() : "",
+                                            style: TextStyle(fontSize: 16, color: Colors.white.withOpacity(0.7)),
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ),
+                                  const Spacer(),
+                                  SizedBox(
+                                      height: 60,
+                                      width: 100,
+                                      // Uploading the Image from Assets
+                                      child: Image.asset(
+                                        'assets/b.png',
+                                        height: 100,
+                                        width: 100,
+                                        fit: BoxFit.cover,
+                                      ))
                                 ],
                               ),
                             ),
-                            const Spacer(),
-                            SizedBox(
-                                height: 60,
-                                width: 100,
-                                // Uploading the Image from Assets
-                                child: Image.asset(
-                                  'assets/b.png',
-                                  height: 100,
-                                  width: 100,
-                                  fit: BoxFit.cover,
-                                ))
-                          ],
+                          ),
                         ),
-                      ),
-                    ),
+                      );
+                    },
                   ),
-                );
-              },
+                ),
+              ],
             ),
           );
   }
