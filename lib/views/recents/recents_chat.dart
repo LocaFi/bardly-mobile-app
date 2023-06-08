@@ -35,10 +35,18 @@ class _RecentChatsState extends State<RecentChats> {
     var a = await dbProvider.getRecentChat(widget.roomId ?? 1);
     lastMessage = a;
     print(lastMessage[0]['message']);
-    Message message = TextMessage(author: User(id: "0de4krd0sas-49iecxo203rji", name: 'Demo'), text: widget.header ?? '', time: "now", stage: 1);
+    Message message = TextMessage(
+        author:bot,
+        text: "Bot message",
+        time: "",
+        stage: 1);
     messages.add(message);
     for (var i = 0; i < lastMessage.length; i++) {
-      message = TextMessage(author: User(id: "0de4krd0sas-49iecxo203rji", name: 'Demo'), text: lastMessage[i]['message'], time: "now", stage: 1);
+      Message message = TextMessage(
+          author: lastMessage[i]['sender'] == "u" ? loggedInUser : bot,
+          text: lastMessage[i]['message'],
+          time: "",
+          stage: 1);
       messages.add(message);
     }
 
@@ -52,8 +60,14 @@ class _RecentChatsState extends State<RecentChats> {
   User loggedInUser = User(
     id: "Putras",
     name: "Putra Silas",
-    avatarUrl: "https://randomuser.me/api/portraits/women/92.jpg",
-    color: const Color(0xff1e2d40),
+    avatarUrl: "https://creatorium.org/assets/green-read-tick.png",
+    color: Colors.transparent,
+  );
+
+  User bot = User(
+    id: "Bardly",
+    name: "Bardly",
+    avatarUrl: "https://picsum.photos/id/237/200/300",
   );
 
   @override
@@ -71,7 +85,21 @@ class _RecentChatsState extends State<RecentChats> {
                     backgroundColor: const Color(0xff1e2d40),
                     minimumSize: const Size.fromHeight(50),
                   ),
-                  child: const Text('Share', style: TextStyle(color: Color(0xff04f4bc), fontSize: 18))),
+                  child: const Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.share,
+                        color: Color(0xff04f4bc),
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text('Share',
+                          style: TextStyle(
+                              color: Color(0xff04f4bc), fontSize: 18)),
+                    ],
+                  )),
             ),
           )),
       appBar: AppBar(
@@ -82,18 +110,7 @@ class _RecentChatsState extends State<RecentChats> {
             bottom: Radius.circular(30),
           ),
         ),
-        title:
-
-            // const GradientText(
-            //   'Bardly',
-            //   style: TextStyle(fontSize: 30, fontFamily: 'Anton'),
-            //   gradient: LinearGradient(colors: [
-            //     Color(0xff00ffc3),
-            //     Color(0xff04f4bc),
-            //   ]),
-            // ),
-
-            Row(
+        title: Row(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             SvgPicture.asset(
@@ -109,7 +126,10 @@ class _RecentChatsState extends State<RecentChats> {
               height: 45,
               child: GradientText(
                 'Bardly',
-                style: TextStyle(fontFamily: 'Anton', fontSize: 30.0, color: Colors.white.withOpacity(0.7)),
+                style: TextStyle(
+                    fontFamily: 'Anton',
+                    fontSize: 30.0,
+                    color: Colors.white.withOpacity(0.7)),
                 gradient: const LinearGradient(colors: [
                   Color(0xff00ffc3),
                   Color(0xff04f4bc),
@@ -123,7 +143,11 @@ class _RecentChatsState extends State<RecentChats> {
                   style: const TextStyle(color: Colors.blueGrey, fontSize: 12),
                   /*defining default style is optional */
                   children: <TextSpan>[
-                    TextSpan(text: ' AI', style: TextStyle(fontWeight: FontWeight.normal, color: Colors.white.withOpacity(0.7))),
+                    TextSpan(
+                        text: ' AI',
+                        style: TextStyle(
+                            fontWeight: FontWeight.normal,
+                            color: Colors.white.withOpacity(0.7))),
                   ],
                 ),
               ),
@@ -131,96 +155,33 @@ class _RecentChatsState extends State<RecentChats> {
           ],
         ),
         centerTitle: false,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right:16.0,top: 6.0),
+            child: SvgPicture.asset(
+              'assets/delete_icon.svg',
+              height: 40,
+              width: 40,
+            ),
+          )
+        ],
       ),
-      backgroundColor: const Color(0xff1e2d40),
+      backgroundColor: const Color(0xff1e2d40).withOpacity(0.3),
       body: Center(
         child: Chat(
-          user: loggedInUser,
-          messages: messages,
-          theme: DefaultChatTheme(
-            userAvatarRadius: 12,
-          ),
-          showUserAvatar: true,
-          input: widget.roomId != null
-              ? Container()
-              : Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.only(left: 10, bottom: 10, top: 10),
-                      height: 60,
-                      width: double.infinity,
-                      child: Row(
-                        children: <Widget>[
-                          GestureDetector(
-                            onTap: () {},
-                            child: Container(
-                              height: 30,
-                              width: 30,
-                              decoration: BoxDecoration(
-                                color: Colors.lightBlue,
-                                borderRadius: BorderRadius.circular(30),
-                              ),
-                              child: const Icon(
-                                Icons.add,
-                                color: Colors.white,
-                                size: 20,
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 15,
-                          ),
-                          Expanded(
-                            child: TextField(
-                              controller: messageTextController,
-                              style: const TextStyle(color: Colors.white),
-                              decoration:
-                                  InputDecoration(hintText: messageTextController.text == "" ? "Write message..." : null, hintStyle: const TextStyle(color: Colors.white), border: InputBorder.none),
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 15,
-                          ),
-                          FloatingActionButton(
-                            onPressed: () {
-                              Message message = TextMessage(author: User(id: "0de4krd0sas-49iecxo203rji", name: 'Demo'), text: messageTextController.text, time: "now", stage: 1);
-                              DBProvider dbProvider = DBProvider();
-                              dbProvider.insertChat(
-                                'u',
-                                messageTextController.text,
-                                widget.roomId?.toInt() ?? 1,
-                              );
-                              setState(() {
-                                messages.add(message);
-                              });
-                              messageTextController.text = "";
+            user: loggedInUser,
+            messages: messages,
+            theme: DefaultChatTheme(
+              backgroundImage: null,
+              userAvatarRadius: 12,
+              defaultUserColor: const Color(0xff04f4bc).withOpacity(0.6),
+              usernameTextStyle: const TextStyle(color: Color(0xff04f4bc)),
+              timeTextStyle: TextStyle(color: Colors.white.withOpacity(0.7)),
+              
+            ),
+            showUserAvatar:  true,
 
-                              // Navigator.push(context, MaterialPageRoute(builder: (_) => const ChatPage()));
-                            },
-                            backgroundColor: Colors.blue,
-                            elevation: 0,
-                            child: const Icon(
-                              Icons.send,
-                              color: Colors.white,
-                              size: 18,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-          // input: ChatInput(
-          //   user: User(id: '0de4krd0sas-49iecxo203rji', name: 'ASD'),
-          //   onSend: (v) {
-          //     DBProvider dbProvider = DBProvider();
-          //     messages.add(v);
-          //   },
-          // ),
-        ),
+            input: Container()),
       ),
     );
   }

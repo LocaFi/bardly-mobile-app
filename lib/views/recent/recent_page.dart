@@ -2,6 +2,7 @@ import 'package:bardly_mobile_app/models/recent_chat_model.dart';
 import 'package:bardly_mobile_app/views/home/home_view.dart';
 import 'package:bardly_mobile_app/views/recents/recents_chat.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 
 import '../../core/database/database_helper.dart';
@@ -96,10 +97,10 @@ class _RecentPageState extends State<RecentPage> {
                           const SizedBox(
                             height: 15,
                           ),
-                          Image.asset(
-                            'assets/delete.png',
-                            height: 35,
-                            width: 35,
+                          SvgPicture.asset(
+                            'assets/delete_icon.svg',
+                            height: 45,
+                            width: 45,
                           ),
                         ],
                       )
@@ -184,7 +185,7 @@ class _RecentPageState extends State<RecentPage> {
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          _dateFormat.format(messagesList[index].dateTime),
+                                          getUserDataFromDB[index]['created_at'],
                                           style: const TextStyle(fontSize: 15, color: Colors.grey),
                                         ),
                                         const SizedBox(

@@ -53,7 +53,7 @@ created_at TEXT DEFAULT CURRENT_TIMESTAMP
   getRoomHeader() async {
     final db = await database;
 
-    List<Map> result = await db.rawQuery('select id,header from bardly_room');
+    List<Map> result = await db.rawQuery('select * from bardly_room');
 
     return result;
   }
@@ -74,8 +74,12 @@ created_at TEXT DEFAULT CURRENT_TIMESTAMP
     return result;
   }
 
-  deleteUserData(int id, String header) {
-    print('DEL');
+  deleteUserData(int id, String header) async{
+    final db = await database;
+
+    //List<Map> result = await db.rawQuery('select * from bardly_message where room_id = $id');
+
+    //return result;
   }
 
   insertChat(String sender, String message, int roomId) async {
