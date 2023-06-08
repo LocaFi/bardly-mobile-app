@@ -1,17 +1,19 @@
+import 'dart:async';
+
 import 'package:bardly_mobile_app/bloc/bard/bard_bloc.dart';
 import 'package:bardly_mobile_app/bloc/bard/bard_event.dart';
 import 'package:bardly_mobile_app/bloc/bard/bard_state.dart';
 import 'package:bardly_mobile_app/core/database/database_helper.dart';
 import 'package:bardly_mobile_app/models/bard_request_model.dart';
+import 'package:bardly_mobile_app/views/chat/widgets/chat_page_widget.dart';
+import 'package:bardly_mobile_app/views/chat/widgets/chat_theme.dart';
+import 'package:bardly_mobile_app/views/chat/widgets/message.dart';
+import 'package:bardly_mobile_app/views/chat/widgets/models/models.dart';
+import 'package:bardly_mobile_app/views/chat/widgets/user.dart';
 import 'package:bardly_mobile_app/views/login/login_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:mobile_chat_ui/mobile_chat_ui.dart';
-import 'package:mobile_chat_ui/models/chat_theme.dart';
-import 'package:mobile_chat_ui/models/messages/message.dart';
-import 'package:mobile_chat_ui/models/messages/types.dart';
-import 'package:mobile_chat_ui/models/user.dart';
 
 class ChatPage extends StatefulWidget {
   const ChatPage({super.key, this.messageParams});
@@ -24,20 +26,21 @@ class ChatPage extends StatefulWidget {
 class _ChatPageState extends State<ChatPage> {
   final int _index = 0;
   final ScrollController controller = ScrollController();
-
+  late BardBloc bardBloc;
   var lastMessage;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    bardBloc = BardBloc();
     if (widget.messageParams != null) {
-      Message message = TextMessage(
-        author: loggedInUser,
-        text: widget.messageParams ?? '',
-        time: "now",
-        stage: 3,
-      );
-      messages.add(message);
+      // Message message = TextMessage(
+      //   author: loggedInUser,
+      //   text: widget.messageParams ?? '',
+      //   time: "now",
+      //   stage: 3,
+      // );
+      // messages.add(message);
       Future.microtask(() => setFirstMessageToDb(widget.messageParams ?? ''));
       // WidgetsBinding.instance.addPostFrameCallback((_) {
       //   controller.jumpTo(controller.position.maxScrollExtent);
@@ -45,14 +48,21 @@ class _ChatPageState extends State<ChatPage> {
     }
   }
 
-  void setFirstMessageToDb(String param) async {
+  void setFirstMessageToDb(
+    String param,
+  ) async {
+    Message message = TextMessage(author: loggedInUser, text: widget.messageParams ?? '', time: DateTime.now().toString(), stage: 1);
     DBProvider dbProvider = DBProvider();
     var getLastId = await dbProvider.getLastHeaderId();
     dbProvider.insertChat(
       'u',
-      param,
+      widget.messageParams ?? '',
       getLastId[0]['id'],
     );
+    setState(() {
+      messages.add(message);
+    });
+    bardBloc.add(AskToBardEvent(BardRequestModel(question: widget.messageParams ?? '')));
   }
 
   List<User> users = [];
@@ -123,37 +133,75 @@ class _ChatPageState extends State<ChatPage> {
       ),
       backgroundColor: const Color(0xff1e2d40),
       body: BlocProvider(
-        create: (context) => BardBloc(),
+        create: (context) => bardBloc,
         child: BlocConsumer<BardBloc, BardState>(
-          listener: (context, state) {
+          listener: (context, state) async {
             if (state is BardWaitingState) {
               print('waiting');
+              Message message = TextMessage(
+                isLoading: true,
+                author: bot,
+                text: '',
+                time: "now",
+                stage: 3,
+              );
+              messages.add(message);
             } else {
               if (state is BardResponse) {
+                messages.removeLast();
                 print('bardResponse');
                 print(state.model.data?.chosenAnswer.toString());
                 Message message;
                 if (state.model.data?.details?[0].url != null) {
+                  WidgetsBinding.instance.addPostFrameCallback((_) {
+                    controller.jumpTo(controller.position.maxScrollExtent);
+                  });
                   message = ImageMessage(
+                      onCompleted: (v) {
+                        if (v == 1.0) {
+                          WidgetsBinding.instance.addPostFrameCallback((_) {
+                            controller.jumpTo(controller.position.maxScrollExtent);
+                          });
+                          setState(() {});
+                        } else {
+                          setState(() {});
+                          return;
+                        }
+                      },
                       author: bot,
                       time: 'now',
                       imageUrl: state.model.data?.details?[0].url ?? '',
-                      caption: state.model.data?.chosenAnswer.toString().replaceAll('[Image of Anitkabir photo]', '') ?? '');
+                      caption: state.model.data?.chosenAnswer.toString());
+                  setState(() {});
                 } else {
                   message = TextMessage(
+                    isLoading: false,
                     author: bot,
                     text: state.model.data?.chosenAnswer.toString() ?? '',
                     time: "now",
                     stage: 3,
                   );
+                  setState(() {});
                 }
+                DBProvider dbProvider = DBProvider();
+                var getLastId = await dbProvider.getLastHeaderId();
+                dbProvider.insertChat(
+                  'b',
+                  state.model.data?.chosenAnswer.toString() ?? '',
+                  getLastId[0]['id'],
+                );
                 messages.add(message);
+                WidgetsBinding.instance.addPostFrameCallback((_) {
+                  controller.jumpTo(controller.position.maxScrollExtent);
+                });
+                setState(() {});
               }
             }
           },
           builder: (context, state) {
             return Center(
               child: Chat(
+                controller: controller,
                 user: loggedInUser,
                 messages: messages,
                 theme: DefaultChatTheme(
@@ -165,7 +213,7 @@ class _ChatPageState extends State<ChatPage> {
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    state is BardWaitingState ? const CircularProgressIndicator() : Container(),
+                    // state is BardWaitingState ? const CircularProgressIndicator() : Container(),
                     Container(
                       padding: const EdgeInsets.only(left: 10, bottom: 10, top: 10),
                       height: 60,
@@ -204,7 +252,6 @@ class _ChatPageState extends State<ChatPage> {
                           ),
                           FloatingActionButton(
                             onPressed: () async {
-                              context.read<BardBloc>().add(AskToBardEvent(BardRequestModel(question: messageTextController.text)));
                               Message message = TextMessage(author: loggedInUser, text: messageTextController.text, time: DateTime.now().toString(), stage: 1);
                               DBProvider dbProvider = DBProvider();
                               var getLastId = await dbProvider.getLastHeaderId();
@@ -215,6 +262,10 @@ class _ChatPageState extends State<ChatPage> {
                               );
                               setState(() {
                                 messages.add(message);
+                              });
+                              context.read<BardBloc>().add(AskToBardEvent(BardRequestModel(question: messageTextController.text)));
+                              WidgetsBinding.instance.addPostFrameCallback((_) {
+                                controller.jumpTo(controller.position.maxScrollExtent);
                               });
                               messageTextController.text = "";
 

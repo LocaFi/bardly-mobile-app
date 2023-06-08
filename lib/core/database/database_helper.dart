@@ -74,12 +74,13 @@ created_at TEXT DEFAULT CURRENT_TIMESTAMP
     return result;
   }
 
-  deleteUserData(int id, String header) async{
+  deleteUserData(int id) async {
     final db = await database;
 
-    //List<Map> result = await db.rawQuery('select * from bardly_message where room_id = $id');
+    List<Map> result = await db.rawQuery('delete from bardly_room where id=$id');
+    List<Map> result2 = await db.rawQuery('delete from bardly_message where room_id=$id');
 
-    //return result;
+    return result;
   }
 
   insertChat(String sender, String message, int roomId) async {

@@ -2,6 +2,8 @@ import 'dart:math';
 
 import 'package:bardly_mobile_app/core/database/database_helper.dart';
 import 'package:bardly_mobile_app/views/chat/chat_page.dart';
+import 'package:bardly_mobile_app/views/chat/widgets/message.dart';
+import 'package:bardly_mobile_app/views/chat/widgets/user.dart';
 import 'package:bardly_mobile_app/views/explore/explore_page.dart';
 import 'package:bardly_mobile_app/views/login/login_view.dart';
 import 'package:bardly_mobile_app/views/recent/recent_page.dart';
@@ -12,13 +14,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:mobile_chat_ui/models/messages/message.dart';
-import 'package:mobile_chat_ui/models/user.dart';
 
 class HomeView extends StatefulWidget {
-  const HomeView({Key? key, this.navigate}) : super(key: key);
+  const HomeView({Key? key, this.navigate, this.isComingFromRecent}) : super(key: key);
   final bool? navigate;
-
+  final bool? isComingFromRecent;
   @override
   State<HomeView> createState() => _HomeViewState();
 }
@@ -36,6 +36,11 @@ class _HomeViewState extends State<HomeView> {
         _indexForNavigate = 0;
       });
     }
+    // if (widget.isComingFromRecent == true) {
+    //   setState(() {
+    //     controller.jumpToPage(_indexForNavigate);
+    //   });
+    // }
   }
 
   final PageController controller = PageController();
@@ -49,8 +54,8 @@ class _HomeViewState extends State<HomeView> {
   );
   final rand = Random();
   RxString topic1 = "Explain quantum physics".obs;
-  RxString topic2 = "What are wormholes explain like I am 5".obs;
-  RxString topic3 = "What are wormholes explain like I am 5".obs;
+  RxString topic2 = "Tell me a story".obs;
+  RxString topic3 = "How's weather".obs;
   TextEditingController messageTextController = TextEditingController();
 
   @override
@@ -122,7 +127,7 @@ class _HomeViewState extends State<HomeView> {
                 Navigator.push(context, MaterialPageRoute(builder: (_) => const SettingsView()));
               },
               child: CircleAvatar(
-                backgroundColor: Color.fromARGB(255, 54, 83, 120),
+                backgroundColor: const Color.fromARGB(255, 54, 83, 120),
                 radius: 22,
                 child: SvgPicture.asset(
                   'assets/a.svg',
@@ -157,6 +162,7 @@ class _HomeViewState extends State<HomeView> {
         ],
         onSelect: (index) {
           // implement your select function here
+          print(index.toString());
           controller.jumpToPage(index);
           setState(() {
             _indexForNavigate = index;
@@ -181,113 +187,119 @@ class _HomeViewState extends State<HomeView> {
                       ),
                     ),
                   ),
-                  Card(
-                    color: const Color(0xff1e2d40).withOpacity(0.9),
-                    elevation: 3,
-                    shape: RoundedRectangleBorder(
-                        side: BorderSide(
-                            // border color
-                            color: const Color(0xff1e2d40).withOpacity(0.1),
-                            // border thickness
-                            width: 2),
-                        borderRadius: BorderRadius.circular(20)),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8),
-                          child: Center(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(
-                                  Icons.question_answer,
-                                  color: Colors.white.withOpacity(0.7),
-                                  size: 30,
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                Text(
-                                  "Topics",
-                                  style: TextStyle(color: Colors.white.withOpacity(0.7), fontSize: 24),
-                                ),
-                              ],
-                            ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 25.0, right: 25, top: 15),
+                    child: Card(
+                      color: const Color(0xff1e2d40).withOpacity(0.9),
+                      elevation: 3,
+                      shape: RoundedRectangleBorder(
+                          side: BorderSide(
+                              // border color
+                              color: const Color(0xff1e2d40).withOpacity(0.1),
+                              // border thickness
+                              width: 2),
+                          borderRadius: BorderRadius.circular(20)),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const SizedBox(
+                            height: 20,
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: InkWell(
-                            onTap: () {
-                              messageTextController.text = topic1.value;
-                            },
-                            child: Container(
-                              //color: Color(0xff1e2d40).withOpacity(0.1),
-                              decoration: BoxDecoration(
-                                  border: Border.all(color: const Color.fromARGB(255, 54, 83, 120)), borderRadius: BorderRadius.circular(30), color: const Color.fromARGB(255, 54, 83, 120)),
-                              width: MediaQuery.of(context).size.width,
-                              height: 50,
-                              child: Center(
-                                child: Text(
-                                  topic1.value,
-                                  style: TextStyle(fontSize: 16, color: Colors.white.withOpacity(0.7)),
+                          Padding(
+                            padding: const EdgeInsets.all(8),
+                            child: Center(
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Icon(
+                                      Icons.question_answer,
+                                      color: Colors.white.withOpacity(0.7),
+                                      size: 30,
+                                    ),
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
+                                    Text(
+                                      "Topics",
+                                      style: TextStyle(color: Colors.white.withOpacity(0.7), fontSize: 24),
+                                    ),
+                                  ],
                                 ),
                               ),
                             ),
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: InkWell(
-                            onTap: () {
-                              messageTextController.text = topic2.value;
-                            },
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  border: Border.all(color: const Color.fromARGB(255, 54, 83, 120)), borderRadius: BorderRadius.circular(30), color: const Color.fromARGB(255, 54, 83, 120)),
-                              //color: Color(0xff1e2d40).withOpacity(0.1),
-                              width: MediaQuery.of(context).size.width,
-                              height: 50,
-                              child: Center(
-                                child: Text(
-                                  topic2.value,
-                                  style: TextStyle(fontSize: 16, color: Colors.white.withOpacity(0.7)),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 25.0, right: 25, top: 15),
+                            child: InkWell(
+                              onTap: () {
+                                messageTextController.text = topic1.value;
+                              },
+                              child: Container(
+                                //color: Color(0xff1e2d40).withOpacity(0.1),
+                                decoration: BoxDecoration(
+                                    border: Border.all(color: const Color.fromARGB(255, 54, 83, 120)), borderRadius: BorderRadius.circular(30), color: const Color.fromARGB(255, 54, 83, 120)),
+                                width: MediaQuery.of(context).size.width,
+                                height: 50,
+                                child: Center(
+                                  child: Text(
+                                    topic1.value,
+                                    style: TextStyle(fontSize: 16, color: Colors.white.withOpacity(0.7)),
+                                  ),
                                 ),
                               ),
                             ),
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: InkWell(
-                            onTap: () {
-                              messageTextController.text = topic3.value;
-                            },
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  border: Border.all(color: const Color.fromARGB(255, 54, 83, 120)), borderRadius: BorderRadius.circular(30), color: const Color.fromARGB(255, 54, 83, 120)),
-                              //color: Color(0xff1e2d40).withOpacity(0.1),
-                              width: MediaQuery.of(context).size.width,
-                              height: 50,
-                              child: Center(
-                                child: Text(
-                                  topic3.value,
-                                  style: TextStyle(fontSize: 16, color: Colors.white.withOpacity(0.7)),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 25.0, right: 25, top: 15),
+                            child: InkWell(
+                              onTap: () {
+                                messageTextController.text = topic2.value;
+                              },
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    border: Border.all(color: const Color.fromARGB(255, 54, 83, 120)), borderRadius: BorderRadius.circular(30), color: const Color.fromARGB(255, 54, 83, 120)),
+                                //color: Color(0xff1e2d40).withOpacity(0.1),
+                                width: MediaQuery.of(context).size.width,
+                                height: 50,
+                                child: Center(
+                                  child: Text(
+                                    topic2.value,
+                                    style: TextStyle(fontSize: 16, color: Colors.white.withOpacity(0.7)),
+                                  ),
                                 ),
                               ),
                             ),
                           ),
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                      ],
+                          Padding(
+                            padding: const EdgeInsets.only(left: 25.0, right: 25, top: 15),
+                            child: InkWell(
+                              onTap: () {
+                                messageTextController.text = topic3.value;
+                              },
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    border: Border.all(color: const Color.fromARGB(255, 54, 83, 120)), borderRadius: BorderRadius.circular(30), color: const Color.fromARGB(255, 54, 83, 120)),
+                                //color: Color(0xff1e2d40).withOpacity(0.1),
+                                width: MediaQuery.of(context).size.width,
+                                height: 50,
+                                child: Center(
+                                  child: Text(
+                                    topic3.value,
+                                    style: TextStyle(fontSize: 16, color: Colors.white.withOpacity(0.7)),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                   const Spacer(),
@@ -332,7 +344,7 @@ class _HomeViewState extends State<HomeView> {
                                 controller: messageTextController,
                                 style: TextStyle(color: Colors.white.withOpacity(0.7)),
                                 decoration: InputDecoration(
-                                    hintText: messageTextController.text == "" ? "Write message..." : null, hintStyle: TextStyle(color: Colors.white.withOpacity(0.7)), border: InputBorder.none),
+                                    hintText: messageTextController.text == "" ? "Write message..." : "", hintStyle: TextStyle(color: Colors.white.withOpacity(0.7)), border: InputBorder.none),
                               ),
                             ),
                             const SizedBox(
@@ -342,7 +354,6 @@ class _HomeViewState extends State<HomeView> {
                               onPressed: () {
                                 DBProvider dbProvider = DBProvider();
                                 dbProvider.insertRoomTable(messageTextController.text);
-
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
