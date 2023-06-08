@@ -37,6 +37,7 @@ dependencies:
   flutter_bloc: ^8.1.2
   shared_preferences: ^2.1.1
   url_launcher: ^6.1.11
+  equatable: ^2.0.5
   get: ^4.6.5
   logging: ^1.2.0
   intl: ^0.18.1

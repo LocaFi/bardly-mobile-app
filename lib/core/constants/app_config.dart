@@ -1,3 +1,3 @@
 class AppConfig {
-  static const String baseUrl = "http://api.creatorium.org/bardly/public/ok";
+  static const String baseUrl = "https://api.creatorium.org/bardly/";
 }

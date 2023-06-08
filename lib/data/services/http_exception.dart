@@ -17,16 +17,12 @@ class HttpException implements Exception {
     if (error is DioError) {
       switch (error.type) {
         case DioErrorType.badResponse:
-          if (error.response?.statusCode == 503 ||
-              error.response?.statusCode == 502) {
+          if (error.response?.statusCode == 503 || error.response?.statusCode == 502) {
             errorDescription = 'maintenance';
-          } else if (error.response?.statusCode ==
-              500) {
-            errorDescription =
-                error.response?.data["error"];
+          } else if (error.response?.statusCode == 500) {
+            errorDescription = error.response?.data["error"];
           } else {
-            errorDescription =
-                error.response?.data;
+            errorDescription = error.response?.data;
           }
           break;
         case DioErrorType.connectionTimeout:

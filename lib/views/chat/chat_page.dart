@@ -1,6 +1,11 @@
+import 'package:bardly_mobile_app/bloc/bard/bard_bloc.dart';
+import 'package:bardly_mobile_app/bloc/bard/bard_event.dart';
+import 'package:bardly_mobile_app/bloc/bard/bard_state.dart';
 import 'package:bardly_mobile_app/core/database/database_helper.dart';
+import 'package:bardly_mobile_app/models/bard_request_model.dart';
 import 'package:bardly_mobile_app/views/login/login_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mobile_chat_ui/mobile_chat_ui.dart';
 import 'package:mobile_chat_ui/models/chat_theme.dart';
@@ -60,6 +65,11 @@ class _ChatPageState extends State<ChatPage> {
     avatarUrl: "https://creatorium.org/assets/green-read-tick.png",
     color: const Color(0xff1e2d40),
   );
+  User bot = User(
+    id: "Bardly",
+    name: "Bardly",
+    avatarUrl: "https://picsum.photos/id/237/200/300",
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -72,8 +82,7 @@ class _ChatPageState extends State<ChatPage> {
             bottom: Radius.circular(30),
           ),
         ),
-        title:
-            Row(
+        title: Row(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             SvgPicture.asset(
@@ -111,97 +120,129 @@ class _ChatPageState extends State<ChatPage> {
           ],
         ),
         centerTitle: false,
-        actions: [
-          
-        ],
       ),
       backgroundColor: const Color(0xff1e2d40),
-      body: Center(
-        child: Chat(
-          user: loggedInUser,
-          messages: messages,
-          theme: DefaultChatTheme(
-            
-            userAvatarRadius: 12,
-          ),
-          showUserAvatar: true,
-          input: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Container(
-                padding: const EdgeInsets.only(left: 10, bottom: 10, top: 10),
-                height: 60,
-                width: double.infinity,
-                child: Row(
-                  children: <Widget>[
-                    GestureDetector(
-                      onTap: () {},
-                      child: Container(
-                        height: 30,
-                        width: 30,
-                        decoration: BoxDecoration(
-                          color: Colors.lightBlue,
-                          borderRadius: BorderRadius.circular(30),
-                        ),
-                        child: const Icon(
-                          Icons.add,
-                          color: Colors.white,
-                          size: 20,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 15,
-                    ),
-                    Expanded(
-                      child: TextField(
-                        controller: messageTextController,
-                        style: const TextStyle(color: Colors.white),
-                        decoration: InputDecoration(hintText: messageTextController.text == "" ? "Write message..." : null, hintStyle: const TextStyle(color: Colors.white), border: InputBorder.none),
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 15,
-                    ),
-                    FloatingActionButton(
-                      onPressed: () async {
-                        Message message = TextMessage(author: loggedInUser, text: messageTextController.text, time: DateTime.now().toString(), stage: 1);
-                        DBProvider dbProvider = DBProvider();
-                        var getLastId = await dbProvider.getLastHeaderId();
-                        dbProvider.insertChat(
-                          'u',
-                          messageTextController.text,
-                          getLastId[0]['id'],
-                        );
-                        setState(() {
-                          messages.add(message);
-                        });
-                        messageTextController.text = "";
+      body: BlocProvider(
+        create: (context) => BardBloc(),
+        child: BlocConsumer<BardBloc, BardState>(
+          listener: (context, state) {
+            if (state is BardWaitingState) {
+              print('waiting');
+            } else {
+              if (state is BardResponse) {
+                print('bardResponse');
+                print(state.model.data?.chosenAnswer.toString());
+                Message message;
+                if (state.model.data?.details?[0].url != null) {
+                  message = ImageMessage(
+                      author: bot,
+                      time: 'now',
+                      imageUrl: state.model.data?.details?[0].url ?? '',
+                      caption: state.model.data?.chosenAnswer.toString().replaceAll('[Image of Anitkabir photo]', '') ?? '');
+                } else {
+                  message = TextMessage(
+                    author: bot,
+                    text: state.model.data?.chosenAnswer.toString() ?? '',
+                    time: "now",
+                    stage: 3,
+                  );
+                }
+                messages.add(message);
+              }
+            }
+          },
+          builder: (context, state) {
+            return Center(
+              child: Chat(
+                user: loggedInUser,
+                messages: messages,
+                theme: DefaultChatTheme(
+                  userAvatarRadius: 12,
+                ),
+                showUserAvatar: true,
+                input: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    state is BardWaitingState ? const CircularProgressIndicator() : Container(),
+                    Container(
+                      padding: const EdgeInsets.only(left: 10, bottom: 10, top: 10),
+                      height: 60,
+                      width: double.infinity,
+                      child: Row(
+                        children: <Widget>[
+                          GestureDetector(
+                            onTap: () {},
+                            child: Container(
+                              height: 30,
+                              width: 30,
+                              decoration: BoxDecoration(
+                                color: Colors.lightBlue,
+                                borderRadius: BorderRadius.circular(30),
+                              ),
+                              child: const Icon(
+                                Icons.add,
+                                color: Colors.white,
+                                size: 20,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 15,
+                          ),
+                          Expanded(
+                            child: TextField(
+                              controller: messageTextController,
+                              style: const TextStyle(color: Colors.white),
+                              decoration:
+                                  InputDecoration(hintText: messageTextController.text == "" ? "Write message..." : null, hintStyle: const TextStyle(color: Colors.white), border: InputBorder.none),
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 15,
+                          ),
+                          FloatingActionButton(
+                            onPressed: () async {
+                              context.read<BardBloc>().add(AskToBardEvent(BardRequestModel(question: messageTextController.text)));
+                              Message message = TextMessage(author: loggedInUser, text: messageTextController.text, time: DateTime.now().toString(), stage: 1);
+                              DBProvider dbProvider = DBProvider();
+                              var getLastId = await dbProvider.getLastHeaderId();
+                              dbProvider.insertChat(
+                                'u',
+                                messageTextController.text,
+                                getLastId[0]['id'],
+                              );
+                              setState(() {
+                                messages.add(message);
+                              });
+                              messageTextController.text = "";
 
-                        // Navigator.push(context, MaterialPageRoute(builder: (_) => const ChatPage()));
-                      },
-                      backgroundColor: Colors.blue,
-                      elevation: 0,
-                      child: const Icon(
-                        Icons.send,
-                        color: Colors.white,
-                        size: 18,
+                              // Navigator.push(context, MaterialPageRoute(builder: (_) => const ChatPage()));
+                            },
+                            backgroundColor: Colors.blue,
+                            elevation: 0,
+                            child: const Icon(
+                              Icons.send,
+                              color: Colors.white,
+                              size: 18,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ],
                 ),
+                // input: ChatInput(
+                //   user: User(id: '0de4krd0sas-49iecxo203rji', name: 'ASD'),
+                //   onSend: (v) {
+                //     DBProvider dbProvider = DBProvider();
+                //     messages.add(v);
+                //   },
+                // ),
               ),
-            ],
-          ),
-          // input: ChatInput(
-          //   user: User(id: '0de4krd0sas-49iecxo203rji', name: 'ASD'),
-          //   onSend: (v) {
-          //     DBProvider dbProvider = DBProvider();
-          //     messages.add(v);
-          //   },
-          // ),
+            );
+          },
         ),
       ),
     );

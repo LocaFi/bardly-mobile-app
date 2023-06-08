@@ -19,20 +19,16 @@ class HttpManager {
     _dio.interceptors.add(
       InterceptorsWrapper(
         onRequest: (RequestOptions options, RequestInterceptorHandler handler) {
-          if (!isAuth!) {
-            if (token != null) {
-              options.headers["Authorization"] = "Bearer $token";
-              _dio.options.contentType = Headers.jsonContentType;
-              options.headers["cookie"] = HttpManager.cookie;
-            } else {
-              _dio.options.contentType = Headers.jsonContentType;
+          options.headers["X-API-KEY"] =
+              "MU5QT0RGWlBJNUVMR0YwMFNNRjJRR0NWSFdZSlpLV0VGT1hCSktDRkUxSUhKMkJENTFSNklPWkhSQUhQUEk4TDMxNENNMVdLRlhZOEszS1ZSNkFYOVAzTjFLVlVCTTVMNEs1TENHQ0pXMzlMSUxJV0Y4OTBCVlNCTldFUkhERzY=";
+          //  options.headers["accept-encoding"] ="gzip";
+          //  options.headers["content-length"] ="23";
 
-              // options.headers["X-Device-Platform"] = "ios";
-              // options.headers["X-App-Version"] = "1.0.0";
-              // options.headers["X-App-Build-Number"] = "1";
-              // options.headers["X-App-Package-Name"] = "com.locafi.app";
-            }
-          }
+          //  options.headers["X-API-KEY"] ="";
+          //  options.headers["X-API-KEY"] ="";
+
+          // _dio.options.contentType = Headers.jsonContentType;
+          // options.headers["cookie"] = "JSESSIONID=B134EAC43337C773A96C942C5BC641FA";
 
           DioLogger.onSend(tag!, options);
           return handler.next(options);
