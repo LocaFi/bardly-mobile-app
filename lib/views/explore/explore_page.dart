@@ -40,10 +40,10 @@ class _ExplorePageState extends State<ExplorePage> {
                           color: const Color(0xff1e2d40).withOpacity(0.8),
                           elevation: 3,
                           shape: RoundedRectangleBorder(
-                              side: BorderSide(
+                              side: const BorderSide(
                                   // border color
                                   color:
-                                      const Color(0xff00ffc3).withOpacity(0.3),
+                                      Color.fromARGB(255, 54, 83, 120),
                                   // border thickness
                                   width: 2),
                               borderRadius: BorderRadius.circular(20)),
@@ -122,7 +122,7 @@ class _ExplorePageState extends State<ExplorePage> {
                               side: BorderSide(
                                   // border color
                                   color:
-                                      const Color(0xff00ffc3).withOpacity(0.3),
+                                      const Color.fromARGB(255, 54, 83, 120),
                                   // border thickness
                                   width: 2),
                               borderRadius: BorderRadius.circular(20)),

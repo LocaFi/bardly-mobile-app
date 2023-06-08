@@ -122,6 +122,7 @@ class _HomeViewState extends State<HomeView> {
                 Navigator.push(context, MaterialPageRoute(builder: (_) => const SettingsView()));
               },
               child: CircleAvatar(
+                backgroundColor: Color.fromARGB(255, 54, 83, 120),
                 radius: 22,
                 child: SvgPicture.asset(
                   'assets/a.svg',
