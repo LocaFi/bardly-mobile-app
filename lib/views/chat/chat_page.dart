@@ -15,6 +15,7 @@ import 'package:bardly_mobile_app/views/login/login_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:intl/intl.dart';
 import 'package:quickalert/models/quickalert_type.dart';
 import 'package:quickalert/widgets/quickalert_dialog.dart';
 
@@ -54,7 +55,9 @@ class _ChatPageState extends State<ChatPage> {
   void setFirstMessageToDb(
     String param,
   ) async {
-    Message message = TextMessage(author: loggedInUser, text: widget.messageParams ?? '', time: DateTime.now().toString(), stage: 1);
+    final dateFormat = DateFormat('dd/MM/yyyy hh:mm');
+
+    Message message = TextMessage(author: loggedInUser, text: widget.messageParams ?? '', time: dateFormat.format(DateTime.now()).toString(), stage: 1);
     DBProvider dbProvider = DBProvider();
     var getLastId = await dbProvider.getLastHeaderId();
     dbProvider.insertChat('u', widget.messageParams ?? '', getLastId[0]['id'], '');
@@ -233,31 +236,15 @@ class _ChatPageState extends State<ChatPage> {
                       width: double.infinity,
                       child: Row(
                         children: <Widget>[
-                          GestureDetector(
-                            onTap: () {},
-                            child: Container(
-                              height: 30,
-                              width: 30,
-                              decoration: BoxDecoration(
-                                color: Colors.lightBlue,
-                                borderRadius: BorderRadius.circular(30),
-                              ),
-                              child: const Icon(
-                                Icons.add,
-                                color: Colors.white,
-                                size: 20,
-                              ),
-                            ),
-                          ),
                           const SizedBox(
                             width: 15,
                           ),
                           Expanded(
                             child: TextField(
                               controller: messageTextController,
-                              style: const TextStyle(color: Colors.white),
-                              decoration:
-                                  InputDecoration(hintText: messageTextController.text == "" ? "Write message..." : null, hintStyle: const TextStyle(color: Colors.white), border: InputBorder.none),
+                              style: TextStyle(color: Colors.white.withOpacity(0.7)),
+                              decoration: InputDecoration(
+                                  hintText: messageTextController.text == "" ? "Write message..." : "", hintStyle: TextStyle(color: Colors.white.withOpacity(0.7)), border: InputBorder.none),
                             ),
                           ),
                           const SizedBox(
@@ -280,11 +267,11 @@ class _ChatPageState extends State<ChatPage> {
 
                               // Navigator.push(context, MaterialPageRoute(builder: (_) => const ChatPage()));
                             },
-                            backgroundColor: Colors.blue,
+                            backgroundColor: const Color(0xff1e2d40),
                             elevation: 0,
-                            child: const Icon(
+                            child: Icon(
                               Icons.send,
-                              color: Colors.white,
+                              color: Colors.white.withOpacity(0.7),
                               size: 18,
                             ),
                           ),
