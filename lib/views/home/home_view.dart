@@ -61,6 +61,7 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         backgroundColor: const Color(0xff1e2d40),
         toolbarHeight: 100,
@@ -303,76 +304,69 @@ class _HomeViewState extends State<HomeView> {
                     ),
                   ),
                   const Spacer(),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Container(
-                        margin: const EdgeInsets.only(bottom: 10),
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.white.withOpacity(0.7), width: 0.1),
-                          color: const Color(0xff1e2d40),
-                          borderRadius: BorderRadius.circular(30),
+                  Container(
+                    margin: const EdgeInsets.only(bottom: 10),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.white.withOpacity(0.7), width: 0.1),
+                      color: const Color(0xff1e2d40),
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    padding: const EdgeInsets.only(left: 10, bottom: 10, top: 10),
+                    height: 60,
+                    width: double.infinity,
+                    child: Row(
+                      children: <Widget>[
+                        // GestureDetector(
+                        //   onTap: () {},
+                        //   child: Container(
+                        //     height: 30,
+                        //     width: 30,
+                        //     decoration: BoxDecoration(
+                        //       color: const Color(0xff1e2d40),
+                        //       borderRadius: BorderRadius.circular(30),
+                        //     ),
+                        //     child:  Icon(
+                        //       Icons.add,
+                        //       color: Colors.white.withOpacity(0.7),
+                        //       size: 20,
+                        //     ),
+                        //   ),
+                        // ),
+                        const SizedBox(
+                          width: 15,
                         ),
-                        padding: const EdgeInsets.only(left: 10, bottom: 10, top: 10),
-                        height: 60,
-                        width: double.infinity,
-                        child: Row(
-                          children: <Widget>[
-                            // GestureDetector(
-                            //   onTap: () {},
-                            //   child: Container(
-                            //     height: 30,
-                            //     width: 30,
-                            //     decoration: BoxDecoration(
-                            //       color: const Color(0xff1e2d40),
-                            //       borderRadius: BorderRadius.circular(30),
-                            //     ),
-                            //     child:  Icon(
-                            //       Icons.add,
-                            //       color: Colors.white.withOpacity(0.7),
-                            //       size: 20,
-                            //     ),
-                            //   ),
-                            // ),
-                            const SizedBox(
-                              width: 15,
-                            ),
-                            Expanded(
-                              child: TextField(
-                                controller: messageTextController,
-                                style: TextStyle(color: Colors.white.withOpacity(0.7)),
-                                decoration: InputDecoration(
-                                    hintText: messageTextController.text == "" ? "Write message..." : "", hintStyle: TextStyle(color: Colors.white.withOpacity(0.7)), border: InputBorder.none),
-                              ),
-                            ),
-                            const SizedBox(
-                              width: 15,
-                            ),
-                            FloatingActionButton(
-                              onPressed: () {
-                                DBProvider dbProvider = DBProvider();
-                                dbProvider.insertRoomTable(messageTextController.text);
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (_) => ChatPage(
-                                              messageParams: messageTextController.text,
-                                            )));
-                              },
-                              backgroundColor: const Color(0xff1e2d40),
-                              elevation: 0,
-                              child: Icon(
-                                Icons.send,
-                                color: Colors.white.withOpacity(0.7),
-                                size: 18,
-                              ),
-                            ),
-                          ],
+                        Expanded(
+                          child: TextField(
+                            controller: messageTextController,
+                            style: TextStyle(color: Colors.white.withOpacity(0.7)),
+                            decoration: InputDecoration(
+                                hintText: messageTextController.text == "" ? "Write message..." : "", hintStyle: TextStyle(color: Colors.white.withOpacity(0.7)), border: InputBorder.none),
+                          ),
                         ),
-                      ),
-                    ],
+                        const SizedBox(
+                          width: 15,
+                        ),
+                        FloatingActionButton(
+                          onPressed: () {
+                            DBProvider dbProvider = DBProvider();
+                            dbProvider.insertRoomTable(messageTextController.text);
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (_) => ChatPage(
+                                          messageParams: messageTextController.text,
+                                        )));
+                          },
+                          backgroundColor: const Color(0xff1e2d40),
+                          elevation: 0,
+                          child: Icon(
+                            Icons.send,
+                            color: Colors.white.withOpacity(0.7),
+                            size: 18,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),

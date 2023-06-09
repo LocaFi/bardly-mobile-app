@@ -1,3 +1,4 @@
+import 'package:animated_snack_bar/animated_snack_bar.dart';
 import 'package:bardly_mobile_app/views/home/home_view.dart';
 import 'package:bardly_mobile_app/views/history/history_page.dart';
 import 'package:flutter/material.dart';
@@ -25,6 +26,7 @@ class _RecentPageState extends State<RecentPage> {
 
   final _dateFormat = DateFormat('dd/MM/yyyy hh:mm');
   List<Map> getUserDataFromDB = [];
+  List<int> deleteFromDB = [];
   List<int> selectedItems = [-1];
   @override
   void initState() {
@@ -95,10 +97,40 @@ class _RecentPageState extends State<RecentPage> {
                           const SizedBox(
                             height: 15,
                           ),
-                          SvgPicture.asset(
-                            'assets/delete_icon.svg',
-                            height: 45,
-                            width: 45,
+                          InkWell(
+                            onTap: () async {
+                              print(selectedItems);
+                              print(deleteFromDB);
+                              DBProvider dbProvider = DBProvider();
+                              for (var element in deleteFromDB) {
+                                var a = await dbProvider.deleteUserData(element);
+                                print(a);
+                              }
+                              // for (var i = 0; i <= deleteFromDB.length; i++) {
+
+                              // }
+                              // ignore: use_build_context_synchronously
+                              AnimatedSnackBar.material(
+                                'This conversation has been successfully deleted.',
+                                type: AnimatedSnackBarType.success,
+                                mobileSnackBarPosition: MobileSnackBarPosition.bottom,
+                                desktopSnackBarPosition: DesktopSnackBarPosition.topRight,
+                              ).show(context);
+                              // ignore: use_build_context_synchronously
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const HomeView(
+                                            navigate: true,
+                                          )));
+
+                              // Future.microtask(() => getRecentChat()).whenComplete(() => setState(() {}));
+                            },
+                            child: SvgPicture.asset(
+                              'assets/delete_icon.svg',
+                              height: 45,
+                              width: 45,
+                            ),
                           ),
                         ],
                       )
@@ -119,6 +151,7 @@ class _RecentPageState extends State<RecentPage> {
                           } else {
                             setState(() {
                               selectedItems.add(index);
+                              deleteFromDB.add(getUserDataFromDB[index]["id"]);
                             });
                           }
                         },
@@ -142,6 +175,7 @@ class _RecentPageState extends State<RecentPage> {
                           } else if (!selectedItems.contains(index)) {
                             setState(() {
                               selectedItems.add(index);
+                              deleteFromDB.add(getUserDataFromDB[index]["id"]);
                             });
                             return;
                           }
