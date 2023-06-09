@@ -10,10 +10,13 @@ import 'package:bardly_mobile_app/views/chat/widgets/chat_theme.dart';
 import 'package:bardly_mobile_app/views/chat/widgets/message.dart';
 import 'package:bardly_mobile_app/views/chat/widgets/models/models.dart';
 import 'package:bardly_mobile_app/views/chat/widgets/user.dart';
+import 'package:bardly_mobile_app/views/home/home_view.dart';
 import 'package:bardly_mobile_app/views/login/login_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:quickalert/models/quickalert_type.dart';
+import 'package:quickalert/widgets/quickalert_dialog.dart';
 
 class ChatPage extends StatefulWidget {
   const ChatPage({super.key, this.messageParams});
@@ -54,11 +57,7 @@ class _ChatPageState extends State<ChatPage> {
     Message message = TextMessage(author: loggedInUser, text: widget.messageParams ?? '', time: DateTime.now().toString(), stage: 1);
     DBProvider dbProvider = DBProvider();
     var getLastId = await dbProvider.getLastHeaderId();
-    dbProvider.insertChat(
-      'u',
-      widget.messageParams ?? '',
-      getLastId[0]['id'],
-    );
+    dbProvider.insertChat('u', widget.messageParams ?? '', getLastId[0]['id'], '');
     setState(() {
       messages.add(message);
     });
@@ -85,6 +84,22 @@ class _ChatPageState extends State<ChatPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            QuickAlert.show(
+              context: context,
+              type: QuickAlertType.confirm,
+              barrierDismissible: true,
+              text: 'You end the chat.\nYou can check your chats in the "recents" tab.',
+              confirmBtnText: 'OK',
+              confirmBtnColor: const Color(0xff33cdbb),
+              onConfirmBtnTap: () async {
+                Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const HomeView()), (route) => false);
+              },
+            );
+          },
+          icon: const Icon(Icons.arrow_back_ios),
+        ),
         backgroundColor: const Color(0xff1e2d40),
         toolbarHeight: 100,
         shape: const RoundedRectangleBorder(
@@ -151,6 +166,8 @@ class _ChatPageState extends State<ChatPage> {
                 messages.removeLast();
                 print('bardResponse');
                 print(state.model.data?.chosenAnswer.toString());
+                DBProvider dbProvider = DBProvider();
+                var getLastId = await dbProvider.getLastHeaderId();
                 Message message;
                 if (state.model.data?.details?[0].url != null) {
                   WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -172,6 +189,7 @@ class _ChatPageState extends State<ChatPage> {
                       time: 'now',
                       imageUrl: state.model.data?.details?[0].url ?? '',
                       caption: state.model.data?.chosenAnswer.toString());
+                  dbProvider.insertChat('b', state.model.data?.chosenAnswer.toString() ?? '', getLastId[0]['id'], state.model.data?.details?[0].url ?? '');
                   setState(() {});
                 } else {
                   message = TextMessage(
@@ -181,15 +199,10 @@ class _ChatPageState extends State<ChatPage> {
                     time: "now",
                     stage: 3,
                   );
+                  dbProvider.insertChat('b', state.model.data?.chosenAnswer.toString() ?? '', getLastId[0]['id'], '');
                   setState(() {});
                 }
-                DBProvider dbProvider = DBProvider();
-                var getLastId = await dbProvider.getLastHeaderId();
-                dbProvider.insertChat(
-                  'b',
-                  state.model.data?.chosenAnswer.toString() ?? '',
-                  getLastId[0]['id'],
-                );
+
                 messages.add(message);
                 WidgetsBinding.instance.addPostFrameCallback((_) {
                   controller.jumpTo(controller.position.maxScrollExtent);
@@ -255,11 +268,7 @@ class _ChatPageState extends State<ChatPage> {
                               Message message = TextMessage(author: loggedInUser, text: messageTextController.text, time: DateTime.now().toString(), stage: 1);
                               DBProvider dbProvider = DBProvider();
                               var getLastId = await dbProvider.getLastHeaderId();
-                              dbProvider.insertChat(
-                                'u',
-                                messageTextController.text,
-                                getLastId[0]['id'],
-                              );
+                              dbProvider.insertChat('u', messageTextController.text, getLastId[0]['id'], '');
                               setState(() {
                                 messages.add(message);
                               });

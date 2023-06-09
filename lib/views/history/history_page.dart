@@ -10,16 +10,16 @@ import 'package:bardly_mobile_app/views/login/login_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class RecentChats extends StatefulWidget {
-  const RecentChats({super.key, this.roomId, this.header});
+class ChatHistoryPage extends StatefulWidget {
+  const ChatHistoryPage({super.key, this.roomId, this.header});
   final int? roomId;
   final String? header;
 
   @override
-  State<RecentChats> createState() => _RecentChatsState();
+  State<ChatHistoryPage> createState() => _ChatHistoryPageState();
 }
 
-class _RecentChatsState extends State<RecentChats> {
+class _ChatHistoryPageState extends State<ChatHistoryPage> {
   final int _index = 0;
   var lastMessage;
   final ScrollController controller = ScrollController();
@@ -38,9 +38,30 @@ class _RecentChatsState extends State<RecentChats> {
     var a = await dbProvider.getRecentChat(widget.roomId ?? 1);
     lastMessage = a;
     print(lastMessage);
+    Message message;
     for (var i = 0; i < lastMessage.length; i++) {
-      Message message = TextMessage(author: lastMessage[i]['sender'] == "u" ? loggedInUser : bot, text: lastMessage[i]['message'], time: "", stage: 1);
-      messages.add(message);
+      if (lastMessage[i]['image_url'] != "" && lastMessage[i]['image_url'] != null) {
+        message = ImageMessage(
+            onCompleted: (v) {
+              // if (v == 1.0) {
+              //   WidgetsBinding.instance.addPostFrameCallback((_) {
+              //     controller.jumpTo(controller.position.maxScrollExtent);
+              //   });
+              //   setState(() {});
+              // } else {
+              //   setState(() {});
+              //   return;
+              // }
+            },
+            author: lastMessage[i]['sender'] == "u" ? loggedInUser : bot,
+            time: 'now',
+            imageUrl: lastMessage[i]['image_url'] ?? '',
+            caption: lastMessage[i]['message'] ?? '');
+        messages.add(message);
+      } else {
+        message = TextMessage(author: lastMessage[i]['sender'] == "u" ? loggedInUser : bot, text: lastMessage[i]['message'], time: "", stage: 1);
+        messages.add(message);
+      }
     }
     WidgetsBinding.instance.addPostFrameCallback((_) {
       controller.jumpTo(controller.position.maxScrollExtent * 2);

@@ -19,6 +19,7 @@ create table bardly_message(
 id integer NOT NULL PRIMARY KEY autoincrement,
 sender varchar(1) NOT NULL,
 message varchar(5000) NOT NULL,
+image_url varchar(2000) NOT NULL,
 created_at TEXT DEFAULT CURRENT_TIMESTAMP,
 room_id integer,
 CONSTRAINT bardly_room_id
@@ -83,12 +84,8 @@ created_at TEXT DEFAULT CURRENT_TIMESTAMP
     return result;
   }
 
-  insertChat(String sender, String message, int roomId) async {
+  insertChat(String sender, String message, int roomId, String imageUrl) async {
     final db = await database;
-    await db.insert('bardly_message', {
-      'sender': sender,
-      'message': message,
-      'room_id': roomId,
-    });
+    await db.insert('bardly_message', {'sender': sender, 'message': message, 'room_id': roomId, 'image_url': imageUrl});
   }
 }

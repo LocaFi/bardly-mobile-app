@@ -1,6 +1,5 @@
-import 'package:bardly_mobile_app/models/recent_chat_model.dart';
 import 'package:bardly_mobile_app/views/home/home_view.dart';
-import 'package:bardly_mobile_app/views/recents/recents_chat.dart';
+import 'package:bardly_mobile_app/views/history/history_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
@@ -15,14 +14,14 @@ class RecentPage extends StatefulWidget {
 }
 
 class _RecentPageState extends State<RecentPage> {
-  List<RecentChatModel> messagesList = [
-    RecentChatModel(topicMessage: "Hello, Will", dateTime: DateTime.now()),
-    RecentChatModel(topicMessage: "How have you been?", dateTime: DateTime.now()),
-    RecentChatModel(topicMessage: "Hey Kriss, I am doing fine dude. wbu?", dateTime: DateTime.now()),
-    RecentChatModel(topicMessage: "ehhhh, doing OK.", dateTime: DateTime.now()),
-    RecentChatModel(topicMessage: "Is there any thing wrong?", dateTime: DateTime.now()),
-    RecentChatModel(topicMessage: "Is there any thing wrong?", dateTime: DateTime.now()),
-  ];
+  // List<RecentChatModel> messagesList = [
+  //   RecentChatModel(topicMessage: "Hello, Will", dateTime: DateTime.now()),
+  //   RecentChatModel(topicMessage: "How have you been?", dateTime: DateTime.now()),
+  //   RecentChatModel(topicMessage: "Hey Kriss, I am doing fine dude. wbu?", dateTime: DateTime.now()),
+  //   RecentChatModel(topicMessage: "ehhhh, doing OK.", dateTime: DateTime.now()),
+  //   RecentChatModel(topicMessage: "Is there any thing wrong?", dateTime: DateTime.now()),
+  //   RecentChatModel(topicMessage: "Is there any thing wrong?", dateTime: DateTime.now()),
+  // ];
 
   final _dateFormat = DateFormat('dd/MM/yyyy hh:mm');
   List<Map> getUserDataFromDB = [];
@@ -40,7 +39,6 @@ class _RecentPageState extends State<RecentPage> {
 
     getUserDataFromDB = a;
 
-    print(a);
     setState(() {});
   }
 
@@ -132,7 +130,7 @@ class _RecentPageState extends State<RecentPage> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (_) => RecentChats(
+                                    builder: (_) => ChatHistoryPage(
                                           header: getUserDataFromDB[index]["header"],
                                           roomId: getUserDataFromDB[index]["id"].toInt(),
                                         )));

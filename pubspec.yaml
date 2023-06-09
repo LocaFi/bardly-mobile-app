@@ -45,10 +45,11 @@ dependencies:
   intl: ^0.18.1
   audio_wave: ^0.1.4
   cached_network_image: ^3.2.1
- 
   flutter_linkify: ^5.0.2
   iconify_flutter: ^0.0.5
+  quickalert: ^1.0.1
   image_picker: ^0.8.6
+  launch_review: ^3.0.1
   flutter:
     sdk: flutter
   flutter_svg: ^1.1.5
