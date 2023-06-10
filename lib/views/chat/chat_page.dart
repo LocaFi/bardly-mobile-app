@@ -83,7 +83,8 @@ class _ChatPageState extends State<ChatPage> {
   User bot = User(
     id: "Bardly",
     name: "Bardly",
-    avatarUrl: "https://picsum.photos/id/237/200/300",
+    avatarUrl: "https://creatorium.org/assets/bardly_logo.png",
+    color: const Color.fromARGB(255, 8, 217, 168),
   );
 
   @override
@@ -262,6 +263,9 @@ class _ChatPageState extends State<ChatPage> {
                           ),
                           FloatingActionButton(
                             onPressed: () async {
+                              if (messageTextController.text.trim() == "") {
+                                return;
+                              }
                               Message message = TextMessage(author: loggedInUser, text: messageTextController.text, time: DateTime.now().toString(), stage: 1);
                               DBProvider dbProvider = DBProvider();
                               var getLastId = await dbProvider.getLastHeaderId();

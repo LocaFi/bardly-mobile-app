@@ -53,9 +53,9 @@ class _HomeViewState extends State<HomeView> {
     color: const Color(0xff1e2d40),
   );
   final rand = Random();
-  RxString topic1 = "Explain quantum physics".obs;
-  RxString topic2 = "Tell me a story".obs;
-  RxString topic3 = "How's weather".obs;
+  RxString topic1 = "What's your skills?".obs;
+  RxString topic2 = "Act like a magician".obs;
+  RxString topic3 = "Write a tweet".obs;
   TextEditingController messageTextController = TextEditingController();
 
   @override
@@ -258,7 +258,8 @@ class _HomeViewState extends State<HomeView> {
                             padding: const EdgeInsets.only(left: 25.0, right: 25, top: 15),
                             child: InkWell(
                               onTap: () {
-                                messageTextController.text = topic2.value;
+                                messageTextController.text =
+                                    'want you to act as a magician. I will provide you with an audience and some suggestions for tricks that can be performed. My first request is I want you to make my watch disappear';
                               },
                               child: Container(
                                 decoration: BoxDecoration(
@@ -279,7 +280,7 @@ class _HomeViewState extends State<HomeView> {
                             padding: const EdgeInsets.only(left: 25.0, right: 25, top: 15),
                             child: InkWell(
                               onTap: () {
-                                messageTextController.text = topic3.value;
+                                messageTextController.text = 'Write a tweet that can go viral on Twitter nowadays.';
                               },
                               child: Container(
                                 decoration: BoxDecoration(
@@ -348,6 +349,9 @@ class _HomeViewState extends State<HomeView> {
                         ),
                         FloatingActionButton(
                           onPressed: () {
+                            if (messageTextController.text.trim() == "") {
+                              return;
+                            }
                             DBProvider dbProvider = DBProvider();
                             dbProvider.insertRoomTable(messageTextController.text);
                             Navigator.push(

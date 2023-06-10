@@ -33,6 +33,7 @@ dependencies:
   cupertino_onboarding: ^1.1.1
   flutter_secure_storage: ^8.0.0
   pretty_logger: ^1.0.0
+  material_symbols_icons: ^4.2659.0
   dio: ^5.1.1
   flutter_bloc: ^8.1.2
   shared_preferences: ^2.1.1

@@ -3,6 +3,7 @@ import 'package:bardly_mobile_app/views/home/home_view.dart';
 import 'package:cupertino_onboarding/cupertino_onboarding.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:material_symbols_icons/symbols.dart';
 
 class OnboardingView extends StatelessWidget {
   const OnboardingView({Key? key}) : super(key: key);
@@ -30,49 +31,49 @@ class OnboardingOverview extends StatelessWidget {
       pages: [
         WhatsNewPage(
           title: const Text(
-            "What's New Template",
+            "Welcome to Bardly",
             style: TextStyle(color: Color.fromARGB(255, 8, 217, 168)),
           ),
           features: const [
             WhatsNewFeature(
               title: Text(
-                'Showcase your App Features',
+                'Bardly is connected to Internet!',
                 style: TextStyle(color: Colors.white),
               ),
               description: Text(
-                'Clean and minimalistic iOS styled template for showing app features e.g. in a new update.',
+                'Bardly can search internet for serve true information to you. Also Bardly can show newest information from Internet.',
                 style: TextStyle(color: Colors.grey),
               ),
               icon: Icon(
-                CupertinoIcons.star,
+                CupertinoIcons.wifi,
                 color: Color.fromARGB(255, 8, 217, 168),
               ),
             ),
             WhatsNewFeature(
               title: Text(
-                "Styled Icons and Buttons",
+                "Bardly powered by Google💙",
                 style: TextStyle(color: Colors.white),
               ),
               description: Text(
-                "To create consistent look, icons and buttons are styled to match your CupertinoTheme's primaryColor. ",
+                "Bardly is a new application powered by Google that uses Bard for AI processes. Bard is a large language model that can generate text, translate languages, write different kinds of creative content, and answer your questions in an informative way.",
                 style: TextStyle(color: Colors.grey),
               ),
               icon: Icon(
-                CupertinoIcons.paintbrush,
+                Symbols.electric_bolt_rounded,
                 color: Color.fromARGB(255, 8, 217, 168),
               ),
             ),
             WhatsNewFeature(
               title: Text(
-                'Style Flexiblity',
+                'Keeping Updated ',
                 style: TextStyle(color: Colors.white),
               ),
               description: Text(
-                "What's New Template can be styled to match new and old iOS versions of onboarding or your own preferences.",
+                "Bardly can always provide you with the most accurate and up-to-date information. If you ask Bardly about a current event, It will be able to tell you the latest news about it. Bardly can also keep you updated on your favorite topics, such as sports, movies, or music.",
                 style: TextStyle(color: Colors.grey),
               ),
               icon: Icon(
-                CupertinoIcons.gear,
+                Symbols.update,
                 color: Color.fromARGB(255, 8, 217, 168),
               ),
             ),
@@ -80,32 +81,32 @@ class OnboardingOverview extends StatelessWidget {
         ),
         const CupertinoOnboardingPage(
             title: Text(
-              'Support For Multiple Pages',
+              'You can ask questions about current topics',
               style: TextStyle(
                 color: Color.fromARGB(255, 8, 217, 168),
               ),
             ),
             body: Icon(
-              CupertinoIcons.location,
+              CupertinoIcons.calendar_badge_minus,
               size: 200,
               color: Colors.white,
             )),
         const CupertinoOnboardingPage(
           title: Text(
-            'Great Look in Light and Dark Mode',
+            'Perform  analysis, translation, and more with URL',
             style: TextStyle(
               color: Color.fromARGB(255, 8, 217, 168),
             ),
           ),
           body: Icon(
-            CupertinoIcons.command,
+            Symbols.webhook,
             size: 200,
             color: Colors.white,
           ),
         ),
         const CupertinoOnboardingPage(
           title: Text(
-            'Beautiful and Consistent Appearance',
+            'Now you are going to meet with Bardly!',
             style: TextStyle(
               color: Color.fromARGB(255, 8, 217, 168),
             ),
