@@ -29,7 +29,7 @@ String entertainmentImages = "assets/enter.png";
 
 class _ExplorePageState extends State<ExplorePage> {
   List<Widget> textBasedMenus = [
-    InkWell(
+    GestureDetector(
       onTap: () {
         Get.off(const ChatPage(
           messageParams: 'Can you improve my phrases like a professional?',
@@ -87,7 +87,7 @@ class _ExplorePageState extends State<ExplorePage> {
         ),
       ),
     ),
-    InkWell(
+    GestureDetector(
       onTap: () {
         Get.off(const ChatPage(
           messageParams: 'Can you summarize my content?',
@@ -145,7 +145,7 @@ class _ExplorePageState extends State<ExplorePage> {
         ),
       ),
     ),
-    InkWell(
+    GestureDetector(
       onTap: () {
         Get.off(const ChatPage(
           messageParams: 'Can you write a paragraph for me?',
@@ -203,7 +203,7 @@ class _ExplorePageState extends State<ExplorePage> {
         ),
       ),
     ),
-    InkWell(
+    GestureDetector(
       onTap: () {
         Get.off(const ChatPage(
           messageParams: 'Can you translate a text for me?',
@@ -263,7 +263,7 @@ class _ExplorePageState extends State<ExplorePage> {
     ),
   ];
   List<Widget> artSkillsMenus = [
-    InkWell(
+    GestureDetector(
       onTap: () {
         Get.off(const ChatPage(
           messageParams: 'Can you generate a song lyrics for me?',
@@ -321,7 +321,7 @@ class _ExplorePageState extends State<ExplorePage> {
         ),
       ),
     ),
-    InkWell(
+    GestureDetector(
       onTap: () {
         Get.off(const ChatPage(
           messageParams: 'Can you write a poem for me?',
@@ -379,7 +379,7 @@ class _ExplorePageState extends State<ExplorePage> {
         ),
       ),
     ),
-    InkWell(
+    GestureDetector(
       onTap: () {
         Get.off(const ChatPage(
           messageParams: 'Can you write a story for me?',
@@ -437,7 +437,7 @@ class _ExplorePageState extends State<ExplorePage> {
         ),
       ),
     ),
-    InkWell(
+    GestureDetector(
       onTap: () {
         Get.off(const ChatPage(
           messageParams: 'Can you write a short movie script for me?',
@@ -497,7 +497,7 @@ class _ExplorePageState extends State<ExplorePage> {
     ),
   ];
   List<Widget> businessSkillsMenus = [
-    InkWell(
+    GestureDetector(
       onTap: () {
         Get.off(const ChatPage(
           messageParams: 'Can you generate a company name for my company?',
@@ -555,7 +555,7 @@ class _ExplorePageState extends State<ExplorePage> {
         ),
       ),
     ),
-    InkWell(
+    GestureDetector(
       onTap: () {
         Get.off(const ChatPage(
           messageParams: 'Can you generate a company slogan for my company?',
@@ -613,7 +613,7 @@ class _ExplorePageState extends State<ExplorePage> {
         ),
       ),
     ),
-    InkWell(
+    GestureDetector(
       onTap: () {
         Get.off(const ChatPage(
           messageParams: 'Can you help about create a job description for my job post?',
@@ -671,7 +671,7 @@ class _ExplorePageState extends State<ExplorePage> {
         ),
       ),
     ),
-    InkWell(
+    GestureDetector(
       onTap: () {
         Get.off(const ChatPage(
           messageParams: 'Can you help for write a company biography for me?',
@@ -731,7 +731,7 @@ class _ExplorePageState extends State<ExplorePage> {
     ),
   ];
   List<Widget> socialSkillsMenus = [
-    InkWell(
+    GestureDetector(
       onTap: () {
         Get.off(const ChatPage(
           messageParams: 'Can you help me for write a tweet that helps get attraction?',
@@ -789,7 +789,7 @@ class _ExplorePageState extends State<ExplorePage> {
         ),
       ),
     ),
-    InkWell(
+    GestureDetector(
       onTap: () {
         Get.off(const ChatPage(
           messageParams: 'Can you help me for a linkedin post that helps get attraction?',
@@ -847,7 +847,7 @@ class _ExplorePageState extends State<ExplorePage> {
         ),
       ),
     ),
-    InkWell(
+    GestureDetector(
       onTap: () {
         Get.off(const ChatPage(
           messageParams: 'Can you help me for choose instagram caption for my instagram post?',
@@ -905,7 +905,7 @@ class _ExplorePageState extends State<ExplorePage> {
         ),
       ),
     ),
-    InkWell(
+    GestureDetector(
       onTap: () {
         Get.off(const ChatPage(
           messageParams: 'Can you help me for choose tiktok caption for my instagram post?',
@@ -963,7 +963,7 @@ class _ExplorePageState extends State<ExplorePage> {
         ),
       ),
     ),
-    InkWell(
+    GestureDetector(
       onTap: () {
         Get.off(const ChatPage(
           messageParams: 'Can you help me for an idea about viral video for social media?',
@@ -1023,7 +1023,7 @@ class _ExplorePageState extends State<ExplorePage> {
     ),
   ];
   List<Widget> emailSkillsMenus = [
-    InkWell(
+    GestureDetector(
       onTap: () {
         Get.off(const ChatPage(
           messageParams: 'Can you help me about write an email content?',
@@ -1081,7 +1081,7 @@ class _ExplorePageState extends State<ExplorePage> {
         ),
       ),
     ),
-    InkWell(
+    GestureDetector(
       onTap: () {
         Get.off(const ChatPage(
           messageParams: 'Can you help me about write an email subject?',
@@ -1139,7 +1139,7 @@ class _ExplorePageState extends State<ExplorePage> {
         ),
       ),
     ),
-    InkWell(
+    GestureDetector(
       onTap: () {
         Get.off(const ChatPage(
           messageParams: 'Can you help me for improve an email phrases?',
@@ -1199,7 +1199,7 @@ class _ExplorePageState extends State<ExplorePage> {
     ),
   ];
   List<Widget> codeSkillsMenus = [
-    InkWell(
+    GestureDetector(
       onTap: () {
         Get.off(const ChatPage(
           messageParams: 'Can you write a simple code block for me with any language?',
@@ -1257,7 +1257,7 @@ class _ExplorePageState extends State<ExplorePage> {
         ),
       ),
     ),
-    InkWell(
+    GestureDetector(
       onTap: () {
         Get.off(const ChatPage(
           messageParams: 'Can you explain a code block to me?',
@@ -1317,7 +1317,7 @@ class _ExplorePageState extends State<ExplorePage> {
     ),
   ];
   List<Widget> foodSkillsMenus = [
-    InkWell(
+    GestureDetector(
       onTap: () {
         Get.off(const ChatPage(
           messageParams: 'Can you give me ideas about cook for dinner?',
@@ -1375,7 +1375,7 @@ class _ExplorePageState extends State<ExplorePage> {
         ),
       ),
     ),
-    InkWell(
+    GestureDetector(
       onTap: () {
         Get.off(const ChatPage(
           messageParams: 'Can you help me for create a diet plan?',
@@ -1435,7 +1435,7 @@ class _ExplorePageState extends State<ExplorePage> {
     ),
   ];
   List<Widget> entertainmentSkillsMenus = [
-    InkWell(
+    GestureDetector(
       onTap: () {
         Get.off(const ChatPage(
           messageParams: 'Can you make a funny joke?',
@@ -1493,7 +1493,7 @@ class _ExplorePageState extends State<ExplorePage> {
         ),
       ),
     ),
-    InkWell(
+    GestureDetector(
       onTap: () {
         Get.off(const ChatPage(
           messageParams: 'Can you complete my sentences with funny random answers?',
@@ -1554,184 +1554,182 @@ class _ExplorePageState extends State<ExplorePage> {
   ];
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 12.0, top: 12, bottom: 12),
-              child: Text(
-                'Text Based Skills',
-                style: TextStyle(color: Colors.white.withOpacity(0.7), fontSize: 24),
-              ),
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(left: 12.0, top: 12, bottom: 12),
+            child: Text(
+              'Text Based Skills',
+              style: TextStyle(color: Colors.white.withOpacity(0.7), fontSize: 24),
             ),
-            SizedBox(
-              height: 220,
-              child: PageView.builder(
-                itemCount: textBasedMenus.length,
-                controller: PageController(viewportFraction: 0.7),
-                onPageChanged: (int index) => setState(() => _indexFirstList = index),
-                itemBuilder: (_, i) {
-                  return Transform.scale(
-                    scale: i == _indexFirstList ? 1 : 0.9,
-                    child: textBasedMenus[i],
-                  );
-                },
-              ),
+          ),
+          SizedBox(
+            height: 220,
+            child: PageView.builder(
+              itemCount: textBasedMenus.length,
+              controller: PageController(viewportFraction: 0.7),
+              onPageChanged: (int index) => setState(() => _indexFirstList = index),
+              itemBuilder: (_, i) {
+                return Transform.scale(
+                  scale: i == _indexFirstList ? 1 : 0.9,
+                  child: textBasedMenus[i],
+                );
+              },
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 12.0, top: 12, bottom: 12),
-              child: Text(
-                'Art Skills',
-                style: TextStyle(color: Colors.white.withOpacity(0.7), fontSize: 24),
-              ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 12.0, top: 12, bottom: 12),
+            child: Text(
+              'Art Skills',
+              style: TextStyle(color: Colors.white.withOpacity(0.7), fontSize: 24),
             ),
-            SizedBox(
-              height: 220,
-              child: PageView.builder(
-                itemCount: artSkillsMenus.length,
-                controller: PageController(viewportFraction: 0.7),
-                onPageChanged: (int index) => setState(() => _indexSecondList = index),
-                itemBuilder: (_, i) {
-                  return Transform.scale(
-                    scale: i == _indexSecondList ? 1 : 0.9,
-                    child: artSkillsMenus[i],
-                  );
-                },
-              ),
+          ),
+          SizedBox(
+            height: 220,
+            child: PageView.builder(
+              itemCount: artSkillsMenus.length,
+              controller: PageController(viewportFraction: 0.7),
+              onPageChanged: (int index) => setState(() => _indexSecondList = index),
+              itemBuilder: (_, i) {
+                return Transform.scale(
+                  scale: i == _indexSecondList ? 1 : 0.9,
+                  child: artSkillsMenus[i],
+                );
+              },
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 12.0, top: 12, bottom: 12),
-              child: Text(
-                'Business Skills',
-                style: TextStyle(color: Colors.white.withOpacity(0.7), fontSize: 24),
-              ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 12.0, top: 12, bottom: 12),
+            child: Text(
+              'Business Skills',
+              style: TextStyle(color: Colors.white.withOpacity(0.7), fontSize: 24),
             ),
-            SizedBox(
-              height: 220,
-              child: PageView.builder(
-                itemCount: businessSkillsMenus.length,
-                controller: PageController(viewportFraction: 0.7),
-                onPageChanged: (int index) => setState(() => _indexThirdList = index),
-                itemBuilder: (_, i) {
-                  return Transform.scale(
-                    scale: i == _indexThirdList ? 1 : 0.9,
-                    child: businessSkillsMenus[i],
-                  );
-                },
-              ),
+          ),
+          SizedBox(
+            height: 220,
+            child: PageView.builder(
+              itemCount: businessSkillsMenus.length,
+              controller: PageController(viewportFraction: 0.7),
+              onPageChanged: (int index) => setState(() => _indexThirdList = index),
+              itemBuilder: (_, i) {
+                return Transform.scale(
+                  scale: i == _indexThirdList ? 1 : 0.9,
+                  child: businessSkillsMenus[i],
+                );
+              },
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 12.0, top: 12, bottom: 12),
-              child: Text(
-                'Social Skills',
-                style: TextStyle(color: Colors.white.withOpacity(0.7), fontSize: 24),
-              ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 12.0, top: 12, bottom: 12),
+            child: Text(
+              'Social Skills',
+              style: TextStyle(color: Colors.white.withOpacity(0.7), fontSize: 24),
             ),
-            SizedBox(
-              height: 220,
-              child: PageView.builder(
-                itemCount: socialSkillsMenus.length,
-                controller: PageController(viewportFraction: 0.7),
-                onPageChanged: (int index) => setState(() => _indexFourList = index),
-                itemBuilder: (_, i) {
-                  return Transform.scale(
-                    scale: i == _indexFourList ? 1 : 0.9,
-                    child: socialSkillsMenus[i],
-                  );
-                },
-              ),
+          ),
+          SizedBox(
+            height: 220,
+            child: PageView.builder(
+              itemCount: socialSkillsMenus.length,
+              controller: PageController(viewportFraction: 0.7),
+              onPageChanged: (int index) => setState(() => _indexFourList = index),
+              itemBuilder: (_, i) {
+                return Transform.scale(
+                  scale: i == _indexFourList ? 1 : 0.9,
+                  child: socialSkillsMenus[i],
+                );
+              },
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 12.0, top: 12, bottom: 12),
-              child: Text(
-                'Email Skills',
-                style: TextStyle(color: Colors.white.withOpacity(0.7), fontSize: 24),
-              ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 12.0, top: 12, bottom: 12),
+            child: Text(
+              'Email Skills',
+              style: TextStyle(color: Colors.white.withOpacity(0.7), fontSize: 24),
             ),
-            SizedBox(
-              height: 220,
-              child: PageView.builder(
-                itemCount: emailSkillsMenus.length,
-                controller: PageController(viewportFraction: 0.7),
-                onPageChanged: (int index) => setState(() => _indexFiveList = index),
-                itemBuilder: (_, i) {
-                  return Transform.scale(
-                    scale: i == _indexFiveList ? 1 : 0.9,
-                    child: emailSkillsMenus[i],
-                  );
-                },
-              ),
+          ),
+          SizedBox(
+            height: 220,
+            child: PageView.builder(
+              itemCount: emailSkillsMenus.length,
+              controller: PageController(viewportFraction: 0.7),
+              onPageChanged: (int index) => setState(() => _indexFiveList = index),
+              itemBuilder: (_, i) {
+                return Transform.scale(
+                  scale: i == _indexFiveList ? 1 : 0.9,
+                  child: emailSkillsMenus[i],
+                );
+              },
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 12.0, top: 12, bottom: 12),
-              child: Text(
-                'Code Skills',
-                style: TextStyle(color: Colors.white.withOpacity(0.7), fontSize: 24),
-              ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 12.0, top: 12, bottom: 12),
+            child: Text(
+              'Code Skills',
+              style: TextStyle(color: Colors.white.withOpacity(0.7), fontSize: 24),
             ),
-            SizedBox(
-              height: 220,
-              child: PageView.builder(
-                itemCount: codeSkillsMenus.length,
-                controller: PageController(viewportFraction: 0.7),
-                onPageChanged: (int index) => setState(() => _indexSixList = index),
-                itemBuilder: (_, i) {
-                  return Transform.scale(
-                    scale: i == _indexSixList ? 1 : 0.9,
-                    child: codeSkillsMenus[i],
-                  );
-                },
-              ),
+          ),
+          SizedBox(
+            height: 220,
+            child: PageView.builder(
+              itemCount: codeSkillsMenus.length,
+              controller: PageController(viewportFraction: 0.7),
+              onPageChanged: (int index) => setState(() => _indexSixList = index),
+              itemBuilder: (_, i) {
+                return Transform.scale(
+                  scale: i == _indexSixList ? 1 : 0.9,
+                  child: codeSkillsMenus[i],
+                );
+              },
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 12.0, top: 12, bottom: 12),
-              child: Text(
-                'Food Skills',
-                style: TextStyle(color: Colors.white.withOpacity(0.7), fontSize: 24),
-              ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 12.0, top: 12, bottom: 12),
+            child: Text(
+              'Food Skills',
+              style: TextStyle(color: Colors.white.withOpacity(0.7), fontSize: 24),
             ),
-            SizedBox(
-              height: 220,
-              child: PageView.builder(
-                itemCount: foodSkillsMenus.length,
-                controller: PageController(viewportFraction: 0.7),
-                onPageChanged: (int index) => setState(() => _indexSevenList = index),
-                itemBuilder: (_, i) {
-                  return Transform.scale(
-                    scale: i == _indexSevenList ? 1 : 0.9,
-                    child: foodSkillsMenus[i],
-                  );
-                },
-              ),
+          ),
+          SizedBox(
+            height: 220,
+            child: PageView.builder(
+              itemCount: foodSkillsMenus.length,
+              controller: PageController(viewportFraction: 0.7),
+              onPageChanged: (int index) => setState(() => _indexSevenList = index),
+              itemBuilder: (_, i) {
+                return Transform.scale(
+                  scale: i == _indexSevenList ? 1 : 0.9,
+                  child: foodSkillsMenus[i],
+                );
+              },
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 12.0, top: 12, bottom: 12),
-              child: Text(
-                'Entertainment Skills',
-                style: TextStyle(color: Colors.white.withOpacity(0.7), fontSize: 24),
-              ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 12.0, top: 12, bottom: 12),
+            child: Text(
+              'Entertainment Skills',
+              style: TextStyle(color: Colors.white.withOpacity(0.7), fontSize: 24),
             ),
-            SizedBox(
-              height: 220,
-              child: PageView.builder(
-                itemCount: entertainmentSkillsMenus.length,
-                controller: PageController(viewportFraction: 0.7),
-                onPageChanged: (int index) => setState(() => _indexEigthList = index),
-                itemBuilder: (_, i) {
-                  return Transform.scale(
-                    scale: i == _indexEigthList ? 1 : 0.9,
-                    child: entertainmentSkillsMenus[i],
-                  );
-                },
-              ),
+          ),
+          SizedBox(
+            height: 220,
+            child: PageView.builder(
+              itemCount: entertainmentSkillsMenus.length,
+              controller: PageController(viewportFraction: 0.7),
+              onPageChanged: (int index) => setState(() => _indexEigthList = index),
+              itemBuilder: (_, i) {
+                return Transform.scale(
+                  scale: i == _indexEigthList ? 1 : 0.9,
+                  child: entertainmentSkillsMenus[i],
+                );
+              },
             ),
-            const SizedBox(
-              height: 50,
-            ),
-          ],
-        ),
+          ),
+          const SizedBox(
+            height: 50,
+          ),
+        ],
       ),
     );
   }

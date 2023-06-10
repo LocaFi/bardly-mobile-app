@@ -97,7 +97,13 @@ class _ChatPageState extends State<ChatPage> {
               confirmBtnText: 'OK',
               confirmBtnColor: const Color(0xff33cdbb),
               onConfirmBtnTap: () async {
-                Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const HomeView()), (route) => false);
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const HomeView(
+                              navigate: true,
+                            )),
+                    (route) => false);
               },
             );
           },
