@@ -168,6 +168,7 @@ class _ChatPageState extends State<ChatPage> {
               if (state is BardResponse) {
                 messages.removeLast();
                 print('bardResponse');
+                var getLabel = state.model.data?.details?[0].label;
                 print(state.model.data?.chosenAnswer.toString());
                 DBProvider dbProvider = DBProvider();
                 var getLastId = await dbProvider.getLastHeaderId();
@@ -191,8 +192,8 @@ class _ChatPageState extends State<ChatPage> {
                       author: bot,
                       time: 'now',
                       imageUrl: state.model.data?.details?[0].url ?? '',
-                      caption: state.model.data?.chosenAnswer.toString());
-                  dbProvider.insertChat('b', state.model.data?.chosenAnswer.toString() ?? '', getLastId[0]['id'], state.model.data?.details?[0].url ?? '');
+                      caption: state.model.data?.chosenAnswer?.replaceAll(getLabel ?? '', '').toString());
+                  dbProvider.insertChat('b', state.model.data?.chosenAnswer?.replaceAll(getLabel ?? '', '').toString() ?? '', getLastId[0]['id'], state.model.data?.details?[0].url ?? '');
                   setState(() {});
                 } else {
                   message = TextMessage(

@@ -2,6 +2,7 @@ import 'package:bardly_mobile_app/utils/uilts.dart';
 import 'package:bardly_mobile_app/views/home/home_view.dart';
 import 'package:bardly_mobile_app/views/onboarding/onboarding_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({Key? key}) : super(key: key);
@@ -27,9 +28,9 @@ class _LoginViewState extends State<LoginView> {
 
   Future<void> getLandingInfo() async {
     if (await StorageUtil.getLandingCompleted()) {
-      Navigator.push(context, MaterialPageRoute(builder: (_) => const HomeView()));
+      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) => const HomeView()), (route) => false);
     } else {
-      Navigator.push(context, MaterialPageRoute(builder: (_) => const OnboardingView()));
+      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) => const OnboardingView()), (route) => false);
     }
   }
 
@@ -41,6 +42,15 @@ class _LoginViewState extends State<LoginView> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            const SizedBox(
+              height: 40,
+            ),
+            SvgPicture.asset(
+              'assets/logo.svg',
+              semanticsLabel: 'Label',
+              height: 50,
+              width: 50,
+            ),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.end,
@@ -66,12 +76,20 @@ class _LoginViewState extends State<LoginView> {
               ],
             ),
             const SizedBox(
-              height: 90,
+              height: 30,
             ),
             const CircularProgressIndicator(
               color: Color(0xff1e2d40),
               backgroundColor: Color(0xff04f4bc),
-            )
+            ),
+            const SizedBox(
+              height: 40,
+            ),
+            Image.asset(
+              "assets/powered_google.png",
+              height: 200,
+              width: 200,
+            ),
           ],
         ),
       ),
