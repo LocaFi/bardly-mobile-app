@@ -55,16 +55,19 @@ class _ChatPageState extends State<ChatPage> {
   void setFirstMessageToDb(
     String param,
   ) async {
-    final dateFormat = DateFormat('dd/MM/yyyy hh:mm');
+    try {
+      final dateFormat = DateFormat('dd/MM/yyyy hh:mm');
 
-    Message message = TextMessage(author: loggedInUser, text: widget.messageParams ?? '', time: dateFormat.format(DateTime.now()).toString(), stage: 1);
-    DBProvider dbProvider = DBProvider();
-    var getLastId = await dbProvider.getLastHeaderId();
-    dbProvider.insertChat('u', widget.messageParams ?? '', getLastId[0]['id'], '');
-    setState(() {
-      messages.add(message);
-    });
-    bardBloc.add(AskToBardEvent(BardRequestModel(question: widget.messageParams ?? '')));
+      Message message = TextMessage(author: loggedInUser, text: widget.messageParams ?? '', time: dateFormat.format(DateTime.now()).toString(), stage: 1);
+      DBProvider dbProvider = DBProvider();
+      dbProvider.insertRoomTable(widget.messageParams ?? '');
+      var getLastId = await dbProvider.getLastHeaderId();
+      dbProvider.insertChat('u', widget.messageParams ?? '', getLastId[0]['id'] ?? '', '');
+      setState(() {
+        messages.add(message);
+      });
+      bardBloc.add(AskToBardEvent(BardRequestModel(question: widget.messageParams ?? '')));
+    } catch (e) {}
   }
 
   List<User> users = [];
