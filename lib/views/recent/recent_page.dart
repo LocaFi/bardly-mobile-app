@@ -28,6 +28,7 @@ class _RecentPageState extends State<RecentPage> {
   List<Map> getUserDataFromDB = [];
   List<int> deleteFromDB = [];
   List<int> selectedItems = [-1];
+  bool isAllSelected = false;
   @override
   void initState() {
     // TODO: implement initState
@@ -93,45 +94,75 @@ class _RecentPageState extends State<RecentPage> {
               children: [
                 selectedItems.length > 1
                     ? Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           const SizedBox(
                             height: 15,
                           ),
-                          InkWell(
-                            onTap: () async {
-                              print(selectedItems);
-                              print(deleteFromDB);
-                              DBProvider dbProvider = DBProvider();
-                              for (var element in deleteFromDB) {
-                                var a = await dbProvider.deleteUserData(element);
-                                print(a);
-                              }
-                              // for (var i = 0; i <= deleteFromDB.length; i++) {
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const SizedBox(
+                                height: 15,
+                              ),
+                              InkWell(
+                                onTap: () async {
+                                  if (isAllSelected) {
+                                    DBProvider dbProvider = DBProvider();
+                                    dbProvider.clearAllData();
+                                  } else {
+                                    DBProvider dbProvider = DBProvider();
+                                    for (var element in deleteFromDB) {
+                                      var a = await dbProvider.deleteUserData(element);
+                                      print(a);
+                                    }
+                                  }
+                                  print(selectedItems);
+                                  print(deleteFromDB);
 
-                              // }
-                              // ignore: use_build_context_synchronously
-                              AnimatedSnackBar.material(
-                                'This conversation has been successfully deleted.',
-                                type: AnimatedSnackBarType.success,
-                                mobileSnackBarPosition: MobileSnackBarPosition.bottom,
-                                desktopSnackBarPosition: DesktopSnackBarPosition.topRight,
-                              ).show(context);
-                              // ignore: use_build_context_synchronously
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => const HomeView(
-                                            navigate: true,
-                                          )));
+                                  // for (var i = 0; i <= deleteFromDB.length; i++) {
 
-                              // Future.microtask(() => getRecentChat()).whenComplete(() => setState(() {}));
-                            },
-                            child: SvgPicture.asset(
-                              'assets/delete_icon.svg',
-                              height: 45,
-                              width: 45,
-                            ),
-                          ),
+                                  // }
+                                  // ignore: use_build_context_synchronously
+                                  AnimatedSnackBar.material(
+                                    'This conversation has been successfully deleted.',
+                                    type: AnimatedSnackBarType.success,
+                                    mobileSnackBarPosition: MobileSnackBarPosition.bottom,
+                                    desktopSnackBarPosition: DesktopSnackBarPosition.topRight,
+                                  ).show(context);
+                                  // ignore: use_build_context_synchronously
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => const HomeView(
+                                                navigate: true,
+                                              )));
+
+                                  // Future.microtask(() => getRecentChat()).whenComplete(() => setState(() {}));
+                                },
+                                child: SvgPicture.asset(
+                                  'assets/delete_icon.svg',
+                                  height: 45,
+                                  width: 45,
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 15,
+                              ),
+                              InkWell(
+                                onTap: () async {
+                                  setState(() {
+                                    isAllSelected = !isAllSelected;
+                                  });
+                                },
+                                child: SvgPicture.asset(
+                                  'assets/all.svg',
+                                  height: 45,
+                                  width: 45,
+                                ),
+                              ),
+                            ],
+                          )
                         ],
                       )
                     : Container(),
@@ -188,7 +219,9 @@ class _RecentPageState extends State<RecentPage> {
                               width: MediaQuery.of(context).size.width,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(20),
-                                color: selectedItems.contains(index) == true ? const Color.fromARGB(255, 54, 83, 120) : const Color.fromARGB(255, 54, 83, 120).withOpacity(0.5),
+                                color: isAllSelected == true
+                                    ? const Color.fromARGB(255, 54, 83, 120)
+                                    : (selectedItems.contains(index) == true ? const Color.fromARGB(255, 54, 83, 120) : const Color.fromARGB(255, 54, 83, 120).withOpacity(0.5)),
                               ),
                               padding: const EdgeInsets.only(
                                 left: 12,

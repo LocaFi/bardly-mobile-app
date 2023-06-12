@@ -84,6 +84,15 @@ created_at TEXT DEFAULT CURRENT_TIMESTAMP
     return result;
   }
 
+  clearAllData() async {
+    final db = await database;
+
+    List<Map> result = await db.rawQuery('delete from bardly_room');
+    List<Map> result2 = await db.rawQuery('delete from bardly_message');
+
+    return result;
+  }
+
   insertChat(String sender, String message, int roomId, String imageUrl) async {
     final db = await database;
     await db.insert('bardly_message', {'sender': sender, 'message': message, 'room_id': roomId, 'image_url': imageUrl});

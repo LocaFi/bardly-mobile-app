@@ -78,7 +78,7 @@ class _ChatPageState extends State<ChatPage> {
     id: "0de4krd0sas-49iecxo203rji",
     name: "User",
     avatarUrl: "https://creatorium.org/assets/green-read-tick.png",
-    color: const Color(0xff1e2d40),
+    color: Colors.white,
   );
   User bot = User(
     id: "Bardly",
@@ -89,249 +89,252 @@ class _ChatPageState extends State<ChatPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: BlocProvider(
-          create: (context) => bardBloc,
-          child: BlocConsumer<BardBloc, BardState>(
-            listener: (context, state) {},
-            builder: (context, state) {
-              return IconButton(
-                color: Colors.white,
-                onPressed: state is BardWaitingState
-                    ? () {
-                        QuickAlert.show(
-                          context: context,
-                          type: QuickAlertType.warning,
-                          barrierDismissible: true,
-                          text: 'Leaving the chat without waiting for the Bardly to respond causes conversations not to be recorded in the history.',
-                          confirmBtnText: 'Got it!',
-                          confirmBtnColor: const Color(0xff007d81),
-                          onConfirmBtnTap: () async {
-                            Navigator.pop(context);
-                          },
-                        );
-                      }
-                    : () {
-                        QuickAlert.show(
-                          context: context,
-                          type: QuickAlertType.confirm,
-                          barrierDismissible: true,
-                          text: 'You end the chat.\nYou can check your chats in the "recents" tab.',
-                          confirmBtnText: 'OK',
-                          confirmBtnColor: const Color(0xff33cdbb),
-                          onConfirmBtnTap: state is BardWaitingState
-                              ? null
-                              : () async {
-                                  Navigator.pushAndRemoveUntil(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => const HomeView(
-                                                navigate: true,
-                                              )),
-                                      (route) => false);
-                                },
-                        );
-                      },
-                icon: const Icon(Icons.arrow_back_ios),
-              );
-            },
-          ),
-        ),
-        backgroundColor: const Color(0xff1e2d40),
-        toolbarHeight: 100,
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(30),
-          ),
-        ),
-        title: Row(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            SvgPicture.asset(
-              'assets/logo.svg',
-              semanticsLabel: 'Label',
-              height: 50,
-              width: 50,
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        appBar: AppBar(
+          leading: BlocProvider(
+            create: (context) => bardBloc,
+            child: BlocConsumer<BardBloc, BardState>(
+              listener: (context, state) {},
+              builder: (context, state) {
+                return IconButton(
+                  color: Colors.white,
+                  onPressed: state is BardWaitingState
+                      ? () {
+                          QuickAlert.show(
+                            context: context,
+                            type: QuickAlertType.warning,
+                            barrierDismissible: true,
+                            text: 'Leaving the chat without waiting for the Bardly to respond causes conversations not to be recorded in the history.',
+                            confirmBtnText: 'Got it!',
+                            confirmBtnColor: const Color(0xff007d81),
+                            onConfirmBtnTap: () async {
+                              Navigator.pop(context);
+                            },
+                          );
+                        }
+                      : () {
+                          QuickAlert.show(
+                            context: context,
+                            type: QuickAlertType.confirm,
+                            barrierDismissible: true,
+                            text: 'You end the chat.\nYou can check your chats in the "recents" tab.',
+                            confirmBtnText: 'OK',
+                            confirmBtnColor: const Color(0xff33cdbb),
+                            onConfirmBtnTap: state is BardWaitingState
+                                ? null
+                                : () async {
+                                    Navigator.pushAndRemoveUntil(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => const HomeView(
+                                                  navigate: true,
+                                                )),
+                                        (route) => false);
+                                  },
+                          );
+                        },
+                  icon: const Icon(Icons.arrow_back_ios),
+                );
+              },
             ),
-            const SizedBox(
-              width: 5,
+          ),
+          backgroundColor: const Color(0xff1e2d40),
+          toolbarHeight: 100,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+              bottom: Radius.circular(30),
             ),
-            SizedBox(
-              height: 45,
-              child: GradientText(
-                'Bardly',
-                style: TextStyle(fontFamily: 'Anton', fontSize: 30.0, color: Colors.white.withOpacity(0.7)),
-                gradient: const LinearGradient(colors: [
-                  Color(0xff00ffc3),
-                  Color(0xff04f4bc),
-                ]),
+          ),
+          title: Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              SvgPicture.asset(
+                'assets/logo.svg',
+                semanticsLabel: 'Label',
+                height: 50,
+                width: 50,
               ),
-            ),
-            Container(
-              child: RichText(
-                text: TextSpan(
-                  text: 'With',
-                  style: const TextStyle(color: Colors.blueGrey, fontSize: 12),
-                  /*defining default style is optional */
-                  children: <TextSpan>[
-                    TextSpan(text: ' AI', style: TextStyle(fontWeight: FontWeight.normal, color: Colors.white.withOpacity(0.7))),
-                  ],
+              const SizedBox(
+                width: 5,
+              ),
+              SizedBox(
+                height: 45,
+                child: GradientText(
+                  'Bardly',
+                  style: TextStyle(fontFamily: 'Anton', fontSize: 30.0, color: Colors.white.withOpacity(0.7)),
+                  gradient: const LinearGradient(colors: [
+                    Color(0xff00ffc3),
+                    Color(0xff04f4bc),
+                  ]),
                 ),
               ),
-            ),
-          ],
+              Container(
+                child: RichText(
+                  text: TextSpan(
+                    text: 'With',
+                    style: const TextStyle(color: Colors.blueGrey, fontSize: 12),
+                    /*defining default style is optional */
+                    children: <TextSpan>[
+                      TextSpan(text: ' AI', style: TextStyle(fontWeight: FontWeight.normal, color: Colors.white.withOpacity(0.7))),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+          centerTitle: false,
         ),
-        centerTitle: false,
-      ),
-      backgroundColor: const Color(0xff090e14),
-      body: BlocProvider(
-        create: (context) => bardBloc,
-        child: BlocConsumer<BardBloc, BardState>(
-          listener: (context, state) async {
-            if (state is BardWaitingState) {
-              print('waiting');
-              Message message = TextMessage(
-                isLoading: true,
-                author: bot,
-                text: '',
-                time: "now",
-                stage: 3,
-              );
-              messages.add(message);
-            } else {
-              if (state is BardResponse) {
-                messages.removeLast();
-                print('bardResponse');
-                var getLabel = state.model.data?.details?[0].label;
-                print(state.model.data?.chosenAnswer.toString());
-                DBProvider dbProvider = DBProvider();
-                var getLastId = await dbProvider.getLastHeaderId();
-                Message message;
-                if (state.model.data?.details?[0].url != null) {
+        backgroundColor: const Color(0xff090e14),
+        body: BlocProvider(
+          create: (context) => bardBloc,
+          child: BlocConsumer<BardBloc, BardState>(
+            listener: (context, state) async {
+              if (state is BardWaitingState) {
+                print('waiting');
+                Message message = TextMessage(
+                  isLoading: true,
+                  author: bot,
+                  text: '',
+                  time: "now",
+                  stage: 3,
+                );
+                messages.add(message);
+              } else {
+                if (state is BardResponse) {
+                  messages.removeLast();
+                  print('bardResponse');
+                  var getLabel = state.model.data?.details?[0].label;
+                  print(state.model.data?.chosenAnswer.toString());
+                  DBProvider dbProvider = DBProvider();
+                  var getLastId = await dbProvider.getLastHeaderId();
+                  Message message;
+                  if (state.model.data?.details?[0].url != null) {
+                    WidgetsBinding.instance.addPostFrameCallback((_) {
+                      controller.jumpTo(controller.position.maxScrollExtent);
+                    });
+                    message = ImageMessage(
+                        onCompleted: (v) {
+                          if (v == 1.0) {
+                            WidgetsBinding.instance.addPostFrameCallback((_) {
+                              controller.jumpTo(controller.position.maxScrollExtent);
+                            });
+                            setState(() {});
+                          } else {
+                            setState(() {});
+                            return;
+                          }
+                        },
+                        author: bot,
+                        time: 'now',
+                        imageUrl: state.model.data?.details?[0].url ?? '',
+                        caption: state.model.data?.chosenAnswer?.replaceAll(getLabel ?? '', '').toString());
+                    dbProvider.insertChat('b', state.model.data?.chosenAnswer?.replaceAll(getLabel ?? '', '').toString() ?? '', getLastId[0]['id'], state.model.data?.details?[0].url ?? '');
+                    setState(() {});
+                  } else {
+                    message = TextMessage(
+                      isLoading: false,
+                      author: bot,
+                      text: state.model.data?.chosenAnswer.toString() ?? '',
+                      time: "now",
+                      stage: 3,
+                    );
+                    dbProvider.insertChat('b', state.model.data?.chosenAnswer.toString() ?? '', getLastId[0]['id'], '');
+                    setState(() {});
+                  }
+
+                  messages.add(message);
                   WidgetsBinding.instance.addPostFrameCallback((_) {
                     controller.jumpTo(controller.position.maxScrollExtent);
                   });
-                  message = ImageMessage(
-                      onCompleted: (v) {
-                        if (v == 1.0) {
-                          WidgetsBinding.instance.addPostFrameCallback((_) {
-                            controller.jumpTo(controller.position.maxScrollExtent);
-                          });
-                          setState(() {});
-                        } else {
-                          setState(() {});
-                          return;
-                        }
-                      },
-                      author: bot,
-                      time: 'now',
-                      imageUrl: state.model.data?.details?[0].url ?? '',
-                      caption: state.model.data?.chosenAnswer?.replaceAll(getLabel ?? '', '').toString());
-                  dbProvider.insertChat('b', state.model.data?.chosenAnswer?.replaceAll(getLabel ?? '', '').toString() ?? '', getLastId[0]['id'], state.model.data?.details?[0].url ?? '');
-                  setState(() {});
-                } else {
-                  message = TextMessage(
-                    isLoading: false,
-                    author: bot,
-                    text: state.model.data?.chosenAnswer.toString() ?? '',
-                    time: "now",
-                    stage: 3,
-                  );
-                  dbProvider.insertChat('b', state.model.data?.chosenAnswer.toString() ?? '', getLastId[0]['id'], '');
                   setState(() {});
                 }
-
-                messages.add(message);
-                WidgetsBinding.instance.addPostFrameCallback((_) {
-                  controller.jumpTo(controller.position.maxScrollExtent);
-                });
-                setState(() {});
               }
-            }
-          },
-          builder: (context, state) {
-            return Center(
-              child: Chat(
-                controller: controller,
-                user: loggedInUser,
-                messages: messages,
-                theme: DefaultChatTheme(
-                  backgroundImage: null,
-                  backgroundColor: const Color(0xff090e14),
-                  userAvatarRadius: 12,
-                ),
-                showUserAvatar: true,
-                input: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    // state is BardWaitingState ? const CircularProgressIndicator() : Container(),
-                    Container(
-                      padding: const EdgeInsets.only(left: 10, bottom: 10, top: 10),
-                      color: const Color(0xff1e2d40),
-                      height: 60,
-                      width: double.infinity,
-                      child: Row(
-                        children: <Widget>[
-                          const SizedBox(
-                            width: 15,
-                          ),
-                          Expanded(
-                            child: TextField(
-                              controller: messageTextController,
-                              style: TextStyle(color: Colors.white.withOpacity(0.7)),
-                              decoration: InputDecoration(
-                                  hintText: messageTextController.text == "" ? "Write message..." : "", hintStyle: TextStyle(color: Colors.white.withOpacity(0.7)), border: InputBorder.none),
+            },
+            builder: (context, state) {
+              return Center(
+                child: Chat(
+                  controller: controller,
+                  user: loggedInUser,
+                  messages: messages,
+                  theme: DefaultChatTheme(
+                    backgroundImage: null,
+                    backgroundColor: const Color(0xff090e14),
+                    userAvatarRadius: 12,
+                  ),
+                  showUserAvatar: true,
+                  input: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      // state is BardWaitingState ? const CircularProgressIndicator() : Container(),
+                      Container(
+                        padding: const EdgeInsets.only(left: 10, bottom: 10, top: 10),
+                        color: const Color(0xff1e2d40),
+                        height: 60,
+                        width: double.infinity,
+                        child: Row(
+                          children: <Widget>[
+                            const SizedBox(
+                              width: 15,
                             ),
-                          ),
-                          const SizedBox(
-                            width: 15,
-                          ),
-                          FloatingActionButton(
-                            onPressed: () async {
-                              if (messageTextController.text.trim() == "") {
-                                return;
-                              }
-                              Message message = TextMessage(author: loggedInUser, text: messageTextController.text, time: DateTime.now().toString(), stage: 1);
-                              DBProvider dbProvider = DBProvider();
-                              var getLastId = await dbProvider.getLastHeaderId();
-                              dbProvider.insertChat('u', messageTextController.text, getLastId[0]['id'], '');
-                              setState(() {
-                                messages.add(message);
-                              });
-                              context.read<BardBloc>().add(AskToBardEvent(BardRequestModel(question: messageTextController.text)));
-                              WidgetsBinding.instance.addPostFrameCallback((_) {
-                                controller.jumpTo(controller.position.maxScrollExtent);
-                              });
-                              messageTextController.text = "";
+                            Expanded(
+                              child: TextField(
+                                controller: messageTextController,
+                                style: TextStyle(color: Colors.white.withOpacity(0.7)),
+                                decoration: InputDecoration(
+                                    hintText: messageTextController.text == "" ? "Write message..." : "", hintStyle: TextStyle(color: Colors.white.withOpacity(0.7)), border: InputBorder.none),
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 15,
+                            ),
+                            FloatingActionButton(
+                              onPressed: () async {
+                                if (messageTextController.text.trim() == "") {
+                                  return;
+                                }
+                                Message message = TextMessage(author: loggedInUser, text: messageTextController.text, time: DateTime.now().toString(), stage: 1);
+                                DBProvider dbProvider = DBProvider();
+                                var getLastId = await dbProvider.getLastHeaderId();
+                                dbProvider.insertChat('u', messageTextController.text, getLastId[0]['id'], '');
+                                setState(() {
+                                  messages.add(message);
+                                });
+                                context.read<BardBloc>().add(AskToBardEvent(BardRequestModel(question: messageTextController.text)));
+                                WidgetsBinding.instance.addPostFrameCallback((_) {
+                                  controller.jumpTo(controller.position.maxScrollExtent);
+                                });
+                                messageTextController.text = "";
 
-                              // Navigator.push(context, MaterialPageRoute(builder: (_) => const ChatPage()));
-                            },
-                            backgroundColor: const Color(0xff1e2d40),
-                            elevation: 0,
-                            child: Icon(
-                              Icons.send,
-                              color: Colors.white.withOpacity(0.7),
-                              size: 18,
+                                // Navigator.push(context, MaterialPageRoute(builder: (_) => const ChatPage()));
+                              },
+                              backgroundColor: const Color(0xff1e2d40),
+                              elevation: 0,
+                              child: Icon(
+                                Icons.send,
+                                color: Colors.white.withOpacity(0.7),
+                                size: 18,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
+                  // input: ChatInput(
+                  //   user: User(id: '0de4krd0sas-49iecxo203rji', name: 'ASD'),
+                  //   onSend: (v) {
+                  //     DBProvider dbProvider = DBProvider();
+                  //     messages.add(v);
+                  //   },
+                  // ),
                 ),
-                // input: ChatInput(
-                //   user: User(id: '0de4krd0sas-49iecxo203rji', name: 'ASD'),
-                //   onSend: (v) {
-                //     DBProvider dbProvider = DBProvider();
-                //     messages.add(v);
-                //   },
-                // ),
-              ),
-            );
-          },
+              );
+            },
+          ),
         ),
       ),
     );
