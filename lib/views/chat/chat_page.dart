@@ -91,27 +91,52 @@ class _ChatPageState extends State<ChatPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            QuickAlert.show(
-              context: context,
-              type: QuickAlertType.confirm,
-              barrierDismissible: true,
-              text: 'You end the chat.\nYou can check your chats in the "recents" tab.',
-              confirmBtnText: 'OK',
-              confirmBtnColor: const Color(0xff33cdbb),
-              onConfirmBtnTap: () async {
-                Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const HomeView(
-                              navigate: true,
-                            )),
-                    (route) => false);
-              },
-            );
-          },
-          icon: const Icon(Icons.arrow_back_ios),
+        leading: BlocProvider(
+          create: (context) => bardBloc,
+          child: BlocConsumer<BardBloc, BardState>(
+            listener: (context, state) {},
+            builder: (context, state) {
+              return IconButton(
+                color: Colors.white,
+                onPressed: state is BardWaitingState
+                    ? () {
+                        QuickAlert.show(
+                          context: context,
+                          type: QuickAlertType.warning,
+                          barrierDismissible: true,
+                          text: 'Leaving the chat without waiting for the Bardly to respond causes conversations not to be recorded in the history.',
+                          confirmBtnText: 'Got it!',
+                          confirmBtnColor: const Color(0xff007d81),
+                          onConfirmBtnTap: () async {
+                            Navigator.pop(context);
+                          },
+                        );
+                      }
+                    : () {
+                        QuickAlert.show(
+                          context: context,
+                          type: QuickAlertType.confirm,
+                          barrierDismissible: true,
+                          text: 'You end the chat.\nYou can check your chats in the "recents" tab.',
+                          confirmBtnText: 'OK',
+                          confirmBtnColor: const Color(0xff33cdbb),
+                          onConfirmBtnTap: state is BardWaitingState
+                              ? null
+                              : () async {
+                                  Navigator.pushAndRemoveUntil(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => const HomeView(
+                                                navigate: true,
+                                              )),
+                                      (route) => false);
+                                },
+                        );
+                      },
+                icon: const Icon(Icons.arrow_back_ios),
+              );
+            },
+          ),
         ),
         backgroundColor: const Color(0xff1e2d40),
         toolbarHeight: 100,
@@ -159,7 +184,7 @@ class _ChatPageState extends State<ChatPage> {
         ),
         centerTitle: false,
       ),
-      backgroundColor: const Color(0xff1e2d40),
+      backgroundColor: const Color(0xff090e14),
       body: BlocProvider(
         create: (context) => bardBloc,
         child: BlocConsumer<BardBloc, BardState>(
@@ -232,6 +257,8 @@ class _ChatPageState extends State<ChatPage> {
                 user: loggedInUser,
                 messages: messages,
                 theme: DefaultChatTheme(
+                  backgroundImage: null,
+                  backgroundColor: const Color(0xff090e14),
                   userAvatarRadius: 12,
                 ),
                 showUserAvatar: true,
@@ -243,6 +270,7 @@ class _ChatPageState extends State<ChatPage> {
                     // state is BardWaitingState ? const CircularProgressIndicator() : Container(),
                     Container(
                       padding: const EdgeInsets.only(left: 10, bottom: 10, top: 10),
+                      color: const Color(0xff1e2d40),
                       height: 60,
                       width: double.infinity,
                       child: Row(
