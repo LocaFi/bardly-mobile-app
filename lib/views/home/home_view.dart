@@ -125,7 +125,7 @@ class _HomeViewState extends State<HomeView> {
             padding: const EdgeInsets.only(right: 18.0),
             child: InkWell(
               onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (_) => const SettingsView()));
+                Navigator.push(context, MaterialPageRoute(builder: (_) => SettingsView()));
               },
               child: CircleAvatar(
                 backgroundColor: const Color.fromARGB(255, 54, 83, 120),

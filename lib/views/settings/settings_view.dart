@@ -1,10 +1,15 @@
+import 'package:bardly_mobile_app/core/ads/ads_helper.dart';
 import 'package:bardly_mobile_app/views/login/login_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SettingsView extends StatefulWidget {
-  const SettingsView({Key? key}) : super(key: key);
+  SettingsView({Key? key}) : super(key: key) {
+    adManager.addAds(true, true, true);
+  }
+  final adManager = AdManager();
 
   @override
   State<SettingsView> createState() => _SettingsViewState();
@@ -206,9 +211,7 @@ class _SettingsViewState extends State<SettingsView> {
                   children: [
                     InkWell(
                       onTap: () {
-                        _launchSocialMediaAppIfInstalled(
-                          url: 'https://www.instagram.com/creatoriumapps/',
-                        );
+                        widget.adManager.showRewardedAd();
                       },
                       child: Row(
                         children: [
@@ -355,6 +358,12 @@ class _SettingsViewState extends State<SettingsView> {
             const SizedBox(
               height: 100,
             ),
+            Container(
+              alignment: Alignment.center,
+              width: widget.adManager.getBannerAd()?.size.width.toDouble(),
+              height: widget.adManager.getBannerAd()?.size.height.toDouble(),
+              child: AdWidget(ad: widget.adManager.getBannerAd()!),
+            )
           ],
         ),
       ),

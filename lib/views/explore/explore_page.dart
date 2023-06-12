@@ -18,6 +18,51 @@ int _indexFiveList = 0;
 int _indexSixList = 0;
 int _indexSevenList = 0;
 int _indexEigthList = 0;
+List<String> textBasedSkillsImages = [
+  'assets/improve_img.png',
+  'assets/summarize_png.png',
+  'assets/paragraph_img.png',
+  'assets/translate_img.png',
+];
+List<String> artSkillsImages = [
+  'assets/lyrics_img.png',
+  'assets/poem_img.png',
+  'assets/story_img.png',
+  'assets/short_movie_img.png',
+];
+List<String> businessSkillsImages = [
+  'assets/company_name_img.png',
+  'assets/company_slogan_img.png',
+  'assets/job_post_img.png',
+  'assets/company_bio_img.png',
+];
+
+List<String> socialSkillsImages = [
+  'assets/tweet_img.png',
+  'assets/linkedin_img.png',
+  'assets/instagram_img.png',
+  'assets/tiktok_img.png',
+  'assets/viral_video_img.png',
+];
+List<String> emailSkillsImages = [
+  'assets/tweet_img.png',
+  'assets/linkedin_img.png',
+  'assets/instagram_img.png',
+  'assets/tiktok_img.png',
+  'assets/viral_video_img.png',
+];
+List<String> codeSkillsImages = [
+  'assets/write_code_img.png',
+  'assets/explain_code_img.png',
+];
+List<String> foodSkillsImages = [
+  'assets/recipe_img.png',
+  'assets/diet_plan_iimg.png',
+];
+List<String> entertainmentSkillsImages = [
+  'assets/joke_img.png',
+  'assets/complete_sentences_img.png',
+];
 String artImages = "assets/art.png";
 String textImages = "assets/book.png";
 String businessImages = "assets/business.png";
@@ -53,7 +98,7 @@ class _ExplorePageState extends State<ExplorePage> {
             ),
             Padding(
               padding: const EdgeInsets.only(left: 18.0, top: 8),
-              child: SizedBox(height: 50, width: 50, child: Image.asset(textImages)),
+              child: SizedBox(height: 50, width: 50, child: Image.asset(textBasedSkillsImages[0])),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -111,7 +156,7 @@ class _ExplorePageState extends State<ExplorePage> {
             ),
             Padding(
               padding: const EdgeInsets.only(left: 18.0, top: 8),
-              child: SizedBox(height: 50, width: 50, child: Image.asset(textImages)),
+              child: SizedBox(height: 50, width: 50, child: Image.asset(textBasedSkillsImages[1])),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -169,7 +214,7 @@ class _ExplorePageState extends State<ExplorePage> {
             ),
             Padding(
               padding: const EdgeInsets.only(left: 18.0, top: 8),
-              child: SizedBox(height: 50, width: 50, child: Image.asset(textImages)),
+              child: SizedBox(height: 50, width: 50, child: Image.asset(textBasedSkillsImages[2])),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -227,7 +272,7 @@ class _ExplorePageState extends State<ExplorePage> {
             ),
             Padding(
               padding: const EdgeInsets.only(left: 18.0, top: 8),
-              child: SizedBox(height: 50, width: 50, child: Image.asset(textImages)),
+              child: SizedBox(height: 50, width: 50, child: Image.asset(textBasedSkillsImages[3])),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -287,7 +332,7 @@ class _ExplorePageState extends State<ExplorePage> {
             ),
             Padding(
               padding: const EdgeInsets.only(left: 18.0, top: 8),
-              child: SizedBox(height: 50, width: 50, child: Image.asset(artImages)),
+              child: SizedBox(height: 50, width: 50, child: Image.asset(artSkillsImages[0])),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -345,7 +390,7 @@ class _ExplorePageState extends State<ExplorePage> {
             ),
             Padding(
               padding: const EdgeInsets.only(left: 18.0, top: 8),
-              child: SizedBox(height: 50, width: 50, child: Image.asset(artImages)),
+              child: SizedBox(height: 50, width: 50, child: Image.asset(artSkillsImages[1])),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -403,7 +448,7 @@ class _ExplorePageState extends State<ExplorePage> {
             ),
             Padding(
               padding: const EdgeInsets.only(left: 18.0, top: 8),
-              child: SizedBox(height: 50, width: 50, child: Image.asset(artImages)),
+              child: SizedBox(height: 50, width: 50, child: Image.asset(artSkillsImages[2])),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -461,7 +506,7 @@ class _ExplorePageState extends State<ExplorePage> {
             ),
             Padding(
               padding: const EdgeInsets.only(left: 18.0, top: 8),
-              child: SizedBox(height: 50, width: 50, child: Image.asset(artImages)),
+              child: SizedBox(height: 50, width: 50, child: Image.asset(artSkillsImages[3])),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -521,7 +566,7 @@ class _ExplorePageState extends State<ExplorePage> {
             ),
             Padding(
               padding: const EdgeInsets.only(left: 18.0, top: 8),
-              child: SizedBox(height: 50, width: 50, child: Image.asset(businessImages)),
+              child: SizedBox(height: 50, width: 50, child: Image.asset(businessSkillsImages[0])),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -579,7 +624,7 @@ class _ExplorePageState extends State<ExplorePage> {
             ),
             Padding(
               padding: const EdgeInsets.only(left: 18.0, top: 8),
-              child: SizedBox(height: 50, width: 50, child: Image.asset(businessImages)),
+              child: SizedBox(height: 50, width: 50, child: Image.asset(businessSkillsImages[1])),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -637,7 +682,7 @@ class _ExplorePageState extends State<ExplorePage> {
             ),
             Padding(
               padding: const EdgeInsets.only(left: 18.0, top: 8),
-              child: SizedBox(height: 50, width: 50, child: Image.asset(businessImages)),
+              child: SizedBox(height: 50, width: 50, child: Image.asset(businessSkillsImages[2])),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -695,7 +740,7 @@ class _ExplorePageState extends State<ExplorePage> {
             ),
             Padding(
               padding: const EdgeInsets.only(left: 18.0, top: 8),
-              child: SizedBox(height: 50, width: 50, child: Image.asset(businessImages)),
+              child: SizedBox(height: 50, width: 50, child: Image.asset(businessSkillsImages[3])),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -755,7 +800,7 @@ class _ExplorePageState extends State<ExplorePage> {
             ),
             Padding(
               padding: const EdgeInsets.only(left: 18.0, top: 8),
-              child: SizedBox(height: 50, width: 50, child: Image.asset(socialImages)),
+              child: SizedBox(height: 50, width: 50, child: Image.asset(socialSkillsImages[0])),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -813,7 +858,7 @@ class _ExplorePageState extends State<ExplorePage> {
             ),
             Padding(
               padding: const EdgeInsets.only(left: 18.0, top: 8),
-              child: SizedBox(height: 50, width: 50, child: Image.asset(socialImages)),
+              child: SizedBox(height: 50, width: 50, child: Image.asset(socialSkillsImages[1])),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -871,7 +916,7 @@ class _ExplorePageState extends State<ExplorePage> {
             ),
             Padding(
               padding: const EdgeInsets.only(left: 18.0, top: 8),
-              child: SizedBox(height: 50, width: 50, child: Image.asset(socialImages)),
+              child: SizedBox(height: 50, width: 50, child: Image.asset(socialSkillsImages[2])),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -929,7 +974,7 @@ class _ExplorePageState extends State<ExplorePage> {
             ),
             Padding(
               padding: const EdgeInsets.only(left: 18.0, top: 8),
-              child: SizedBox(height: 50, width: 50, child: Image.asset(socialImages)),
+              child: SizedBox(height: 50, width: 50, child: Image.asset(socialSkillsImages[3])),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -987,7 +1032,7 @@ class _ExplorePageState extends State<ExplorePage> {
             ),
             Padding(
               padding: const EdgeInsets.only(left: 18.0, top: 8),
-              child: SizedBox(height: 50, width: 50, child: Image.asset(socialImages)),
+              child: SizedBox(height: 50, width: 50, child: Image.asset(socialSkillsImages[4])),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -1223,7 +1268,7 @@ class _ExplorePageState extends State<ExplorePage> {
             ),
             Padding(
               padding: const EdgeInsets.only(left: 18.0, top: 8),
-              child: SizedBox(height: 50, width: 50, child: Image.asset(codeImages)),
+              child: SizedBox(height: 50, width: 50, child: Image.asset(codeSkillsImages[0])),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -1281,7 +1326,7 @@ class _ExplorePageState extends State<ExplorePage> {
             ),
             Padding(
               padding: const EdgeInsets.only(left: 18.0, top: 8),
-              child: SizedBox(height: 50, width: 50, child: Image.asset(codeImages)),
+              child: SizedBox(height: 50, width: 50, child: Image.asset(codeSkillsImages[1])),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -1341,7 +1386,7 @@ class _ExplorePageState extends State<ExplorePage> {
             ),
             Padding(
               padding: const EdgeInsets.only(left: 18.0, top: 8),
-              child: SizedBox(height: 50, width: 50, child: Image.asset(foodImages)),
+              child: SizedBox(height: 50, width: 50, child: Image.asset(foodSkillsImages[0])),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -1399,7 +1444,7 @@ class _ExplorePageState extends State<ExplorePage> {
             ),
             Padding(
               padding: const EdgeInsets.only(left: 18.0, top: 8),
-              child: SizedBox(height: 50, width: 50, child: Image.asset(foodImages)),
+              child: SizedBox(height: 50, width: 50, child: Image.asset(foodSkillsImages[1])),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -1459,7 +1504,7 @@ class _ExplorePageState extends State<ExplorePage> {
             ),
             Padding(
               padding: const EdgeInsets.only(left: 18.0, top: 8),
-              child: SizedBox(height: 50, width: 50, child: Image.asset(entertainmentImages)),
+              child: SizedBox(height: 50, width: 50, child: Image.asset(entertainmentSkillsImages[0])),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -1517,7 +1562,7 @@ class _ExplorePageState extends State<ExplorePage> {
             ),
             Padding(
               padding: const EdgeInsets.only(left: 18.0, top: 8),
-              child: SizedBox(height: 50, width: 50, child: Image.asset(entertainmentImages)),
+              child: SizedBox(height: 50, width: 50, child: Image.asset(entertainmentSkillsImages[1])),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
