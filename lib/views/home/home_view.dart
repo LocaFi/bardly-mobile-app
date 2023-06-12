@@ -61,7 +61,7 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset: true,
       appBar: AppBar(
         backgroundColor: const Color(0xff1e2d40),
         toolbarHeight: 100,
@@ -175,44 +175,42 @@ class _HomeViewState extends State<HomeView> {
         physics: const NeverScrollableScrollPhysics(),
         children: <Widget>[
           Obx(
-            () => Center(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 12.0, top: 40, bottom: 12),
-                    child: Center(
-                      child: Text(
-                        'New Chat Topics',
-                        style: TextStyle(color: Colors.white.withOpacity(0.7), fontSize: 24),
-                      ),
+            () => Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 12.0, top: 40, bottom: 12),
+                  child: Center(
+                    child: Text(
+                      'New Chat Topics',
+                      style: TextStyle(color: Colors.white.withOpacity(0.7), fontSize: 24),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 25.0, right: 25, top: 15),
-                    child: Card(
-                      color: const Color(0xff1e2d40).withOpacity(0.9),
-                      elevation: 3,
-                      shape: RoundedRectangleBorder(
-                          side: BorderSide(
-                              // border color
-                              color: const Color(0xff1e2d40).withOpacity(0.1),
-                              // border thickness
-                              width: 2),
-                          borderRadius: BorderRadius.circular(20)),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8),
-                            child: Center(
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Column(
+                ),
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(left: 25.0, right: 25, top: 15),
+                          child: Card(
+                            color: const Color(0xff1e2d40).withOpacity(0.9),
+                            elevation: 3,
+                            shape: RoundedRectangleBorder(
+                                side: BorderSide(
+                                    // border color
+                                    color: const Color(0xff1e2d40).withOpacity(0.1),
+                                    // border thickness
+                                    width: 2),
+                                borderRadius: BorderRadius.circular(20)),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                Column(
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
@@ -230,113 +228,114 @@ class _HomeViewState extends State<HomeView> {
                                     ),
                                   ],
                                 ),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 25.0, right: 25, top: 15),
-                            child: InkWell(
-                              onTap: () {
-                                messageTextController.text = topic1.value;
-                              },
-                              child: Container(
-                                //color: Color(0xff1e2d40).withOpacity(0.1),
-                                decoration: BoxDecoration(
-                                    border: Border.all(color: const Color.fromARGB(255, 54, 83, 120)), borderRadius: BorderRadius.circular(30), color: const Color.fromARGB(255, 54, 83, 120)),
-                                width: MediaQuery.of(context).size.width,
-                                height: 50,
-                                child: Center(
-                                  child: Text(
-                                    topic1.value,
-                                    style: TextStyle(fontSize: 16, color: Colors.white.withOpacity(0.7)),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 25.0, right: 25, top: 15),
+                                  child: InkWell(
+                                    onTap: () {
+                                      messageTextController.text = topic1.value;
+                                    },
+                                    child: Container(
+                                      //color: Color(0xff1e2d40).withOpacity(0.1),
+                                      decoration: BoxDecoration(
+                                          border: Border.all(color: const Color.fromARGB(255, 54, 83, 120)), borderRadius: BorderRadius.circular(30), color: const Color.fromARGB(255, 54, 83, 120)),
+                                      width: MediaQuery.of(context).size.width,
+                                      height: 50,
+                                      child: Center(
+                                        child: Text(
+                                          topic1.value,
+                                          style: TextStyle(fontSize: 16, color: Colors.white.withOpacity(0.7)),
+                                        ),
+                                      ),
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 25.0, right: 25, top: 15),
-                            child: InkWell(
-                              onTap: () {
-                                messageTextController.text =
-                                    'want you to act as a magician. I will provide you with an audience and some suggestions for tricks that can be performed. My first request is I want you to make my watch disappear';
-                              },
-                              child: Container(
-                                decoration: BoxDecoration(
-                                    border: Border.all(color: const Color.fromARGB(255, 54, 83, 120)), borderRadius: BorderRadius.circular(30), color: const Color.fromARGB(255, 54, 83, 120)),
-                                //color: Color(0xff1e2d40).withOpacity(0.1),
-                                width: MediaQuery.of(context).size.width,
-                                height: 50,
-                                child: Center(
-                                  child: Text(
-                                    topic2.value,
-                                    style: TextStyle(fontSize: 16, color: Colors.white.withOpacity(0.7)),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 25.0, right: 25, top: 15),
+                                  child: InkWell(
+                                    onTap: () {
+                                      messageTextController.text =
+                                          'want you to act as a magician. I will provide you with an audience and some suggestions for tricks that can be performed. My first request is I want you to make my watch disappear';
+                                    },
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                          border: Border.all(color: const Color.fromARGB(255, 54, 83, 120)), borderRadius: BorderRadius.circular(30), color: const Color.fromARGB(255, 54, 83, 120)),
+                                      //color: Color(0xff1e2d40).withOpacity(0.1),
+                                      width: MediaQuery.of(context).size.width,
+                                      height: 50,
+                                      child: Center(
+                                        child: Text(
+                                          topic2.value,
+                                          style: TextStyle(fontSize: 16, color: Colors.white.withOpacity(0.7)),
+                                        ),
+                                      ),
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 25.0, right: 25, top: 15),
-                            child: InkWell(
-                              onTap: () {
-                                messageTextController.text = 'Write a tweet that can go viral on Twitter nowadays.';
-                              },
-                              child: Container(
-                                decoration: BoxDecoration(
-                                    border: Border.all(color: const Color.fromARGB(255, 54, 83, 120)), borderRadius: BorderRadius.circular(30), color: const Color.fromARGB(255, 54, 83, 120)),
-                                //color: Color(0xff1e2d40).withOpacity(0.1),
-                                width: MediaQuery.of(context).size.width,
-                                height: 50,
-                                child: Center(
-                                  child: Text(
-                                    topic3.value,
-                                    style: TextStyle(fontSize: 16, color: Colors.white.withOpacity(0.7)),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 25.0, right: 25, top: 15),
+                                  child: InkWell(
+                                    onTap: () {
+                                      messageTextController.text = 'Write a tweet that can go viral on Twitter nowadays.';
+                                    },
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                          border: Border.all(color: const Color.fromARGB(255, 54, 83, 120)), borderRadius: BorderRadius.circular(30), color: const Color.fromARGB(255, 54, 83, 120)),
+                                      //color: Color(0xff1e2d40).withOpacity(0.1),
+                                      width: MediaQuery.of(context).size.width,
+                                      height: 50,
+                                      child: Center(
+                                        child: Text(
+                                          topic3.value,
+                                          style: TextStyle(fontSize: 16, color: Colors.white.withOpacity(0.7)),
+                                        ),
+                                      ),
+                                    ),
                                   ),
                                 ),
-                              ),
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                              ],
                             ),
                           ),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
-                  const Spacer(),
-                  Container(
-                    margin: const EdgeInsets.only(bottom: 10),
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white.withOpacity(0.7), width: 0.1),
-                      color: const Color(0xff1e2d40),
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    padding: const EdgeInsets.only(left: 10, bottom: 10, top: 10),
-                    height: 60,
-                    width: double.infinity,
-                    child: Row(
-                      children: <Widget>[
-                        // GestureDetector(
-                        //   onTap: () {},
-                        //   child: Container(
-                        //     height: 30,
-                        //     width: 30,
-                        //     decoration: BoxDecoration(
-                        //       color: const Color(0xff1e2d40),
-                        //       borderRadius: BorderRadius.circular(30),
-                        //     ),
-                        //     child:  Icon(
-                        //       Icons.add,
-                        //       color: Colors.white.withOpacity(0.7),
-                        //       size: 20,
-                        //     ),
-                        //   ),
-                        // ),
-                        const SizedBox(
-                          width: 15,
-                        ),
-                        Expanded(
+                ),
+                Container(
+                  margin: const EdgeInsets.only(bottom: 10),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.white.withOpacity(0.7), width: 0.1),
+                    color: const Color(0xff1e2d40),
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  padding: const EdgeInsets.only(left: 10, bottom: 10, top: 10),
+                  height: 60,
+                  width: double.infinity,
+                  child: Row(
+                    children: <Widget>[
+                      // GestureDetector(
+                      //   onTap: () {},
+                      //   child: Container(
+                      //     height: 30,
+                      //     width: 30,
+                      //     decoration: BoxDecoration(
+                      //       color: const Color(0xff1e2d40),
+                      //       borderRadius: BorderRadius.circular(30),
+                      //     ),
+                      //     child:  Icon(
+                      //       Icons.add,
+                      //       color: Colors.white.withOpacity(0.7),
+                      //       size: 20,
+                      //     ),
+                      //   ),
+                      // ),
+                      const SizedBox(
+                        width: 15,
+                      ),
+                      Container(
+                        child: Expanded(
                           child: TextField(
                             controller: messageTextController,
                             style: TextStyle(color: Colors.white.withOpacity(0.7)),
@@ -344,36 +343,36 @@ class _HomeViewState extends State<HomeView> {
                                 hintText: messageTextController.text == "" ? "Write message..." : "", hintStyle: TextStyle(color: Colors.white.withOpacity(0.7)), border: InputBorder.none),
                           ),
                         ),
-                        const SizedBox(
-                          width: 15,
+                      ),
+                      const SizedBox(
+                        width: 15,
+                      ),
+                      FloatingActionButton(
+                        onPressed: () {
+                          if (messageTextController.text.trim() == "") {
+                            return;
+                          }
+                          DBProvider dbProvider = DBProvider();
+                          dbProvider.insertRoomTable(messageTextController.text);
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (_) => ChatPage(
+                                        messageParams: messageTextController.text,
+                                      )));
+                        },
+                        backgroundColor: const Color(0xff1e2d40),
+                        elevation: 0,
+                        child: Icon(
+                          Icons.send,
+                          color: Colors.white.withOpacity(0.7),
+                          size: 18,
                         ),
-                        FloatingActionButton(
-                          onPressed: () {
-                            if (messageTextController.text.trim() == "") {
-                              return;
-                            }
-                            DBProvider dbProvider = DBProvider();
-                            dbProvider.insertRoomTable(messageTextController.text);
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (_) => ChatPage(
-                                          messageParams: messageTextController.text,
-                                        )));
-                          },
-                          backgroundColor: const Color(0xff1e2d40),
-                          elevation: 0,
-                          child: Icon(
-                            Icons.send,
-                            color: Colors.white.withOpacity(0.7),
-                            size: 18,
-                          ),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
           const ExplorePage(),
