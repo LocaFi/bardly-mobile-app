@@ -4,6 +4,9 @@ import 'package:bardly_mobile_app/views/onboarding/onboarding_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../bloc/bard/bard_bloc.dart';
+import '../../bloc/bard/bard_event.dart';
+
 class LoginView extends StatefulWidget {
   const LoginView({Key? key}) : super(key: key);
 
@@ -23,6 +26,8 @@ class _LoginViewState extends State<LoginView> {
       //   inAppReview.openStoreListing(appStoreId: '555115173');
       // }
       getLandingInfo();
+      BardBloc().add(GetSystemVariablesEvent());
+      // context.read<BardBloc>().add(GetSystemVariablesEvent());
     });
   }
 

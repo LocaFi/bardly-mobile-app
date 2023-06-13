@@ -20,4 +20,15 @@ class BardService extends AbstractService {
       rethrow;
     }
   }
+
+  Future<dynamic> getSystemVariables() async {
+    try {
+      final response = await get(
+        innerPath: '/systemVariable/getMobileVariables',
+      );
+      return response;
+    } catch (e) {
+      rethrow;
+    }
+  }
 }

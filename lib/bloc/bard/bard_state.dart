@@ -1,6 +1,8 @@
 import 'package:bardly_mobile_app/models/bard_response_model.dart';
 import 'package:equatable/equatable.dart';
 
+import '../../models/get_system_variables_response_model.dart';
+
 abstract class BardState extends Equatable {
   const BardState();
   @override
@@ -31,4 +33,13 @@ class BardErrorState extends BardState {
   List<Object> get props => [error];
   @override
   String toString() => 'BardErrorState';
+}
+
+class GetSystemVariablesState extends BardState {
+  final GetSystemVariables model;
+  const GetSystemVariablesState({required this.model});
+  @override
+  List<Object> get props => [model];
+  @override
+  String toString() => 'GetSystemVariablesState';
 }

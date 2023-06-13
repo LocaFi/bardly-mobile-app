@@ -27,3 +27,11 @@ class GetListEventsDetailByIdEvent extends BardEvent {
     return super.toString();
   }
 }
+
+class GetSystemVariablesEvent extends BardEvent {
+  @override
+  String toString() {
+    print('GetSystemVariablesEvent _> Calling...');
+    return super.toString();
+  }
+}

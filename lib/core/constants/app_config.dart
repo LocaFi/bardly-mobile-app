@@ -8,4 +8,7 @@ class AppConfig {
   static String? buildNumber;
   static String? packageName;
   static String? platform;
+  static String? MOBILE_SHOW_ADVERTISE;
+  static String? MOBILE_ANDRIOD_MARKET_ID;
+  static String? MOBILE_IOS_MARKET_ID;
 }
