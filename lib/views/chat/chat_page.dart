@@ -62,7 +62,7 @@ class _ChatPageState extends State<ChatPage> {
 
       Message message = TextMessage(author: loggedInUser, text: widget.messageParams ?? '', time: dateFormat.format(DateTime.now()).toString(), stage: 1);
       DBProvider dbProvider = DBProvider();
-      //dbProvider.insertRoomTable(widget.messageParams ?? '');
+      dbProvider.insertRoomTable(widget.messageParams ?? '');
       var getLastId = await dbProvider.getLastHeaderId();
       dbProvider.insertChat('u', widget.messageParams ?? '', getLastId[0]['id'] ?? '', '');
       setState(() {

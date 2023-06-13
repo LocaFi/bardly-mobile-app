@@ -112,6 +112,14 @@ flutter:
         - asset: assets/Anton-Regular.ttf
         - asset: assets/Anton-Regular.ttf
           style: italic
+    - family: Ubuntu
+      fonts:
+        - asset: assets/Ubuntu-Bold.ttf
+          weight: 900
+        - asset: assets/Ubuntu-Regular.ttf
+          style: italic
+
+          
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

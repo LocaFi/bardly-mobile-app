@@ -60,7 +60,7 @@ class _SettingsViewState extends State<SettingsView> {
               height: 45,
               child: GradientText(
                 'Bardly',
-                style: TextStyle(fontFamily: 'Anton', fontSize: 30.0, color: Colors.white.withOpacity(0.7)),
+                style: TextStyle(fontFamily: 'Ubuntu', fontSize: 30.0, color: Colors.white.withOpacity(0.7)),
                 gradient: const LinearGradient(colors: [
                   Color(0xff00ffc3),
                   Color(0xff04f4bc),
@@ -71,10 +71,10 @@ class _SettingsViewState extends State<SettingsView> {
               child: RichText(
                 text: TextSpan(
                   text: 'With',
-                  style: const TextStyle(color: Colors.blueGrey, fontSize: 12),
+                  style: const TextStyle(fontFamily: 'Ubuntu', color: Colors.blueGrey, fontSize: 12),
                   /*defining default style is optional */
                   children: <TextSpan>[
-                    TextSpan(text: ' AI', style: TextStyle(fontWeight: FontWeight.normal, color: Colors.white.withOpacity(0.7))),
+                    TextSpan(text: ' AI', style: TextStyle(fontFamily: 'Ubuntu', fontWeight: FontWeight.normal, color: Colors.white.withOpacity(0.7))),
                   ],
                 ),
               ),
@@ -92,7 +92,7 @@ class _SettingsViewState extends State<SettingsView> {
               padding: const EdgeInsets.only(left: 18.0, top: 40, bottom: 12),
               child: Text(
                 'SOCIAL',
-                style: TextStyle(color: Colors.white.withOpacity(0.7), fontSize: 20, fontWeight: FontWeight.bold),
+                style: TextStyle(fontFamily: 'Ubuntu', color: Colors.white.withOpacity(0.7), fontSize: 20, fontWeight: FontWeight.bold),
               ),
             ),
             Container(
@@ -130,7 +130,7 @@ class _SettingsViewState extends State<SettingsView> {
                           ),
                           Text(
                             'Follow us on Instagram',
-                            style: TextStyle(color: Colors.white.withOpacity(0.7), fontSize: 18),
+                            style: TextStyle(fontFamily: 'Ubuntu', color: Colors.white.withOpacity(0.7), fontSize: 18),
                           ),
                         ],
                       ),
@@ -155,7 +155,7 @@ class _SettingsViewState extends State<SettingsView> {
                           ),
                           Text(
                             'Follow us on LinkedIn',
-                            style: TextStyle(color: Colors.white.withOpacity(0.7), fontSize: 18),
+                            style: TextStyle(fontFamily: 'Ubuntu', color: Colors.white.withOpacity(0.7), fontSize: 18),
                           ),
                         ],
                       ),
@@ -180,7 +180,7 @@ class _SettingsViewState extends State<SettingsView> {
                           ),
                           Text(
                             'Follow us on Twitter',
-                            style: TextStyle(color: Colors.white.withOpacity(0.7), fontSize: 18),
+                            style: TextStyle(fontFamily: 'Ubuntu', color: Colors.white.withOpacity(0.7), fontSize: 18),
                           ),
                         ],
                       ),
@@ -193,7 +193,7 @@ class _SettingsViewState extends State<SettingsView> {
               padding: const EdgeInsets.only(left: 18.0, top: 15, bottom: 12),
               child: Text(
                 'Support Us',
-                style: TextStyle(color: Colors.white.withOpacity(0.7), fontSize: 20, fontWeight: FontWeight.bold),
+                style: TextStyle(fontFamily: 'Ubuntu', color: Colors.white.withOpacity(0.7), fontSize: 20, fontWeight: FontWeight.bold),
               ),
             ),
             Container(
@@ -229,7 +229,7 @@ class _SettingsViewState extends State<SettingsView> {
                           ),
                           Text(
                             'Watch Ads',
-                            style: TextStyle(color: Colors.white.withOpacity(0.7), fontSize: 18),
+                            style: TextStyle(fontFamily: 'Ubuntu', color: Colors.white.withOpacity(0.7), fontSize: 18),
                           ),
                         ],
                       ),
@@ -252,7 +252,7 @@ class _SettingsViewState extends State<SettingsView> {
                           ),
                           Text(
                             'Buy me a coffee',
-                            style: TextStyle(color: Colors.white.withOpacity(0.7), fontSize: 18),
+                            style: TextStyle(fontFamily: 'Ubuntu', color: Colors.white.withOpacity(0.7), fontSize: 18),
                           ),
                         ],
                       ),
@@ -265,7 +265,7 @@ class _SettingsViewState extends State<SettingsView> {
               padding: const EdgeInsets.only(left: 18.0, top: 40, bottom: 12),
               child: Text(
                 'ABOUT US',
-                style: TextStyle(color: Colors.white.withOpacity(0.7), fontSize: 20, fontWeight: FontWeight.bold),
+                style: TextStyle(fontFamily: 'Ubuntu', color: Colors.white.withOpacity(0.7), fontSize: 20, fontWeight: FontWeight.bold),
               ),
             ),
             Container(
@@ -303,7 +303,7 @@ class _SettingsViewState extends State<SettingsView> {
                           ),
                           Text(
                             'Privacy Policy',
-                            style: TextStyle(color: Colors.white.withOpacity(0.7), fontSize: 18),
+                            style: TextStyle(fontFamily: 'Ubuntu', color: Colors.white.withOpacity(0.7), fontSize: 18),
                           ),
                         ],
                       ),
@@ -324,7 +324,7 @@ class _SettingsViewState extends State<SettingsView> {
                           ),
                           Text(
                             'Rate us',
-                            style: TextStyle(color: Colors.white.withOpacity(0.7), fontSize: 18),
+                            style: TextStyle(fontFamily: 'Ubuntu', color: Colors.white.withOpacity(0.7), fontSize: 18),
                           ),
                         ],
                       ),
@@ -343,7 +343,7 @@ class _SettingsViewState extends State<SettingsView> {
                         ),
                         Text(
                           'Share with your friends',
-                          style: TextStyle(color: Colors.white.withOpacity(0.7), fontSize: 18),
+                          style: TextStyle(fontFamily: 'Ubuntu', color: Colors.white.withOpacity(0.7), fontSize: 18),
                         ),
                       ],
                     ),

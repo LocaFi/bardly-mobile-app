@@ -118,7 +118,7 @@ class _ChatHistoryPageState extends State<ChatHistoryPage> {
                         SizedBox(
                           width: 10,
                         ),
-                        Text('Share', style: TextStyle(color: Color(0xff04f4bc), fontSize: 18)),
+                        Text('Share', style: TextStyle(fontFamily: 'Ubuntu', color: Color(0xff04f4bc), fontSize: 18)),
                       ],
                     )),
               ),
@@ -147,7 +147,7 @@ class _ChatHistoryPageState extends State<ChatHistoryPage> {
                 height: 45,
                 child: GradientText(
                   'Bardly',
-                  style: TextStyle(fontFamily: 'Anton', fontSize: 30.0, color: Colors.white.withOpacity(0.7)),
+                  style: TextStyle(fontFamily: 'Ubuntu', fontSize: 30.0, color: Colors.white.withOpacity(0.7)),
                   gradient: const LinearGradient(colors: [
                     Color(0xff00ffc3),
                     Color(0xff04f4bc),
@@ -158,10 +158,10 @@ class _ChatHistoryPageState extends State<ChatHistoryPage> {
                 child: RichText(
                   text: TextSpan(
                     text: 'With',
-                    style: const TextStyle(color: Colors.blueGrey, fontSize: 12),
+                    style: const TextStyle(fontFamily: 'Ubuntu', color: Colors.blueGrey, fontSize: 12),
                     /*defining default style is optional */
                     children: <TextSpan>[
-                      TextSpan(text: ' AI', style: TextStyle(fontWeight: FontWeight.normal, color: Colors.white.withOpacity(0.7))),
+                      TextSpan(text: ' AI', style: TextStyle(fontFamily: 'Ubuntu', fontWeight: FontWeight.normal, color: Colors.white.withOpacity(0.7))),
                     ],
                   ),
                 ),
@@ -216,7 +216,7 @@ class _ChatHistoryPageState extends State<ChatHistoryPage> {
                 userAvatarRadius: 12,
                 defaultUserColor: const Color(0xff04f4bc).withOpacity(0.6),
                 usernameTextStyle: const TextStyle(color: Color(0xff04f4bc)),
-                timeTextStyle: TextStyle(color: Colors.white.withOpacity(0.7)),
+                timeTextStyle: TextStyle(fontFamily: 'Ubuntu', color: Colors.white.withOpacity(0.7)),
               ),
               showUserAvatar: true,
               input: Container()),

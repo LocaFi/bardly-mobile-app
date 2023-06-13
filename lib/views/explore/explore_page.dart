@@ -104,14 +104,14 @@ class _ExplorePageState extends State<ExplorePage> {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 "Improve",
-                style: TextStyle(fontSize: 24, color: Colors.white.withOpacity(0.7)),
+                style: TextStyle(fontFamily: 'Ubuntu', fontSize: 24, color: Colors.white.withOpacity(0.7)),
               ),
             ),
             const Padding(
               padding: EdgeInsets.all(8.0),
               child: Text(
                 'Can you improve my phrases like a professional?',
-                style: TextStyle(color: Colors.grey),
+                style: TextStyle(fontFamily: 'Ubuntu', color: Colors.grey),
               ),
             ),
             const Spacer(),
@@ -162,14 +162,14 @@ class _ExplorePageState extends State<ExplorePage> {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 "Summarize",
-                style: TextStyle(fontSize: 24, color: Colors.white.withOpacity(0.7)),
+                style: TextStyle(fontFamily: 'Ubuntu', fontSize: 24, color: Colors.white.withOpacity(0.7)),
               ),
             ),
             const Padding(
               padding: EdgeInsets.all(8.0),
               child: Text(
                 'Can you summarize my content?',
-                style: TextStyle(color: Colors.grey),
+                style: TextStyle(fontFamily: 'Ubuntu', color: Colors.grey),
               ),
             ),
             const Spacer(),
@@ -220,14 +220,14 @@ class _ExplorePageState extends State<ExplorePage> {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 "Paragraph",
-                style: TextStyle(fontSize: 24, color: Colors.white.withOpacity(0.7)),
+                style: TextStyle(fontFamily: 'Ubuntu', fontSize: 24, color: Colors.white.withOpacity(0.7)),
               ),
             ),
             const Padding(
               padding: EdgeInsets.all(8.0),
               child: Text(
                 'Can you write a paragraph for me?',
-                style: TextStyle(color: Colors.grey),
+                style: TextStyle(fontFamily: 'Ubuntu', color: Colors.grey),
               ),
             ),
             const Spacer(),
@@ -278,14 +278,14 @@ class _ExplorePageState extends State<ExplorePage> {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 "Translate",
-                style: TextStyle(fontSize: 24, color: Colors.white.withOpacity(0.7)),
+                style: TextStyle(fontFamily: 'Ubuntu', fontSize: 24, color: Colors.white.withOpacity(0.7)),
               ),
             ),
             const Padding(
               padding: EdgeInsets.all(8.0),
               child: Text(
                 'Can you translate a text for me?',
-                style: TextStyle(color: Colors.grey),
+                style: TextStyle(fontFamily: 'Ubuntu', color: Colors.grey),
               ),
             ),
             const Spacer(),
@@ -338,14 +338,14 @@ class _ExplorePageState extends State<ExplorePage> {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 "Lyrics",
-                style: TextStyle(fontSize: 24, color: Colors.white.withOpacity(0.7)),
+                style: TextStyle(fontFamily: 'Ubuntu', fontSize: 24, color: Colors.white.withOpacity(0.7)),
               ),
             ),
             const Padding(
               padding: EdgeInsets.all(8.0),
               child: Text(
                 'Can you generate a song lyrics for me?',
-                style: TextStyle(color: Colors.grey),
+                style: TextStyle(fontFamily: 'Ubuntu', color: Colors.grey),
               ),
             ),
             const Spacer(),
@@ -396,14 +396,14 @@ class _ExplorePageState extends State<ExplorePage> {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 "Poem",
-                style: TextStyle(fontSize: 24, color: Colors.white.withOpacity(0.7)),
+                style: TextStyle(fontFamily: 'Ubuntu', fontSize: 24, color: Colors.white.withOpacity(0.7)),
               ),
             ),
             const Padding(
               padding: EdgeInsets.all(8.0),
               child: Text(
                 'Can you write a poem for me?',
-                style: TextStyle(color: Colors.grey),
+                style: TextStyle(fontFamily: 'Ubuntu', color: Colors.grey),
               ),
             ),
             const Spacer(),
@@ -454,14 +454,14 @@ class _ExplorePageState extends State<ExplorePage> {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 "Story",
-                style: TextStyle(fontSize: 24, color: Colors.white.withOpacity(0.7)),
+                style: TextStyle(fontFamily: 'Ubuntu', fontSize: 24, color: Colors.white.withOpacity(0.7)),
               ),
             ),
             const Padding(
               padding: EdgeInsets.all(8.0),
               child: Text(
                 'Can you write a story for me?',
-                style: TextStyle(color: Colors.grey),
+                style: TextStyle(fontFamily: 'Ubuntu', color: Colors.grey),
               ),
             ),
             const Spacer(),
@@ -512,14 +512,14 @@ class _ExplorePageState extends State<ExplorePage> {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 "Short Movie",
-                style: TextStyle(fontSize: 24, color: Colors.white.withOpacity(0.7)),
+                style: TextStyle(fontFamily: 'Ubuntu', fontSize: 24, color: Colors.white.withOpacity(0.7)),
               ),
             ),
             const Padding(
               padding: EdgeInsets.all(8.0),
               child: Text(
                 'Can you write a short movie script for me?',
-                style: TextStyle(color: Colors.grey),
+                style: TextStyle(fontFamily: 'Ubuntu', color: Colors.grey),
               ),
             ),
             const Spacer(),
@@ -572,14 +572,14 @@ class _ExplorePageState extends State<ExplorePage> {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 "Company Name",
-                style: TextStyle(fontSize: 24, color: Colors.white.withOpacity(0.7)),
+                style: TextStyle(fontFamily: 'Ubuntu', fontSize: 24, color: Colors.white.withOpacity(0.7)),
               ),
             ),
             const Padding(
               padding: EdgeInsets.all(8.0),
               child: Text(
                 'Can you generate a company name for my company?',
-                style: TextStyle(color: Colors.grey),
+                style: TextStyle(fontFamily: 'Ubuntu', color: Colors.grey),
               ),
             ),
             const Spacer(),
@@ -630,14 +630,14 @@ class _ExplorePageState extends State<ExplorePage> {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 "Company Slogan",
-                style: TextStyle(fontSize: 24, color: Colors.white.withOpacity(0.7)),
+                style: TextStyle(fontFamily: 'Ubuntu', fontSize: 24, color: Colors.white.withOpacity(0.7)),
               ),
             ),
             const Padding(
               padding: EdgeInsets.all(8.0),
               child: Text(
                 'Can you generate a company slogan for my company?',
-                style: TextStyle(color: Colors.grey),
+                style: TextStyle(fontFamily: 'Ubuntu', color: Colors.grey),
               ),
             ),
             const Spacer(),
@@ -688,14 +688,14 @@ class _ExplorePageState extends State<ExplorePage> {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 "Job Post",
-                style: TextStyle(fontSize: 24, color: Colors.white.withOpacity(0.7)),
+                style: TextStyle(fontFamily: 'Ubuntu', fontSize: 24, color: Colors.white.withOpacity(0.7)),
               ),
             ),
             const Padding(
               padding: EdgeInsets.all(8.0),
               child: Text(
                 'Can you help about create a job description for my job post?',
-                style: TextStyle(color: Colors.grey),
+                style: TextStyle(fontFamily: 'Ubuntu', color: Colors.grey),
               ),
             ),
             const Spacer(),
@@ -746,14 +746,14 @@ class _ExplorePageState extends State<ExplorePage> {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 "Company Bio",
-                style: TextStyle(fontSize: 24, color: Colors.white.withOpacity(0.7)),
+                style: TextStyle(fontFamily: 'Ubuntu', fontSize: 24, color: Colors.white.withOpacity(0.7)),
               ),
             ),
             const Padding(
               padding: EdgeInsets.all(8.0),
               child: Text(
                 'Can you help for write a company biography for me?',
-                style: TextStyle(color: Colors.grey),
+                style: TextStyle(fontFamily: 'Ubuntu', color: Colors.grey),
               ),
             ),
             const Spacer(),
@@ -806,14 +806,14 @@ class _ExplorePageState extends State<ExplorePage> {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 "Tweet",
-                style: TextStyle(fontSize: 24, color: Colors.white.withOpacity(0.7)),
+                style: TextStyle(fontFamily: 'Ubuntu', fontSize: 24, color: Colors.white.withOpacity(0.7)),
               ),
             ),
             const Padding(
               padding: EdgeInsets.all(8.0),
               child: Text(
                 'Can you help me for write a tweet that helps get attraction?',
-                style: TextStyle(color: Colors.grey),
+                style: TextStyle(fontFamily: 'Ubuntu', color: Colors.grey),
               ),
             ),
             const Spacer(),
@@ -864,14 +864,14 @@ class _ExplorePageState extends State<ExplorePage> {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 "Linkedin Post",
-                style: TextStyle(fontSize: 24, color: Colors.white.withOpacity(0.7)),
+                style: TextStyle(fontFamily: 'Ubuntu', fontSize: 24, color: Colors.white.withOpacity(0.7)),
               ),
             ),
             const Padding(
               padding: EdgeInsets.all(8.0),
               child: Text(
                 'Can you help me for a linkedin post that helps get attraction?',
-                style: TextStyle(color: Colors.grey),
+                style: TextStyle(fontFamily: 'Ubuntu', color: Colors.grey),
               ),
             ),
             const Spacer(),
@@ -922,14 +922,14 @@ class _ExplorePageState extends State<ExplorePage> {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 "Instagram Caption",
-                style: TextStyle(fontSize: 24, color: Colors.white.withOpacity(0.7)),
+                style: TextStyle(fontFamily: 'Ubuntu', fontSize: 24, color: Colors.white.withOpacity(0.7)),
               ),
             ),
             const Padding(
               padding: EdgeInsets.all(8.0),
               child: Text(
                 'Can you help me for choose instagram caption for my instagram post?',
-                style: TextStyle(color: Colors.grey),
+                style: TextStyle(fontFamily: 'Ubuntu', color: Colors.grey),
               ),
             ),
             const Spacer(),
@@ -980,14 +980,14 @@ class _ExplorePageState extends State<ExplorePage> {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 "TikTok Caption",
-                style: TextStyle(fontSize: 24, color: Colors.white.withOpacity(0.7)),
+                style: TextStyle(fontFamily: 'Ubuntu', fontSize: 24, color: Colors.white.withOpacity(0.7)),
               ),
             ),
             const Padding(
               padding: EdgeInsets.all(8.0),
               child: Text(
                 'Can you help me for choose tiktok caption for my instagram post?',
-                style: TextStyle(color: Colors.grey),
+                style: TextStyle(fontFamily: 'Ubuntu', color: Colors.grey),
               ),
             ),
             const Spacer(),
@@ -1038,14 +1038,14 @@ class _ExplorePageState extends State<ExplorePage> {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 "Viral Video Ideas",
-                style: TextStyle(fontSize: 24, color: Colors.white.withOpacity(0.7)),
+                style: TextStyle(fontFamily: 'Ubuntu', fontSize: 24, color: Colors.white.withOpacity(0.7)),
               ),
             ),
             const Padding(
               padding: EdgeInsets.all(8.0),
               child: Text(
                 'Can you help me for an idea about viral video for social media?',
-                style: TextStyle(color: Colors.grey),
+                style: TextStyle(fontFamily: 'Ubuntu', color: Colors.grey),
               ),
             ),
             const Spacer(),
@@ -1098,14 +1098,14 @@ class _ExplorePageState extends State<ExplorePage> {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 "Email",
-                style: TextStyle(fontSize: 24, color: Colors.white.withOpacity(0.7)),
+                style: TextStyle(fontFamily: 'Ubuntu', fontSize: 24, color: Colors.white.withOpacity(0.7)),
               ),
             ),
             const Padding(
               padding: EdgeInsets.all(8.0),
               child: Text(
                 'Can you help me about write an email content?',
-                style: TextStyle(color: Colors.grey),
+                style: TextStyle(fontFamily: 'Ubuntu', color: Colors.grey),
               ),
             ),
             const Spacer(),
@@ -1156,14 +1156,14 @@ class _ExplorePageState extends State<ExplorePage> {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 "Email Subject",
-                style: TextStyle(fontSize: 24, color: Colors.white.withOpacity(0.7)),
+                style: TextStyle(fontFamily: 'Ubuntu', fontSize: 24, color: Colors.white.withOpacity(0.7)),
               ),
             ),
             const Padding(
               padding: EdgeInsets.all(8.0),
               child: Text(
                 'Can you help me about write an email subject?',
-                style: TextStyle(color: Colors.grey),
+                style: TextStyle(fontFamily: 'Ubuntu', color: Colors.grey),
               ),
             ),
             const Spacer(),
@@ -1214,14 +1214,14 @@ class _ExplorePageState extends State<ExplorePage> {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 "Improve Email",
-                style: TextStyle(fontSize: 24, color: Colors.white.withOpacity(0.7)),
+                style: TextStyle(fontFamily: 'Ubuntu', fontSize: 24, color: Colors.white.withOpacity(0.7)),
               ),
             ),
             const Padding(
               padding: EdgeInsets.all(8.0),
               child: Text(
                 'Can you help me for improve an email phrases?',
-                style: TextStyle(color: Colors.grey),
+                style: TextStyle(fontFamily: 'Ubuntu', color: Colors.grey),
               ),
             ),
             const Spacer(),
@@ -1274,14 +1274,14 @@ class _ExplorePageState extends State<ExplorePage> {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 "Write code",
-                style: TextStyle(fontSize: 24, color: Colors.white.withOpacity(0.7)),
+                style: TextStyle(fontFamily: 'Ubuntu', fontSize: 24, color: Colors.white.withOpacity(0.7)),
               ),
             ),
             const Padding(
               padding: EdgeInsets.all(8.0),
               child: Text(
                 'Can you write a simple code block for me with any language?',
-                style: TextStyle(color: Colors.grey),
+                style: TextStyle(fontFamily: 'Ubuntu', color: Colors.grey),
               ),
             ),
             const Spacer(),
@@ -1332,14 +1332,14 @@ class _ExplorePageState extends State<ExplorePage> {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 "Explain code",
-                style: TextStyle(fontSize: 24, color: Colors.white.withOpacity(0.7)),
+                style: TextStyle(fontFamily: 'Ubuntu', fontSize: 24, color: Colors.white.withOpacity(0.7)),
               ),
             ),
             const Padding(
               padding: EdgeInsets.all(8.0),
               child: Text(
                 'Can you explain a code block to me?',
-                style: TextStyle(color: Colors.grey),
+                style: TextStyle(fontFamily: 'Ubuntu', color: Colors.grey),
               ),
             ),
             const Spacer(),
@@ -1392,14 +1392,14 @@ class _ExplorePageState extends State<ExplorePage> {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 "Recipe",
-                style: TextStyle(fontSize: 24, color: Colors.white.withOpacity(0.7)),
+                style: TextStyle(fontFamily: 'Ubuntu', fontSize: 24, color: Colors.white.withOpacity(0.7)),
               ),
             ),
             const Padding(
               padding: EdgeInsets.all(8.0),
               child: Text(
                 'Can you give me ideas about cook for dinner?',
-                style: TextStyle(color: Colors.grey),
+                style: TextStyle(fontFamily: 'Ubuntu', color: Colors.grey),
               ),
             ),
             const Spacer(),
@@ -1450,14 +1450,14 @@ class _ExplorePageState extends State<ExplorePage> {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 "Diet Plan",
-                style: TextStyle(fontSize: 24, color: Colors.white.withOpacity(0.7)),
+                style: TextStyle(fontFamily: 'Ubuntu', fontSize: 24, color: Colors.white.withOpacity(0.7)),
               ),
             ),
             const Padding(
               padding: EdgeInsets.all(8.0),
               child: Text(
                 'Can you help me for create a diet plan?',
-                style: TextStyle(color: Colors.grey),
+                style: TextStyle(fontFamily: 'Ubuntu', color: Colors.grey),
               ),
             ),
             const Spacer(),
@@ -1510,14 +1510,14 @@ class _ExplorePageState extends State<ExplorePage> {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 "Tell Joke",
-                style: TextStyle(fontSize: 24, color: Colors.white.withOpacity(0.7)),
+                style: TextStyle(fontFamily: 'Ubuntu', fontSize: 24, color: Colors.white.withOpacity(0.7)),
               ),
             ),
             const Padding(
               padding: EdgeInsets.all(8.0),
               child: Text(
                 'Can you make a funny joke?',
-                style: TextStyle(color: Colors.grey),
+                style: TextStyle(fontFamily: 'Ubuntu', color: Colors.grey),
               ),
             ),
             const Spacer(),
@@ -1568,14 +1568,14 @@ class _ExplorePageState extends State<ExplorePage> {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 "Complete Sentences",
-                style: TextStyle(fontSize: 24, color: Colors.white.withOpacity(0.7)),
+                style: TextStyle(fontFamily: 'Ubuntu', fontSize: 24, color: Colors.white.withOpacity(0.7)),
               ),
             ),
             const Padding(
               padding: EdgeInsets.all(8.0),
               child: Text(
                 'Can you complete my sentences with funny random answers?',
-                style: TextStyle(color: Colors.grey),
+                style: TextStyle(fontFamily: 'Ubuntu', color: Colors.grey),
               ),
             ),
             const Spacer(),
@@ -1607,7 +1607,7 @@ class _ExplorePageState extends State<ExplorePage> {
             padding: const EdgeInsets.only(left: 12.0, top: 12, bottom: 12),
             child: Text(
               'Text Based Skills',
-              style: TextStyle(color: Colors.white.withOpacity(0.7), fontSize: 24),
+              style: TextStyle(fontFamily: 'Ubuntu', color: Colors.white.withOpacity(0.7), fontSize: 24),
             ),
           ),
           SizedBox(
@@ -1628,7 +1628,7 @@ class _ExplorePageState extends State<ExplorePage> {
             padding: const EdgeInsets.only(left: 12.0, top: 12, bottom: 12),
             child: Text(
               'Art Skills',
-              style: TextStyle(color: Colors.white.withOpacity(0.7), fontSize: 24),
+              style: TextStyle(fontFamily: 'Ubuntu', color: Colors.white.withOpacity(0.7), fontSize: 24),
             ),
           ),
           SizedBox(
@@ -1649,7 +1649,7 @@ class _ExplorePageState extends State<ExplorePage> {
             padding: const EdgeInsets.only(left: 12.0, top: 12, bottom: 12),
             child: Text(
               'Business Skills',
-              style: TextStyle(color: Colors.white.withOpacity(0.7), fontSize: 24),
+              style: TextStyle(fontFamily: 'Ubuntu', color: Colors.white.withOpacity(0.7), fontSize: 24),
             ),
           ),
           SizedBox(
@@ -1670,7 +1670,7 @@ class _ExplorePageState extends State<ExplorePage> {
             padding: const EdgeInsets.only(left: 12.0, top: 12, bottom: 12),
             child: Text(
               'Social Skills',
-              style: TextStyle(color: Colors.white.withOpacity(0.7), fontSize: 24),
+              style: TextStyle(fontFamily: 'Ubuntu', color: Colors.white.withOpacity(0.7), fontSize: 24),
             ),
           ),
           SizedBox(
@@ -1691,7 +1691,7 @@ class _ExplorePageState extends State<ExplorePage> {
             padding: const EdgeInsets.only(left: 12.0, top: 12, bottom: 12),
             child: Text(
               'Email Skills',
-              style: TextStyle(color: Colors.white.withOpacity(0.7), fontSize: 24),
+              style: TextStyle(fontFamily: 'Ubuntu', color: Colors.white.withOpacity(0.7), fontSize: 24),
             ),
           ),
           SizedBox(
@@ -1712,7 +1712,7 @@ class _ExplorePageState extends State<ExplorePage> {
             padding: const EdgeInsets.only(left: 12.0, top: 12, bottom: 12),
             child: Text(
               'Code Skills',
-              style: TextStyle(color: Colors.white.withOpacity(0.7), fontSize: 24),
+              style: TextStyle(fontFamily: 'Ubuntu', color: Colors.white.withOpacity(0.7), fontSize: 24),
             ),
           ),
           SizedBox(
@@ -1733,7 +1733,7 @@ class _ExplorePageState extends State<ExplorePage> {
             padding: const EdgeInsets.only(left: 12.0, top: 12, bottom: 12),
             child: Text(
               'Food Skills',
-              style: TextStyle(color: Colors.white.withOpacity(0.7), fontSize: 24),
+              style: TextStyle(fontFamily: 'Ubuntu', color: Colors.white.withOpacity(0.7), fontSize: 24),
             ),
           ),
           SizedBox(
@@ -1754,7 +1754,7 @@ class _ExplorePageState extends State<ExplorePage> {
             padding: const EdgeInsets.only(left: 12.0, top: 12, bottom: 12),
             child: Text(
               'Entertainment Skills',
-              style: TextStyle(color: Colors.white.withOpacity(0.7), fontSize: 24),
+              style: TextStyle(fontFamily: 'Ubuntu', color: Colors.white.withOpacity(0.7), fontSize: 24),
             ),
           ),
           SizedBox(

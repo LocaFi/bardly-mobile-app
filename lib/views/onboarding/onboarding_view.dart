@@ -32,17 +32,17 @@ class OnboardingOverview extends StatelessWidget {
         WhatsNewPage(
           title: const Text(
             "Welcome to Bardly",
-            style: TextStyle(color: Color.fromARGB(255, 8, 217, 168)),
+            style: TextStyle(fontFamily: 'Ubuntu', color: Color.fromARGB(255, 8, 217, 168)),
           ),
           features: const [
             WhatsNewFeature(
               title: Text(
                 'Bardly is connected to Internet!',
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(fontFamily: 'Ubuntu', color: Colors.white),
               ),
               description: Text(
                 'Bardly can search internet for serve true information to you. Also Bardly can show newest information from Internet.',
-                style: TextStyle(color: Colors.grey),
+                style: TextStyle(fontFamily: 'Ubuntu', color: Colors.grey),
               ),
               icon: Icon(
                 CupertinoIcons.wifi,
@@ -52,11 +52,11 @@ class OnboardingOverview extends StatelessWidget {
             WhatsNewFeature(
               title: Text(
                 "Bardly powered by Google💙",
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(fontFamily: 'Ubuntu', color: Colors.white),
               ),
               description: Text(
                 "Bardly is a new application powered by Google that uses Bard for AI processes. Bard is a large language model that can generate text, translate languages, write different kinds of creative content, and answer your questions in an informative way.",
-                style: TextStyle(color: Colors.grey),
+                style: TextStyle(fontFamily: 'Ubuntu', color: Colors.grey),
               ),
               icon: Icon(
                 Symbols.electric_bolt_rounded,
@@ -66,11 +66,11 @@ class OnboardingOverview extends StatelessWidget {
             WhatsNewFeature(
               title: Text(
                 'Keeping Updated ',
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(fontFamily: 'Ubuntu', color: Colors.white),
               ),
               description: Text(
                 "Bardly can always provide you with the most accurate and up-to-date information. If you ask Bardly about a current event, It will be able to tell you the latest news about it. Bardly can also keep you updated on your favorite topics, such as sports, movies, or music.",
-                style: TextStyle(color: Colors.grey),
+                style: TextStyle(fontFamily: 'Ubuntu', color: Colors.grey),
               ),
               icon: Icon(
                 Symbols.update,
@@ -83,6 +83,7 @@ class OnboardingOverview extends StatelessWidget {
             title: Text(
               'You can ask questions about current topics',
               style: TextStyle(
+                fontFamily: 'Ubuntu',
                 color: Color.fromARGB(255, 8, 217, 168),
               ),
             ),
@@ -95,6 +96,7 @@ class OnboardingOverview extends StatelessWidget {
           title: Text(
             'Perform  analysis, translation, and more with URL',
             style: TextStyle(
+              fontFamily: 'Ubuntu',
               color: Color.fromARGB(255, 8, 217, 168),
             ),
           ),
@@ -108,6 +110,7 @@ class OnboardingOverview extends StatelessWidget {
           title: Text(
             'Now you are going to meet with Bardly!',
             style: TextStyle(
+              fontFamily: 'Ubuntu',
               color: Color.fromARGB(255, 8, 217, 168),
             ),
           ),

@@ -65,7 +65,7 @@ class _RecentPageState extends State<RecentPage> {
                   children: [
                     Text(
                       'Conversation not found.',
-                      style: TextStyle(color: Colors.white.withOpacity(0.7)),
+                      style: TextStyle(fontFamily: 'Ubuntu', color: Colors.white.withOpacity(0.7)),
                     ),
                     const SizedBox(
                       height: 30,
@@ -81,7 +81,7 @@ class _RecentPageState extends State<RecentPage> {
                       },
                       child: const Text(
                         'Start a conversation.',
-                        style: TextStyle(color: Color(0xff00ffc3)),
+                        style: TextStyle(fontFamily: 'Ubuntu', color: Color(0xff00ffc3)),
                       ),
                     ),
                   ],
@@ -264,7 +264,7 @@ class _RecentPageState extends State<RecentPage> {
                                                 : getUserDataFromDB.isNotEmpty
                                                     ? getUserDataFromDB[index]["header"].toString()
                                                     : "",
-                                            style: TextStyle(fontSize: 16, color: Colors.white.withOpacity(0.7)),
+                                            style: TextStyle(fontFamily: 'Ubuntu', fontSize: 16, color: Colors.white.withOpacity(0.7)),
                                           ),
                                         ),
                                       ],

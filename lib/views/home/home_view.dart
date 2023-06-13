@@ -98,7 +98,7 @@ class _HomeViewState extends State<HomeView> {
               height: 45,
               child: GradientText(
                 'Bardly',
-                style: TextStyle(fontFamily: 'Anton', fontSize: 30.0, color: Colors.white.withOpacity(0.7)),
+                style: TextStyle(fontFamily: 'Ubuntu', fontSize: 30.0, color: Colors.white.withOpacity(0.7)),
                 gradient: const LinearGradient(colors: [
                   Color(0xff00ffc3),
                   Color(0xff04f4bc),
@@ -112,7 +112,7 @@ class _HomeViewState extends State<HomeView> {
                   style: const TextStyle(color: Colors.blueGrey, fontSize: 12),
                   /*defining default style is optional */
                   children: <TextSpan>[
-                    TextSpan(text: ' AI', style: TextStyle(fontWeight: FontWeight.normal, color: Colors.white.withOpacity(0.7))),
+                    TextSpan(text: ' AI', style: TextStyle(fontFamily: 'Ubuntu', fontWeight: FontWeight.normal, color: Colors.white.withOpacity(0.7))),
                   ],
                 ),
               ),
@@ -151,14 +151,23 @@ class _HomeViewState extends State<HomeView> {
           BottomBarItem(
             iconData: CupertinoIcons.chat_bubble_2_fill,
             label: 'Chat',
+            labelTextStyle: const TextStyle(
+              fontFamily: 'Ubuntu',
+            ),
           ),
           BottomBarItem(
             iconData: Icons.menu_open_outlined,
             label: 'Explore',
+            labelTextStyle: const TextStyle(
+              fontFamily: 'Ubuntu',
+            ),
           ),
           BottomBarItem(
             iconData: CupertinoIcons.timer,
             label: 'Recents',
+            labelTextStyle: const TextStyle(
+              fontFamily: 'Ubuntu',
+            ),
           ),
         ],
         onSelect: (index) {
@@ -183,7 +192,11 @@ class _HomeViewState extends State<HomeView> {
                   child: Center(
                     child: Text(
                       'New Chat Topics',
-                      style: TextStyle(color: Colors.white.withOpacity(0.7), fontSize: 24),
+                      style: TextStyle(
+                        color: Colors.white.withOpacity(0.7),
+                        fontSize: 24,
+                        fontFamily: 'Ubuntu',
+                      ),
                     ),
                   ),
                 ),
@@ -224,7 +237,11 @@ class _HomeViewState extends State<HomeView> {
                                     ),
                                     Text(
                                       "Topics",
-                                      style: TextStyle(color: Colors.white.withOpacity(0.7), fontSize: 24),
+                                      style: TextStyle(
+                                        color: Colors.white.withOpacity(0.7),
+                                        fontSize: 24,
+                                        fontFamily: 'Ubuntu',
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -243,7 +260,7 @@ class _HomeViewState extends State<HomeView> {
                                       child: Center(
                                         child: Text(
                                           topic1.value,
-                                          style: TextStyle(fontSize: 16, color: Colors.white.withOpacity(0.7)),
+                                          style: TextStyle(fontFamily: 'Ubuntu', fontSize: 16, color: Colors.white.withOpacity(0.7)),
                                         ),
                                       ),
                                     ),
@@ -265,7 +282,7 @@ class _HomeViewState extends State<HomeView> {
                                       child: Center(
                                         child: Text(
                                           topic2.value,
-                                          style: TextStyle(fontSize: 16, color: Colors.white.withOpacity(0.7)),
+                                          style: TextStyle(fontFamily: 'Ubuntu', fontSize: 16, color: Colors.white.withOpacity(0.7)),
                                         ),
                                       ),
                                     ),
@@ -286,7 +303,7 @@ class _HomeViewState extends State<HomeView> {
                                       child: Center(
                                         child: Text(
                                           topic3.value,
-                                          style: TextStyle(fontSize: 16, color: Colors.white.withOpacity(0.7)),
+                                          style: TextStyle(fontFamily: 'Ubuntu', fontSize: 16, color: Colors.white.withOpacity(0.7)),
                                         ),
                                       ),
                                     ),
@@ -340,7 +357,9 @@ class _HomeViewState extends State<HomeView> {
                             controller: messageTextController,
                             style: TextStyle(color: Colors.white.withOpacity(0.7)),
                             decoration: InputDecoration(
-                                hintText: messageTextController.text == "" ? "Write message..." : "", hintStyle: TextStyle(color: Colors.white.withOpacity(0.7)), border: InputBorder.none),
+                                hintText: messageTextController.text == "" ? "Write message..." : "",
+                                hintStyle: TextStyle(fontFamily: 'Ubuntu', color: Colors.white.withOpacity(0.7)),
+                                border: InputBorder.none),
                           ),
                         ),
                       ),

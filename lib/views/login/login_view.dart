@@ -64,7 +64,7 @@ class _LoginViewState extends State<LoginView> {
                   height: 60,
                   child: GradientText(
                     'Bardly',
-                    style: TextStyle(fontSize: 40),
+                    style: TextStyle(fontSize: 40, fontFamily: 'Ubuntu'),
                     gradient: LinearGradient(colors: [
                       Color(0xff00ffc3),
                       Color(0xff04f4bc),
@@ -75,7 +75,7 @@ class _LoginViewState extends State<LoginView> {
                   child: const Text(
                     'with AI',
                     textAlign: TextAlign.right,
-                    style: TextStyle(fontSize: 14.0, color: Colors.white),
+                    style: TextStyle(fontSize: 14.0, color: Colors.white, fontFamily: 'Ubuntu'),
                   ),
                 ),
               ],
