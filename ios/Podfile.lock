@@ -59,6 +59,8 @@ PODS:
     - nanopb/encode (= 2.30909.0)
   - nanopb/decode (2.30909.0)
   - nanopb/encode (2.30909.0)
+  - package_info_plus (0.4.5):
+    - Flutter
   - path_provider_foundation (0.0.1):
     - Flutter
     - FlutterMacOS
@@ -82,6 +84,7 @@ DEPENDENCIES:
   - google_mobile_ads (from `.symlinks/plugins/google_mobile_ads/ios`)
   - image_picker_ios (from `.symlinks/plugins/image_picker_ios/ios`)
   - launch_review (from `.symlinks/plugins/launch_review/ios`)
+  - package_info_plus (from `.symlinks/plugins/package_info_plus/ios`)
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
   - share_files_and_screenshot_widgets (from `.symlinks/plugins/share_files_and_screenshot_widgets/ios`)
   - shared_preferences_foundation (from `.symlinks/plugins/shared_preferences_foundation/darwin`)
@@ -110,6 +113,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/image_picker_ios/ios"
   launch_review:
     :path: ".symlinks/plugins/launch_review/ios"
+  package_info_plus:
+    :path: ".symlinks/plugins/package_info_plus/ios"
   path_provider_foundation:
     :path: ".symlinks/plugins/path_provider_foundation/darwin"
   share_files_and_screenshot_widgets:
@@ -135,6 +140,7 @@ SPEC CHECKSUMS:
   image_picker_ios: 4a8aadfbb6dc30ad5141a2ce3832af9214a705b5
   launch_review: 75d5a956ba8eaa493e9c9d4bf4c05e505e8d5ed0
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
+  package_info_plus: fd030dabf36271f146f1f3beacd48f564b0f17f7
   path_provider_foundation: eaf5b3e458fc0e5fbb9940fb09980e853fe058b8
   PromisesObjC: 09985d6d70fbe7878040aa746d78236e6946d2ef
   share_files_and_screenshot_widgets: 11063d06810f086eade3c1170946f8599e276adb

@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:bardly_mobile_app/core/constants/app_config.dart';
 import 'package:bardly_mobile_app/data/services/dio/dio_logger.dart';
 import 'package:dio/dio.dart';
@@ -23,11 +21,10 @@ class HttpManager {
         onRequest: (RequestOptions options, RequestInterceptorHandler handler) {
           options.headers["X-API-KEY"] =
               "MU5QT0RGWlBJNUVMR0YwMFNNRjJRR0NWSFdZSlpLV0VGT1hCSktDRkUxSUhKMkJENTFSNklPWkhSQUhQUEk4TDMxNENNMVdLRlhZOEszS1ZSNkFYOVAzTjFLVlVCTTVMNEs1TENHQ0pXMzlMSUxJV0Y4OTBCVlNCTldFUkhERzY=";
-          options.headers["X-Device-Platform"] = Platform.isAndroid ? "android" : "ios";
-          options.headers["X-App-Version"] = "1.0.0";
-          options.headers["X-App-Build-Number"] = "1";
-          options.headers["X-App-Package-Name"] = "com.example.bardly_mobile_app";
-
+          options.headers["X-Device-Platform"] = AppConfig.platform;
+          options.headers["X-App-Version"] = AppConfig.appVersion;
+          options.headers["X-App-Build-Number"] = AppConfig.buildNumber;
+          options.headers["X-App-Package-Name"] = AppConfig.packageName;
           DioLogger.onSend(tag!, options);
           return handler.next(options);
         },

@@ -60,12 +60,13 @@ class _ChatPageState extends State<ChatPage> {
 
       Message message = TextMessage(author: loggedInUser, text: widget.messageParams ?? '', time: dateFormat.format(DateTime.now()).toString(), stage: 1);
       DBProvider dbProvider = DBProvider();
-      dbProvider.insertRoomTable(widget.messageParams ?? '');
+      //dbProvider.insertRoomTable(widget.messageParams ?? '');
       var getLastId = await dbProvider.getLastHeaderId();
       dbProvider.insertChat('u', widget.messageParams ?? '', getLastId[0]['id'] ?? '', '');
       setState(() {
         messages.add(message);
       });
+
       bardBloc.add(AskToBardEvent(BardRequestModel(question: widget.messageParams ?? '')));
     } catch (e) {}
   }
@@ -89,6 +90,8 @@ class _ChatPageState extends State<ChatPage> {
 
   @override
   Widget build(BuildContext context) {
+    final dateFormat = DateFormat('dd/MM/yyyy hh:mm');
+
     return WillPopScope(
       onWillPop: () async => false,
       child: Scaffold(
@@ -202,18 +205,27 @@ class _ChatPageState extends State<ChatPage> {
                 );
                 messages.add(message);
               } else {
+                if (state is BardErrorState) {
+                  messages.removeLast();
+                  Message message = TextMessage(
+                    isLoading: false,
+                    author: bot,
+                    text: "new version is available. I'm directing you now.",
+                    time: dateFormat.format(DateTime.now()).toString(),
+                    stage: 3,
+                  );
+                  messages.add(message);
+                  DBProvider dbProvider = DBProvider();
+                  var getLastId = await dbProvider.getLastHeaderId();
+                  dbProvider.insertChat('b', "new version is available. I'm directing you now.", getLastId[0]['id'], '');
+                }
                 if (state is BardResponse) {
                   messages.removeLast();
-                  print('bardResponse');
-                  var getLabel = state.model.data?.details?[0].label;
                   print(state.model.data?.chosenAnswer.toString());
                   DBProvider dbProvider = DBProvider();
                   var getLastId = await dbProvider.getLastHeaderId();
                   Message message;
                   if (state.model.data?.details?[0].url != null) {
-                    WidgetsBinding.instance.addPostFrameCallback((_) {
-                      controller.jumpTo(controller.position.maxScrollExtent);
-                    });
                     message = ImageMessage(
                         onCompleted: (v) {
                           if (v == 1.0) {
@@ -227,21 +239,19 @@ class _ChatPageState extends State<ChatPage> {
                           }
                         },
                         author: bot,
-                        time: 'now',
+                        time: dateFormat.format(DateTime.now()).toString(),
                         imageUrl: state.model.data?.details?[0].url ?? '',
-                        caption: state.model.data?.chosenAnswer?.replaceAll(getLabel ?? '', '').toString());
-                    dbProvider.insertChat('b', state.model.data?.chosenAnswer?.replaceAll(getLabel ?? '', '').toString() ?? '', getLastId[0]['id'], state.model.data?.details?[0].url ?? '');
-                    setState(() {});
+                        caption: state.model.data?.chosenAnswer?.toString());
+                    dbProvider.insertChat('b', state.model.data?.chosenAnswer?.toString() ?? '', getLastId[0]['id'], state.model.data?.details?[0].url ?? '');
                   } else {
                     message = TextMessage(
                       isLoading: false,
                       author: bot,
                       text: state.model.data?.chosenAnswer.toString() ?? '',
-                      time: "now",
+                      time: dateFormat.format(DateTime.now()).toString(),
                       stage: 3,
                     );
                     dbProvider.insertChat('b', state.model.data?.chosenAnswer.toString() ?? '', getLastId[0]['id'], '');
-                    setState(() {});
                   }
 
                   messages.add(message);
@@ -292,25 +302,27 @@ class _ChatPageState extends State<ChatPage> {
                               width: 15,
                             ),
                             FloatingActionButton(
-                              onPressed: () async {
-                                if (messageTextController.text.trim() == "") {
-                                  return;
-                                }
-                                Message message = TextMessage(author: loggedInUser, text: messageTextController.text, time: DateTime.now().toString(), stage: 1);
-                                DBProvider dbProvider = DBProvider();
-                                var getLastId = await dbProvider.getLastHeaderId();
-                                dbProvider.insertChat('u', messageTextController.text, getLastId[0]['id'], '');
-                                setState(() {
-                                  messages.add(message);
-                                });
-                                context.read<BardBloc>().add(AskToBardEvent(BardRequestModel(question: messageTextController.text)));
-                                WidgetsBinding.instance.addPostFrameCallback((_) {
-                                  controller.jumpTo(controller.position.maxScrollExtent);
-                                });
-                                messageTextController.text = "";
+                              onPressed: state is BardWaitingState
+                                  ? null
+                                  : () async {
+                                      if (messageTextController.text.trim() == "") {
+                                        return;
+                                      }
+                                      Message message = TextMessage(author: loggedInUser, text: messageTextController.text, time: dateFormat.format(DateTime.now()).toString(), stage: 1);
+                                      DBProvider dbProvider = DBProvider();
+                                      var getLastId = await dbProvider.getLastHeaderId();
+                                      dbProvider.insertChat('u', messageTextController.text, getLastId[0]['id'], '');
+                                      setState(() {
+                                        messages.add(message);
+                                      });
+                                      context.read<BardBloc>().add(AskToBardEvent(BardRequestModel(question: messageTextController.text)));
+                                      WidgetsBinding.instance.addPostFrameCallback((_) {
+                                        controller.jumpTo(controller.position.maxScrollExtent);
+                                      });
+                                      messageTextController.text = "";
 
-                                // Navigator.push(context, MaterialPageRoute(builder: (_) => const ChatPage()));
-                              },
+                                      // Navigator.push(context, MaterialPageRoute(builder: (_) => const ChatPage()));
+                                    },
                               backgroundColor: const Color(0xff1e2d40),
                               elevation: 0,
                               child: Icon(

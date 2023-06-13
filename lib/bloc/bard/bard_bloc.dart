@@ -17,6 +17,7 @@ class BardBloc extends Bloc<BardEvent, BardState> {
 
     try {
       final bardResponse = await _bardRepository.askToBard(event.question);
+      // emit(const BardErrorState(error: 'updateRequired'));
       emit(BardResponse(model: bardResponse));
     } catch (e) {
       emit(BardErrorState(error: e.toString()));
