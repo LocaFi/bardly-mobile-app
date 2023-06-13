@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="bardly_mobile_app"
+        android:label="Bardly"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
@@ -31,6 +31,6 @@
             android:value="2" />
                <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-4949405303719541~6248000843"/>
+            android:value="ca-app-pub-4949405303719541~8483297859"/>
     </application>
 </manifest>

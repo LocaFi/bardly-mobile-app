@@ -14,36 +14,41 @@ class HttpException implements Exception {
 
   static String handleError(Exception? error) {
     String? errorDescription = "";
-    if (error is DioError) {
+    if (error is DioException) {
       switch (error.type) {
-        case DioErrorType.badResponse:
+        case DioExceptionType.badResponse:
+          // if (error.response?.statusCode == 403) {
+          //   errorDescription = 'updateRequired';
+          // }
           if (error.response?.statusCode == 503 || error.response?.statusCode == 502) {
             errorDescription = 'maintenance';
           } else if (error.response?.statusCode == 500) {
             errorDescription = error.response?.data["error"];
-          } else {
-            errorDescription = error.response?.data;
+          } else if (error.response?.statusCode == 403) {
+            if (error.response?.data["message"] == 'requiredUpdate') {
+              errorDescription = 'requiredUpdate';
+            }
           }
           break;
-        case DioErrorType.connectionTimeout:
+        case DioExceptionType.connectionTimeout:
           errorDescription = error.response?.data;
           break;
-        case DioErrorType.connectionError:
+        case DioExceptionType.connectionError:
           errorDescription = error.response?.data;
           break;
-        case DioErrorType.badCertificate:
+        case DioExceptionType.badCertificate:
           errorDescription = error.response?.data;
           break;
-        case DioErrorType.sendTimeout:
+        case DioExceptionType.sendTimeout:
           errorDescription = error.response?.data;
           break;
-        case DioErrorType.receiveTimeout:
+        case DioExceptionType.receiveTimeout:
           errorDescription = error.response?.data;
           break;
-        case DioErrorType.cancel:
+        case DioExceptionType.cancel:
           errorDescription = error.response?.data;
           break;
-        case DioErrorType.unknown:
+        case DioExceptionType.unknown:
           errorDescription = error.response?.data;
           break;
       }

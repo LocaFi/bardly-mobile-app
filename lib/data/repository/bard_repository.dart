@@ -18,9 +18,10 @@ class BardRepository {
     try {
       final response = await _bardServce.askToBard(question);
 
-      return BardResponseModel.fromJson(response.data);
+      return BardResponseModel.fromJson(response);
     } catch (e) {
-      rethrow;
+      // ignore: use_rethrow_when_possible
+      throw e;
     }
   }
 
@@ -28,9 +29,10 @@ class BardRepository {
     try {
       final response = await _bardServce.getSystemVariables();
 
-      return GetSystemVariables.fromJson(response.data);
+      return GetSystemVariables.fromJson(response);
     } catch (e) {
-      rethrow;
+      // ignore: use_rethrow_when_possible
+      throw e;
     }
   }
 

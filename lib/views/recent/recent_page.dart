@@ -259,7 +259,11 @@ class _RecentPageState extends State<RecentPage> {
                                         SizedBox(
                                           width: double.infinity,
                                           child: Text(
-                                            getUserDataFromDB.isNotEmpty ? getUserDataFromDB[index]["header"].toString() : "",
+                                            (getUserDataFromDB.isNotEmpty ? getUserDataFromDB[index]["header"].toString() : "").length > 64
+                                                ? "${(getUserDataFromDB.isNotEmpty ? getUserDataFromDB[index]["header"].toString() : "").substring(0, 64)}..."
+                                                : getUserDataFromDB.isNotEmpty
+                                                    ? getUserDataFromDB[index]["header"].toString()
+                                                    : "",
                                             style: TextStyle(fontSize: 16, color: Colors.white.withOpacity(0.7)),
                                           ),
                                         ),

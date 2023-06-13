@@ -35,6 +35,15 @@ class BardErrorState extends BardState {
   String toString() => 'BardErrorState';
 }
 
+class BardUpdateErrorState extends BardState {
+  final BardUpdateError error;
+  const BardUpdateErrorState({required this.error});
+  @override
+  List<Object> get props => [error];
+  @override
+  String toString() => 'BardUpdateErrorState';
+}
+
 class GetSystemVariablesState extends BardState {
   final GetSystemVariables model;
   const GetSystemVariablesState({required this.model});
@@ -42,4 +51,29 @@ class GetSystemVariablesState extends BardState {
   List<Object> get props => [model];
   @override
   String toString() => 'GetSystemVariablesState';
+}
+
+class BardUpdateError {
+  String? status;
+  String? message;
+  String? requestTime;
+  dynamic data;
+
+  BardUpdateError({this.status, this.message, this.requestTime, this.data});
+
+  BardUpdateError.fromJson(Map<String, dynamic> json) {
+    status = json['status'];
+    message = json['message'];
+    requestTime = json['requestTime'];
+    data = json['data'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['status'] = status;
+    data['message'] = message;
+    data['requestTime'] = requestTime;
+    data['data'] = this.data;
+    return data;
+  }
 }

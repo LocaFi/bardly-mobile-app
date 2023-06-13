@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:bardly_mobile_app/bloc/bard/bard_bloc.dart';
 import 'package:bardly_mobile_app/bloc/bard/bard_event.dart';
 import 'package:bardly_mobile_app/bloc/bard/bard_state.dart';
+import 'package:bardly_mobile_app/controller/project_controller.dart';
 import 'package:bardly_mobile_app/core/database/database_helper.dart';
 import 'package:bardly_mobile_app/models/bard_request_model.dart';
 import 'package:bardly_mobile_app/views/chat/widgets/chat_page_widget.dart';
@@ -15,6 +16,7 @@ import 'package:bardly_mobile_app/views/login/login_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:quickalert/models/quickalert_type.dart';
 import 'package:quickalert/widgets/quickalert_dialog.dart';
@@ -206,19 +208,24 @@ class _ChatPageState extends State<ChatPage> {
                 messages.add(message);
               } else {
                 if (state is BardErrorState) {
-                  messages.removeLast();
-                  Message message = TextMessage(
-                    isLoading: false,
-                    author: bot,
-                    text: "new version is available. I'm directing you now.",
-                    time: dateFormat.format(DateTime.now()).toString(),
-                    stage: 3,
-                  );
-                  messages.add(message);
-                  DBProvider dbProvider = DBProvider();
-                  var getLastId = await dbProvider.getLastHeaderId();
-                  dbProvider.insertChat('b', "new version is available. I'm directing you now.", getLastId[0]['id'], '');
+                  if (state.error == "requiredUpdate") {
+                    messages.removeLast();
+                    Message message = TextMessage(
+                      isLoading: false,
+                      author: bot,
+                      text: "new version is available. I'm directing you now.",
+                      time: dateFormat.format(DateTime.now()).toString(),
+                      stage: 3,
+                    );
+                    messages.add(message);
+                    DBProvider dbProvider = DBProvider();
+                    var getLastId = await dbProvider.getLastHeaderId();
+                    dbProvider.insertChat('b', "new version is available. I'm directing you now.", getLastId[0]['id'], '');
+                    ProjectController projectController = Get.put(ProjectController());
+                    projectController.forceUpdateRequired();
+                  }
                 }
+
                 if (state is BardResponse) {
                   messages.removeLast();
                   print(state.model.data?.chosenAnswer.toString());

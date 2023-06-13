@@ -19,12 +19,12 @@ class HttpManager {
     _dio.interceptors.add(
       InterceptorsWrapper(
         onRequest: (RequestOptions options, RequestInterceptorHandler handler) {
-          options.headers["X-API-KEY"] =
-              "MU5QT0RGWlBJNUVMR0YwMFNNRjJRR0NWSFdZSlpLV0VGT1hCSktDRkUxSUhKMkJENTFSNklPWkhSQUhQUEk4TDMxNENNMVdLRlhZOEszS1ZSNkFYOVAzTjFLVlVCTTVMNEs1TENHQ0pXMzlMSUxJV0Y4OTBCVlNCTldFUkhERzY=";
+          options.headers["X-API-KEY"] = AppConfig.publicAPIKey;
           options.headers["X-Device-Platform"] = AppConfig.platform;
           options.headers["X-App-Version"] = AppConfig.appVersion;
           options.headers["X-App-Build-Number"] = AppConfig.buildNumber;
           options.headers["X-App-Package-Name"] = AppConfig.packageName;
+
           DioLogger.onSend(tag!, options);
           return handler.next(options);
         },
@@ -32,10 +32,15 @@ class HttpManager {
           DioLogger.onSuccess(tag!, response);
           return handler.next(response);
         },
-        onError: (DioError error, ErrorInterceptorHandler handler) {
-          if (error.response?.statusCode == 401) {}
-          if (error.response?.statusCode == 403) {}
-          DioLogger.onError(tag!, error);
+        onError: (DioException error, ErrorInterceptorHandler handler) {
+          // if (error.response?.statusCode == 401) {}
+          // if (error.response?.statusCode == 403) {
+          //   if (error.response?.data['message'] == "requiredUpdate") {
+          //     ProjectController controller = kcontroller.Get.put(ProjectController());
+          //     controller.forceUpdateRequired();
+          //   }
+          // }
+          // DioLogger.onError(tag!, error);
           return handler.next(error);
         },
       ),

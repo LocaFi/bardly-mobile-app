@@ -1,7 +1,9 @@
+import 'package:bardly_mobile_app/controller/project_controller.dart';
 import 'package:bardly_mobile_app/core/ads/ads_helper.dart';
 import 'package:bardly_mobile_app/views/login/login_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -32,6 +34,7 @@ class _SettingsViewState extends State<SettingsView> {
 
   @override
   Widget build(BuildContext context) {
+    ProjectController controller = Get.put(ProjectController());
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xff1e2d40),

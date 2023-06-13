@@ -86,7 +86,7 @@ class _ChatHistoryPageState extends State<ChatHistoryPage> {
   User bot = User(
     id: "Bardly",
     name: "Bardly",
-    avatarUrl: "https://picsum.photos/id/237/200/300",
+    avatarUrl: "https://creatorium.org/assets/bardly_logo.png",
   );
 
   @override

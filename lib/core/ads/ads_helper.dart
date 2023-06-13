@@ -6,10 +6,9 @@ class AdManager {
   BannerAd? _bannerAd;
   InterstitialAd? _interstitialAd;
   RewardedAd? _rewardedAd;
-
   void loadBannerAd() {
     _bannerAd = BannerAd(
-      adUnitId: Platform.isIOS ? "ca-app-pub-4949405303719541/4208957023" : "ca-app-pub-4949405303719541/6248000843",
+      adUnitId: Platform.isIOS ? "ca-app-pub-4949405303719541/8010910169" : "ca-app-pub-4949405303719541/9870786743",
       size: AdSize.banner,
       request: const AdRequest(),
       listener: const BannerAdListener(),
@@ -20,7 +19,7 @@ class AdManager {
 
   void loadRewardedAd() {
     RewardedAd.load(
-        adUnitId: Platform.isIOS ? "ca-app-pub-4949405303719541/4208957023" : "ca-app-pub-4949405303719541/6248000843",
+        adUnitId: Platform.isIOS ? "ca-app-pub-4949405303719541/8010910169" : "ca-app-pub-4949405303719541/9870786743",
         request: const AdRequest(),
         rewardedAdLoadCallback: RewardedAdLoadCallback(onAdLoaded: (RewardedAd ad) {
           _rewardedAd = ad;
@@ -30,7 +29,7 @@ class AdManager {
   }
 
   void loadInterstitialAd() {
-    String interstitialAdId = Platform.isIOS ? "ca-app-pub-4949405303719541/4208957023" : "ca-app-pub-4949405303719541/6248000843";
+    String interstitialAdId = Platform.isIOS ? "ca-app-pub-4949405303719541/8010910169" : "ca-app-pub-4949405303719541/9870786743";
 
     InterstitialAd.load(
         adUnitId: interstitialAdId,

@@ -15,9 +15,10 @@ class BardService extends AbstractService {
         innerPath: 'ai/ask',
         data: question,
       );
-      return response;
+      return response.data;
     } catch (e) {
-      rethrow;
+      // ignore: use_rethrow_when_possible
+      throw e;
     }
   }
 
@@ -26,9 +27,10 @@ class BardService extends AbstractService {
       final response = await get(
         innerPath: '/systemVariable/getMobileVariables',
       );
-      return response;
+      return response.data;
     } catch (e) {
-      rethrow;
+      // ignore: use_rethrow_when_possible
+      throw e;
     }
   }
 }
