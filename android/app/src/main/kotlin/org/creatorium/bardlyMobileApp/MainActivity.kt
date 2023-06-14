@@ -1,4 +1,4 @@
-package com.example.bardly_mobile_app
+package org.creatorium.bardlyMobileApp
 
 import io.flutter.embedding.android.FlutterActivity
 
