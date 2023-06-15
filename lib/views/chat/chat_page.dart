@@ -53,7 +53,7 @@ class _ChatPageState extends State<ChatPage> {
       //   controller.jumpTo(controller.position.maxScrollExtent);
       // });
     } else if (widget.messageFromExplorePage != null) {
-      Future.microtask(() => setFirstMessageToDbForExplorePage(widget.messageParams ?? ''));
+      Future.microtask(() => setFirstMessageToDbForExplorePage(widget.messageFromExplorePage ?? ''));
     }
   }
 
