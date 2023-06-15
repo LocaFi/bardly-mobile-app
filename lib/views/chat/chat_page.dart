@@ -22,8 +22,9 @@ import 'package:quickalert/models/quickalert_type.dart';
 import 'package:quickalert/widgets/quickalert_dialog.dart';
 
 class ChatPage extends StatefulWidget {
-  const ChatPage({super.key, this.messageParams});
+  const ChatPage({super.key, this.messageParams, this.messageFromExplorePage});
   final String? messageParams;
+  final String? messageFromExplorePage;
 
   @override
   State<ChatPage> createState() => _ChatPageState();
@@ -51,7 +52,28 @@ class _ChatPageState extends State<ChatPage> {
       // WidgetsBinding.instance.addPostFrameCallback((_) {
       //   controller.jumpTo(controller.position.maxScrollExtent);
       // });
+    } else if (widget.messageFromExplorePage != null) {
+      Future.microtask(() => setFirstMessageToDbForExplorePage(widget.messageParams ?? ''));
     }
+  }
+
+  void setFirstMessageToDbForExplorePage(
+    String param,
+  ) async {
+    try {
+      final dateFormat = DateFormat('dd/MM/yyyy hh:mm');
+
+      Message message = TextMessage(author: loggedInUser, text: widget.messageFromExplorePage ?? '', time: dateFormat.format(DateTime.now()).toString(), stage: 1);
+      DBProvider dbProvider = DBProvider();
+      dbProvider.insertRoomTable(widget.messageFromExplorePage ?? '');
+      var getLastId = await dbProvider.getLastHeaderId();
+      dbProvider.insertChat('u', widget.messageFromExplorePage ?? '', getLastId[0]['id'] ?? '', '');
+      setState(() {
+        messages.add(message);
+      });
+
+      bardBloc.add(AskToBardEvent(BardRequestModel(question: widget.messageFromExplorePage ?? '')));
+    } catch (e) {}
   }
 
   void setFirstMessageToDb(

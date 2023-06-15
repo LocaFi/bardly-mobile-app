@@ -77,7 +77,7 @@ class _ExplorePageState extends State<ExplorePage> {
     GestureDetector(
       onTap: () {
         Get.off(const ChatPage(
-          messageParams: 'Can you improve my phrases like a professional?',
+          messageFromExplorePage: 'Can you improve my phrases like a professional?',
         ));
       },
       child: Card(
@@ -135,7 +135,7 @@ class _ExplorePageState extends State<ExplorePage> {
     GestureDetector(
       onTap: () {
         Get.off(const ChatPage(
-          messageParams: 'Can you summarize my content?',
+          messageFromExplorePage: 'Can you summarize my content?',
         ));
       },
       child: Card(
@@ -193,7 +193,7 @@ class _ExplorePageState extends State<ExplorePage> {
     GestureDetector(
       onTap: () {
         Get.off(const ChatPage(
-          messageParams: 'Can you write a paragraph for me?',
+          messageFromExplorePage: 'Can you write a paragraph for me?',
         ));
       },
       child: Card(
@@ -251,7 +251,7 @@ class _ExplorePageState extends State<ExplorePage> {
     GestureDetector(
       onTap: () {
         Get.off(const ChatPage(
-          messageParams: 'Can you translate a text for me?',
+          messageFromExplorePage: 'Can you translate a text for me?',
         ));
       },
       child: Card(
@@ -311,7 +311,7 @@ class _ExplorePageState extends State<ExplorePage> {
     GestureDetector(
       onTap: () {
         Get.off(const ChatPage(
-          messageParams: 'Can you generate a song lyrics for me?',
+          messageFromExplorePage: 'Can you generate a song lyrics for me?',
         ));
       },
       child: Card(
@@ -369,7 +369,7 @@ class _ExplorePageState extends State<ExplorePage> {
     GestureDetector(
       onTap: () {
         Get.off(const ChatPage(
-          messageParams: 'Can you write a poem for me?',
+          messageFromExplorePage: 'Can you write a poem for me?',
         ));
       },
       child: Card(
@@ -427,7 +427,7 @@ class _ExplorePageState extends State<ExplorePage> {
     GestureDetector(
       onTap: () {
         Get.off(const ChatPage(
-          messageParams: 'Can you write a story for me?',
+          messageFromExplorePage: 'Can you write a story for me?',
         ));
       },
       child: Card(
@@ -485,7 +485,7 @@ class _ExplorePageState extends State<ExplorePage> {
     GestureDetector(
       onTap: () {
         Get.off(const ChatPage(
-          messageParams: 'Can you write a short movie script for me?',
+          messageFromExplorePage: 'Can you write a short movie script for me?',
         ));
       },
       child: Card(
@@ -545,7 +545,7 @@ class _ExplorePageState extends State<ExplorePage> {
     GestureDetector(
       onTap: () {
         Get.off(const ChatPage(
-          messageParams: 'Can you generate a company name for my company?',
+          messageFromExplorePage: 'Can you generate a company name for my company?',
         ));
       },
       child: Card(
@@ -603,7 +603,7 @@ class _ExplorePageState extends State<ExplorePage> {
     GestureDetector(
       onTap: () {
         Get.off(const ChatPage(
-          messageParams: 'Can you generate a company slogan for my company?',
+          messageFromExplorePage: 'Can you generate a company slogan for my company?',
         ));
       },
       child: Card(
@@ -661,7 +661,7 @@ class _ExplorePageState extends State<ExplorePage> {
     GestureDetector(
       onTap: () {
         Get.off(const ChatPage(
-          messageParams: 'Can you help about create a job description for my job post?',
+          messageFromExplorePage: 'Can you help about create a job description for my job post?',
         ));
       },
       child: Card(
@@ -719,7 +719,7 @@ class _ExplorePageState extends State<ExplorePage> {
     GestureDetector(
       onTap: () {
         Get.off(const ChatPage(
-          messageParams: 'Can you help for write a company biography for me?',
+          messageFromExplorePage: 'Can you help for write a company biography for me?',
         ));
       },
       child: Card(
@@ -779,7 +779,7 @@ class _ExplorePageState extends State<ExplorePage> {
     GestureDetector(
       onTap: () {
         Get.off(const ChatPage(
-          messageParams: 'Can you help me for write a tweet that helps get attraction?',
+          messageFromExplorePage: 'Can you help me for write a tweet that helps get attraction?',
         ));
       },
       child: Card(
@@ -837,7 +837,7 @@ class _ExplorePageState extends State<ExplorePage> {
     GestureDetector(
       onTap: () {
         Get.off(const ChatPage(
-          messageParams: 'Can you help me for a linkedin post that helps get attraction?',
+          messageFromExplorePage: 'Can you help me for a linkedin post that helps get attraction?',
         ));
       },
       child: Card(
@@ -895,7 +895,7 @@ class _ExplorePageState extends State<ExplorePage> {
     GestureDetector(
       onTap: () {
         Get.off(const ChatPage(
-          messageParams: 'Can you help me for choose instagram caption for my instagram post?',
+          messageFromExplorePage: 'Can you help me for choose instagram caption for my instagram post?',
         ));
       },
       child: Card(
@@ -953,7 +953,7 @@ class _ExplorePageState extends State<ExplorePage> {
     GestureDetector(
       onTap: () {
         Get.off(const ChatPage(
-          messageParams: 'Can you help me for choose tiktok caption for my instagram post?',
+          messageFromExplorePage: 'Can you help me for choose tiktok caption for my instagram post?',
         ));
       },
       child: Card(
@@ -1011,7 +1011,7 @@ class _ExplorePageState extends State<ExplorePage> {
     GestureDetector(
       onTap: () {
         Get.off(const ChatPage(
-          messageParams: 'Can you help me for an idea about viral video for social media?',
+          messageFromExplorePage: 'Can you help me for an idea about viral video for social media?',
         ));
       },
       child: Card(
@@ -1071,7 +1071,7 @@ class _ExplorePageState extends State<ExplorePage> {
     GestureDetector(
       onTap: () {
         Get.off(const ChatPage(
-          messageParams: 'Can you help me about write an email content?',
+          messageFromExplorePage: 'Can you help me about write an email content?',
         ));
       },
       child: Card(
@@ -1129,7 +1129,7 @@ class _ExplorePageState extends State<ExplorePage> {
     GestureDetector(
       onTap: () {
         Get.off(const ChatPage(
-          messageParams: 'Can you help me about write an email subject?',
+          messageFromExplorePage: 'Can you help me about write an email subject?',
         ));
       },
       child: Card(
@@ -1187,7 +1187,7 @@ class _ExplorePageState extends State<ExplorePage> {
     GestureDetector(
       onTap: () {
         Get.off(const ChatPage(
-          messageParams: 'Can you help me for improve an email phrases?',
+          messageFromExplorePage: 'Can you help me for improve an email phrases?',
         ));
       },
       child: Card(
@@ -1247,7 +1247,7 @@ class _ExplorePageState extends State<ExplorePage> {
     GestureDetector(
       onTap: () {
         Get.off(const ChatPage(
-          messageParams: 'Can you write a simple code block for me with any language?',
+          messageFromExplorePage: 'Can you write a simple code block for me with any language?',
         ));
       },
       child: Card(
@@ -1305,7 +1305,7 @@ class _ExplorePageState extends State<ExplorePage> {
     GestureDetector(
       onTap: () {
         Get.off(const ChatPage(
-          messageParams: 'Can you explain a code block to me?',
+          messageFromExplorePage: 'Can you explain a code block to me?',
         ));
       },
       child: Card(
@@ -1365,7 +1365,7 @@ class _ExplorePageState extends State<ExplorePage> {
     GestureDetector(
       onTap: () {
         Get.off(const ChatPage(
-          messageParams: 'Can you give me ideas about cook for dinner?',
+          messageFromExplorePage: 'Can you give me ideas about cook for dinner?',
         ));
       },
       child: Card(
@@ -1423,7 +1423,7 @@ class _ExplorePageState extends State<ExplorePage> {
     GestureDetector(
       onTap: () {
         Get.off(const ChatPage(
-          messageParams: 'Can you help me for create a diet plan?',
+          messageFromExplorePage: 'Can you help me for create a diet plan?',
         ));
       },
       child: Card(
@@ -1483,7 +1483,7 @@ class _ExplorePageState extends State<ExplorePage> {
     GestureDetector(
       onTap: () {
         Get.off(const ChatPage(
-          messageParams: 'Can you make a funny joke?',
+          messageFromExplorePage: 'Can you make a funny joke?',
         ));
       },
       child: Card(
@@ -1541,7 +1541,7 @@ class _ExplorePageState extends State<ExplorePage> {
     GestureDetector(
       onTap: () {
         Get.off(const ChatPage(
-          messageParams: 'Can you complete my sentences with funny random answers?',
+          messageFromExplorePage: 'Can you complete my sentences with funny random answers?',
         ));
       },
       child: Card(
