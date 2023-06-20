@@ -87,14 +87,6 @@ class _LoginViewState extends State<LoginView> {
               color: Color(0xff1e2d40),
               backgroundColor: Color(0xff04f4bc),
             ),
-            const SizedBox(
-              height: 40,
-            ),
-            Image.asset(
-              "assets/powered_google.png",
-              height: 200,
-              width: 200,
-            ),
           ],
         ),
       ),

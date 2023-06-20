@@ -351,13 +351,6 @@ class _SettingsViewState extends State<SettingsView> {
                 ),
               ),
             ),
-            Center(
-              child: Image.asset(
-                "assets/powered_google.png",
-                height: 200,
-                width: 200,
-              ),
-            ),
             const SizedBox(
               height: 100,
             ),
