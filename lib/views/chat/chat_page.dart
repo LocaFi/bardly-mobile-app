@@ -106,8 +106,8 @@ class _ChatPageState extends State<ChatPage> {
     color: Colors.white,
   );
   User bot = User(
-    id: "Bardly",
-    name: "Bardly",
+    id: "Assistly",
+    name: "Assistly",
     avatarUrl: "https://creatorium.org/assets/bardly_logo.png",
     color: const Color.fromARGB(255, 8, 217, 168),
   );
@@ -133,7 +133,7 @@ class _ChatPageState extends State<ChatPage> {
                             context: context,
                             type: QuickAlertType.warning,
                             barrierDismissible: true,
-                            text: 'Leaving the chat without waiting for the Bardly to respond causes conversations not to be recorded in the history.',
+                            text: 'Leaving the chat without waiting for the Assistly to respond causes conversations not to be recorded in the history.',
                             confirmBtnText: 'Got it!',
                             confirmBtnColor: const Color(0xff007d81),
                             onConfirmBtnTap: () async {
@@ -189,7 +189,7 @@ class _ChatPageState extends State<ChatPage> {
               SizedBox(
                 height: 45,
                 child: GradientText(
-                  'Bardly',
+                  'Assistly',
                   style: TextStyle(fontFamily: 'Anton', fontSize: 30.0, color: Colors.white.withOpacity(0.7)),
                   gradient: const LinearGradient(colors: [
                     Color(0xff00ffc3),

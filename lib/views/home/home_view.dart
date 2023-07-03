@@ -97,7 +97,7 @@ class _HomeViewState extends State<HomeView> {
             SizedBox(
               height: 45,
               child: GradientText(
-                'Bardly',
+                'Assistly',
                 style: TextStyle(fontFamily: 'Ubuntu', fontSize: 30.0, color: Colors.white.withOpacity(0.7)),
                 gradient: const LinearGradient(colors: [
                   Color(0xff00ffc3),

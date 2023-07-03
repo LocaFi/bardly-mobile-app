@@ -59,7 +59,7 @@ class _SettingsViewState extends State<SettingsView> {
             SizedBox(
               height: 45,
               child: GradientText(
-                'Bardly',
+                'Assistly',
                 style: TextStyle(fontFamily: 'Ubuntu', fontSize: 30.0, color: Colors.white.withOpacity(0.7)),
                 gradient: const LinearGradient(colors: [
                   Color(0xff00ffc3),
@@ -308,45 +308,45 @@ class _SettingsViewState extends State<SettingsView> {
                         ],
                       ),
                     ),
-                    const Divider(color: Colors.white, thickness: 0.3),
-                    InkWell(
-                      onTap: () {},
-                      child: Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(12),
-                            child: SizedBox(
-                                child: Image.asset(
-                              'assets/stars.png',
-                              height: 42,
-                              width: 42,
-                            )),
-                          ),
-                          Text(
-                            'Rate us',
-                            style: TextStyle(fontFamily: 'Ubuntu', color: Colors.white.withOpacity(0.7), fontSize: 18),
-                          ),
-                        ],
-                      ),
-                    ),
-                    const Divider(color: Colors.white, thickness: 0.3),
-                    Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(12),
-                          child: SizedBox(
-                              child: Image.asset(
-                            'assets/share.png',
-                            height: 30,
-                            width: 42,
-                          )),
-                        ),
-                        Text(
-                          'Share with your friends',
-                          style: TextStyle(fontFamily: 'Ubuntu', color: Colors.white.withOpacity(0.7), fontSize: 18),
-                        ),
-                      ],
-                    ),
+                    // const Divider(color: Colors.white, thickness: 0.3),
+                    // InkWell(
+                    //   onTap: () {},
+                    //   child: Row(
+                    //     children: [
+                    //       Padding(
+                    //         padding: const EdgeInsets.all(12),
+                    //         child: SizedBox(
+                    //             child: Image.asset(
+                    //           'assets/stars.png',
+                    //           height: 42,
+                    //           width: 42,
+                    //         )),
+                    //       ),
+                    //       Text(
+                    //         'Rate us',
+                    //         style: TextStyle(fontFamily: 'Ubuntu', color: Colors.white.withOpacity(0.7), fontSize: 18),
+                    //       ),
+                    //     ],
+                    //   ),
+                    // ),
+                    // const Divider(color: Colors.white, thickness: 0.3),
+                    // Row(
+                    //   children: [
+                    //     Padding(
+                    //       padding: const EdgeInsets.all(12),
+                    //       child: SizedBox(
+                    //           child: Image.asset(
+                    //         'assets/share.png',
+                    //         height: 30,
+                    //         width: 42,
+                    //       )),
+                    //     ),
+                    //     Text(
+                    //       'Share with your friends',
+                    //       style: TextStyle(fontFamily: 'Ubuntu', color: Colors.white.withOpacity(0.7), fontSize: 18),
+                    //     ),
+                    //   ],
+                    // ),
                   ],
                 ),
               ),

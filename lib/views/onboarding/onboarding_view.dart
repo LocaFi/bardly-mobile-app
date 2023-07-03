@@ -31,17 +31,17 @@ class OnboardingOverview extends StatelessWidget {
       pages: [
         WhatsNewPage(
           title: const Text(
-            "Welcome to Bardly",
+            "Welcome to Assistly",
             style: TextStyle(fontFamily: 'Ubuntu', color: Color.fromARGB(255, 8, 217, 168)),
           ),
           features: const [
             WhatsNewFeature(
               title: Text(
-                'Bardly is connected to Internet!',
+                'Assistly is connected to Internet!',
                 style: TextStyle(fontFamily: 'Ubuntu', color: Colors.white),
               ),
               description: Text(
-                'Bardly can search internet for serve true information to you. Also Bardly can show newest information from Internet.',
+                'Assistly can search internet for serve true information to you. Also Assistly can show newest information from Internet.',
                 style: TextStyle(fontFamily: 'Ubuntu', color: Colors.grey),
               ),
               icon: Icon(
@@ -49,27 +49,27 @@ class OnboardingOverview extends StatelessWidget {
                 color: Color.fromARGB(255, 8, 217, 168),
               ),
             ),
-            WhatsNewFeature(
-              title: Text(
-                "Bardly powered by Google💙",
-                style: TextStyle(fontFamily: 'Ubuntu', color: Colors.white),
-              ),
-              description: Text(
-                "Bardly is a new application powered by Google that uses Bard for AI processes. Bard is a large language model that can generate text, translate languages, write different kinds of creative content, and answer your questions in an informative way.",
-                style: TextStyle(fontFamily: 'Ubuntu', color: Colors.grey),
-              ),
-              icon: Icon(
-                Symbols.electric_bolt_rounded,
-                color: Color.fromARGB(255, 8, 217, 168),
-              ),
-            ),
+            // WhatsNewFeature(
+            //   title: Text(
+            //     "Assistly powered by Google💙",
+            //     style: TextStyle(fontFamily: 'Ubuntu', color: Colors.white),
+            //   ),
+            //   description: Text(
+            //     "Assistly is a new application powered by Google that uses Bard for AI processes. Bard is a large language model that can generate text, translate languages, write different kinds of creative content, and answer your questions in an informative way.",
+            //     style: TextStyle(fontFamily: 'Ubuntu', color: Colors.grey),
+            //   ),
+            //   icon: Icon(
+            //     Symbols.electric_bolt_rounded,
+            //     color: Color.fromARGB(255, 8, 217, 168),
+            //   ),
+            // ),
             WhatsNewFeature(
               title: Text(
                 'Keeping Updated ',
                 style: TextStyle(fontFamily: 'Ubuntu', color: Colors.white),
               ),
               description: Text(
-                "Bardly can always provide you with the most accurate and up-to-date information. If you ask Bardly about a current event, It will be able to tell you the latest news about it. Bardly can also keep you updated on your favorite topics, such as sports, movies, or music.",
+                "Assistly can always provide you with the most accurate and up-to-date information. If you ask Assistly about a current event, It will be able to tell you the latest news about it. Assistly can also keep you updated on your favorite topics, such as sports, movies, or music.",
                 style: TextStyle(fontFamily: 'Ubuntu', color: Colors.grey),
               ),
               icon: Icon(
@@ -108,7 +108,7 @@ class OnboardingOverview extends StatelessWidget {
         ),
         const CupertinoOnboardingPage(
           title: Text(
-            'Now you are going to meet with Bardly!',
+            'Now you are going to meet with Assistly!',
             style: TextStyle(
               fontFamily: 'Ubuntu',
               color: Color.fromARGB(255, 8, 217, 168),

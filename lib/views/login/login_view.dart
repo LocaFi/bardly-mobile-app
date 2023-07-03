@@ -63,7 +63,7 @@ class _LoginViewState extends State<LoginView> {
                 const SizedBox(
                   height: 60,
                   child: GradientText(
-                    'Bardly',
+                    'Assistly',
                     style: TextStyle(fontSize: 40, fontFamily: 'Ubuntu'),
                     gradient: LinearGradient(colors: [
                       Color(0xff00ffc3),

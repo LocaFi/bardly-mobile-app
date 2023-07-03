@@ -84,8 +84,8 @@ class _ChatHistoryPageState extends State<ChatHistoryPage> {
   );
 
   User bot = User(
-    id: "Bardly",
-    name: "Bardly",
+    id: "Assistly",
+    name: "Assistly",
     avatarUrl: "https://creatorium.org/assets/bardly_logo.png",
   );
 
@@ -146,7 +146,7 @@ class _ChatHistoryPageState extends State<ChatHistoryPage> {
               SizedBox(
                 height: 45,
                 child: GradientText(
-                  'Bardly',
+                  'Assistly',
                   style: TextStyle(fontFamily: 'Ubuntu', fontSize: 30.0, color: Colors.white.withOpacity(0.7)),
                   gradient: const LinearGradient(colors: [
                     Color(0xff00ffc3),
